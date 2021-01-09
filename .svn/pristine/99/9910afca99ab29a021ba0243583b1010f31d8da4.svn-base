@@ -1,0 +1,673 @@
+<template>
+  <div class="history">
+    <div class="history-header">
+      <back class="back-icon img-he"></back>
+      <h3>{{ $t('BetList') }}</h3>  <!-- 【 竞猜历史 】 -->
+    </div>
+    <div class="history-tab">
+      <ul class="history-tab-ul ">
+        <span class="history-tab-ul-span"></span>
+        <span class="history-tab-ul-span1"></span>
+        <li
+          @click="getNum(index)"
+          :class="{ active: num == index }"
+          v-for="(item, index) in list"
+          :key="index"
+          class="history-tab-ul-item"
+        >
+          {{ item }}
+          <span class="history-tab-ul-item-span" v-show="num == index"></span>
+        </li>
+      </ul>
+    </div>
+    <div class="history-content" 
+        v-infinite-scroll="load"
+        infinite-scroll-disabled="busy"
+    >
+      <div
+        v-show="num === 0"
+        :class="{ activeImg: usualList.length == 0 && push == false}"
+        style="padding-bottom:0;"
+
+      >
+        <p v-if="usualList.length == 0 && push == false">{{ $t("NoRecord") }}</p> <!-- 【 暂无纪录 】 -->
+        <ul class="history-content-ul" style="padding-bottom: 0;">
+          <li
+            class="history-content-ul-item"
+            style="position:relative"
+            v-for="(item, index) in usualList"
+            :key="index"
+          >
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_03.png')"
+              v-if="item.BetResult == '胜' && lang == 'zh-CN'"
+            />
+            <!-- 英文版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_03_US.png')"
+              v-if="item.BetResult == '胜' && lang == 'en-US'"
+            />
+            <!-- 繁中版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_03_TW.png')"
+              v-if="item.BetResult == '胜' && lang == 'zh-TW'"
+            />
+
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_02_03.png')"
+              v-if="item.BetResult == '负' && lang == 'zh-CN'"
+            />
+            <!-- 英文版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_02_03_US.png')"
+              v-if="item.BetResult == '负' && lang == 'en-US'"
+            />
+            <!-- 繁中版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_02_03_TW.png')"
+              v-if="item.BetResult == '负' && lang == 'zh-TW'"
+            />
+
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon.png')"
+              v-if="item.BetResult == '竞猜失效' && lang == 'zh-CN'"
+            />
+            <!-- 英文版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon_US.png')"
+              v-if="item.BetResult == '竞猜失效' && lang == 'en-US'"
+            />
+            <!-- 繁中版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon.png')"
+              v-if="item.BetResult == '竞猜失效' && lang == 'zh-TW'"
+            />
+
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon.png')"
+              v-if="item.BetResult == '订单取消' && lang == 'zh-CN'"
+            />
+            <!-- 英文版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon_US.png')"
+              v-if="item.BetResult == '订单取消' && lang == 'en-US'"
+            />
+            <!-- 繁中版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon.png')"
+              v-if="item.BetResult == '订单取消' && lang == 'zh-TW'"
+            />
+            <p class="history-content-ul-item-p">
+              <span class="history-content-ul-item-p-city1">{{
+                item.HomeTeam
+              }}</span>
+              <span class="history-content-ul-item-p-vs"><span class="glow">VS</span></span>
+              <span class="history-content-ul-item-p-city">{{
+                item.AwayTeam
+              }}</span>
+            </p>
+            <div class="history-content-ul-item-div">
+              <ul
+                class="history-content-ul-item-div-ul"
+                style="position: relative;"
+              >
+                <li class="history-content-ul-item-div-ul-item">
+                  {{ $t('BettingTime') }}：{{ item.Time }}  <!-- 【 下注时间 】 -->
+                </li>
+                <li class="history-content-ul-item-div-ul-item">
+                  {{ $t('BetNumber') }}：{{ item.Code }}  <!-- 【 下注单号 】 -->
+                </li>
+                <li class="history-content-ul-item-div-ul-item">
+                  {{ $t('BetContent') }}：{{ item.Plays }} - {{ item.Pei }}  <!-- 【 下注內容 】 -->
+                </li>
+                <li class="history-content-ul-item-div-ul-item">
+                  {{ $t('CompetingTime') }}：{{item.MatchTime.slice(0, 10) + " " + item.MatchTime.slice(11) }}  <!-- 【 比赛时间 】 -->
+                </li>
+                <!-- <li class="history-content-ul-item-div-ul-item">下注结果：</span>{{item.ChooseStatus}}</li> -->
+                <li class="history-content-ul-item-div-ul-item">
+                  <span>{{ $t('BettingCoins') }}：{{ item.BetIntegral }}</span>  <!-- 【 下注金币 】 -->
+                </li>
+                <li>
+                  <span>{{ $t('ValidBet') }}：{{ item.ValidIntegral }}</span>  <!-- 【 有效竞猜 】 -->
+                </li>
+                <li>
+                  <span>{{ $t('ObtainTotalCoins') }}：{{ item.WinIntegral }}</span>  <!-- 【 共获得金币 】 -->
+                </li>
+                <li class="history-content-ul-item-div-ul-itemp">
+                  <span :class="{ activeLv: item.SettlementStatus == 1 }">{{ item.SettlementStatus == 1 ?  $t('Closed')  : $t('Unsettlement') }}</span>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li
+            style="font-size: .24rem;text-align:center;line-height: .48rem"
+            v-if="push"
+          >
+            {{ $t('WipeLoading') }}...  <!-- 【 加载中… 】 -->
+          </li>
+          <!-- <li style='font-size: .24rem;text-align:center;line-height: .48rem' v-if="noMore">没有更多了</li> -->
+        </ul>
+      </div>
+      <div
+        v-show="num === 1"
+        style="line-height:0;"
+        :class="{ activeImg: rankList.length == 0 && push1 == false}"
+      >
+      <p v-if="rankList.length == 0 && push1 == false">{{ $t("NoRecord") }}</p>  <!-- 【 暂无纪录 】 -->
+        <ul class="history-content-ul" style="padding-bottom: 0">
+          <li
+            class="history-content-ul-item"
+            style="position:relative"
+            v-for="(item, index) in rankList"
+            :key="index"
+          >
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_03.png')"
+              v-if="item.BetResult == '胜' && lang == 'zh-CN'"
+            />
+            <!-- 英文版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_03_US.png')"
+              v-if="item.BetResult == '胜' && lang == 'en-US'"
+            />
+            <!-- 繁中版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_03_TW.png')"
+              v-if="item.BetResult == '胜' && lang == 'zh-TW'"
+            />
+
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_02_03.png')"
+              v-if="item.BetResult == '负' && lang == 'zh-CN'"
+            />
+            <!-- 英文版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_02_03_US.png')"
+              v-if="item.BetResult == '负' && lang == 'en-US'"
+            />
+            <!-- 繁中版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_02_03_TW.png')"
+              v-if="item.BetResult == '负' && lang == 'zh-TW'"
+            />
+
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon.png')"
+              v-if="item.BetResult == '竞猜失效' && lang == 'zh-CN'"
+            />
+            <!-- 英文版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon_US.png')"
+              v-if="item.BetResult == '竞猜失效' && lang == 'en-US'"
+            />
+            <!-- 繁中版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon.png')"
+              v-if="item.BetResult == '竞猜失效' && lang == 'zh-TW'"
+            />
+
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon.png')"
+              v-if="item.BetResult == '订单取消' && lang == 'zh-CN'"
+            />
+            <!-- 英文版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon_US.png')"
+              v-if="item.BetResult == '订单取消' && lang == 'en-US'"
+            />
+            <!-- 繁中版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon.png')"
+              v-if="item.BetResult == '订单取消' && lang == 'zh-TW'"
+            />
+            <p class="history-content-ul-item-p">
+              <span class="history-content-ul-item-p-city1">{{
+                item.HomeTeam
+              }}</span>
+              <span class="history-content-ul-item-p-vs"><span class="glow">VS</span></span>
+              <span class="history-content-ul-item-p-city">{{
+                item.AwayTeam
+              }}</span>
+            </p>
+            <div class="history-content-ul-item-div">
+              <ul
+                class="history-content-ul-item-div-ul"
+                style="position: relative"
+              >
+                <li class="history-content-ul-item-div-ul-item">
+                  {{ $t('BettingTime') }}：{{ item.Time }}   <!-- 【 下注时间 】 -->
+                </li>
+                <li class="history-content-ul-item-div-ul-item">
+                  {{ $t('BetNumber') }}：{{ item.Code }}   <!-- 【 下注单号 】 -->
+                </li>
+                <li class="history-content-ul-item-div-ul-item">
+                  {{ $t('BetContent') }}：{{ item.Plays }} - {{ item.Pei }}   <!-- 【 下注內容 】 -->
+                </li>
+                <li class="history-content-ul-item-div-ul-item">
+                  {{ $t('CompetingTime') }}：{{item.MatchTime.slice(0, 10) + " " + item.MatchTime.slice(11)}}   <!-- 【 比赛时间 】 -->
+                </li>
+                <!-- <li class="history-content-ul-item-div-ul-item">下注结果：</span>{{item.ChooseStatus}}</li> -->
+                <li class="history-content-ul-item-div-ul-item">
+                  <span>{{ $t('BettingCoins') }}：{{ item.BetIntegral }}</span>  <!-- 【 下注金币 】 -->
+                </li>
+                <li>
+                  <span>{{ $t('ValidBet') }}：{{ item.ValidIntegral }}</span>  <!-- 【 有效竞猜 】 -->
+                </li>
+                <li>
+                  <span>{{ $t('ObtainTotalCoins') }}：{{ item.WinIntegral }}</span>  <!-- 【 共获得金币 】 -->
+                </li>
+                <li class="history-content-ul-item-div-ul-itemp">
+                  <span :class="{ activeLv: item.SettlementStatus== '已结算' }">{{ item.SettlementStatus== '已结算'?  $t('Closed')  : $t('Unsettlement') }}</span>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li
+            style="font-size: .24rem;text-align:center;line-height: .48rem"
+            v-if="push1"
+          >
+            {{ $t('WipeLoading') }}...  <!-- 【 加载中… 】 -->
+          </li>
+          <li
+            style="font-size: .24rem;text-align:center;line-height: .48rem"
+            v-if="noMore1"
+          >
+            {{ $t('WipeNomore') }}  <!-- 【 沒有更多了 】 -->
+          </li>
+        </ul>
+      </div>
+      <div
+        v-show="num === 2"
+        style="line-height:0;"
+        :class="{ activeImg: challageList.length == 0 && push2 == false}"
+      >
+      <p v-if="challageList.length == 0 && push2 == false">{{ $t("NoRecord") }}</p>  <!-- 【 暂无纪录 】 -->
+        <ul class="history-content-ul" style="padding-bottom: 0">
+          <li
+            class="history-content-ul-item"
+            style="position:relative"
+            v-for="(item, index) in challageList"
+            :key="index"
+          >
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_03.png')"
+              v-if="item.BetResult == '胜' && lang =='zh-CN'"
+            />
+            <!-- 英文版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_03_US.png')"
+              v-if="item.BetResult == '胜' && lang =='en-US'"
+            />
+            <!-- 繁中版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_03_TW.png')"
+              v-if="item.BetResult == '胜' && lang =='zh-TW'"
+            />
+
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_02_03.png')"
+              v-if="item.BetResult == '负' && lang =='zh-CN'"
+            />
+            <!-- 英文版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_02_03_US.png')"
+              v-if="item.BetResult == '负' && lang =='en-US'"
+            />
+            <!-- 繁中版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/record_02_03_TW.png')"
+              v-if="item.BetResult == '负' && lang =='zh-TW'"
+            />
+
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon.png')"
+              v-if="item.BetResult == '竞猜失效' && lang =='zh-CN'"
+            />
+            <!-- 英文版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon_US.png')"
+              v-if="item.BetResult == '竞猜失效' && lang =='en-US'"
+            />
+            <!-- 繁中版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon.png')"
+              v-if="item.BetResult == '竞猜失效' && lang =='zh-TW'"
+            />
+
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon.png')"
+              v-if="item.BetResult == '订单取消' && lang =='zh-CN'"
+            />
+            <!-- 英文版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon_US.png')"
+              v-if="item.BetResult == '订单取消' && lang =='en-US'"
+            />
+            <!-- 繁中版 -->
+            <img
+              class="imgMatch"
+              :src="require('@/assets/challenge/failIcon.png')"
+              v-if="item.BetResult == '订单取消' && lang =='zh-TW'"
+            />
+            <!-- item.BetResult == '赢'
+                                ? require('@/assets/challenge/record_03.png')
+                                : require('@/assets/challenge/record_02_03.png')
+                            " /> -->
+            <p class="history-content-ul-item-p">
+              <span class="history-content-ul-item-p-city1">{{
+                item.HomeTeam
+              }}</span>
+              <span class="history-content-ul-item-p-vs"><span class="glow">VS</span></span>
+              <span class="history-content-ul-item-p-city">{{
+                item.AwayTeam
+              }}</span>
+            </p>
+            <div class="history-content-ul-item-div">
+              <ul
+                class="history-content-ul-item-div-ul"
+                style="position: relative"
+              >
+                <li class="history-content-ul-item-div-ul-item">
+                  {{ $t('BettingTime') }}：{{ item.Time }}  <!-- 【 下注时间 】 -->
+                </li>
+                <li class="history-content-ul-item-div-ul-item">
+                  {{ $t('BetNumber') }}：{{ item.Code }}  <!-- 【 下注单号 】 -->
+                </li>
+                <li class="history-content-ul-item-div-ul-item">
+                  {{ $t('BetContent') }}：{{ item.Plays }} - {{ item.Pei }}  <!-- 【 下注內容 】 -->
+                </li>
+                <li class="history-content-ul-item-div-ul-item">
+                  {{ $t('CompetingTime') }}：{{item.MatchTime.slice(0, 10) + " " + item.MatchTime.slice(11)}}  <!-- 【 比赛时间 】 -->
+                </li>
+                <!-- <li class="history-content-ul-item-div-ul-item">下注结果：</span>{{item.ChooseStatus}}</li> -->
+                <li class="history-content-ul-item-div-ul-item">
+                  <span>{{ $t('BettingCoins') }}：{{ item.BetIntegral }}</span>  <!-- 【 下注金币 】 -->
+                </li>
+                <li>
+                  <span>{{ $t('ValidBet') }}：{{ item.ValidIntegral }}</span>  <!-- 【 有效竞猜 】 -->
+                </li>
+                <li>
+                  <span>{{ $t('ObtainTotalCoins') }}：{{ item.WinIntegral }}</span>  <!-- 【 共获得金币 】 -->
+                </li>
+                <li class="history-content-ul-item-div-ul-itemp">
+                  <span :class="{ activeLv: item.SettlementStatus== '已结算' }">{{ item.SettlementStatus== '已结算'?  $t('Closed')  : $t('Unsettlement') }}</span>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li
+            style="font-size: .24rem;text-align:center;line-height: .48rem"
+            v-if="push2"
+          >
+            {{ $t('WipeLoading') }}...  <!-- 【 加载中… 】 -->
+          </li>
+          <!-- <li
+            style="font-size: .24rem;text-align:center;line-height: .48rem"
+            v-if="noMore2"
+          >
+            {{ $t('WipeNomore') }} 
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Vue from "vue";
+import { Toast } from "vant";
+
+Vue.use(Toast);
+import { apiGetContactUsInfo } from "@/api/Appsetting.js";
+import { apiGetMemberMatchAndUserRank } from "@/api/match.js";
+import back from "@/components/Botton/back.vue";
+export default {
+  name: "history",
+  components: {
+    back
+  },
+  filters: {
+    state(val) {
+      if ((val = "已结算")) {
+        return 1;
+      } else {
+        return 2;
+      }
+    }
+  },
+  data() {
+    return {
+      list: [this.$t('Ordinary'), this.$t('Rank'), this.$t('Challenge')],
+      num: 0,
+      imgSrc: "",
+      showImg: false,
+      nomsg: true,
+      noMore: false,
+      noMore1: false,
+      noMore2: false,
+      push: false,
+      push1: false,
+      push2: false,
+      usualList: [], //普通赛列表1
+      rankList: [], //排位赛列表2
+      challageList: [], //挑战赛列表3
+      letfTeam: "",
+      battle: "",
+      rightTeam: "",
+      isLoading: false, //下拉
+      loading: false, //上拉
+      finished: false, //是否已加载完所有数据
+      indexNum: 1,
+      show: true,
+      states: true,
+      states2: false,
+      IndexNum: 1,
+      busy: false,
+      typeNum: 1,
+      typeNum2: 1,
+      lang: "",
+      totalPages: "",
+    };
+  },
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
+    getNum(index) {
+      this.num = index;
+      if (this.num == 0) {
+        this.typeNum = 1;
+        this.IndexNum = 1;
+        this.usualList = [];
+        this.load();
+      }
+      if (index == 1) {
+        this.typeNum = 2;
+        this.IndexNum = 1;
+        this.rankList.splice(0);
+        this.load();
+      }
+      if (index == 2) {
+        this.typeNum = 3;
+        this.IndexNum = 1;
+        this.challageList.splice(0);
+        this.load();
+      }
+    },
+    load() {
+      this.busy = true;
+      let data = {
+        index: this.IndexNum,
+        count: 10,
+        type: this.typeNum //普通赛
+      };
+      if (data.type == 1) {
+        apiGetMemberMatchAndUserRank(data, true).then(res => {
+          if (res.Data.length > 7) {
+            this.push = true;
+          }
+          if (res.Data.length == 0) {
+            this.busy = true;
+            this.push = false;
+            this.noMore = true;
+          } else {
+            for (let i = 0; i < res.Data.length; i++) {
+              this.usualList.push(res.Data[i]);
+              this.busy = false;
+            }
+            this.IndexNum++;
+            if (res.TotalPages == this.IndexNum - 1) {
+              this.busy = true;
+              this.push = false;
+            }
+          }
+        });
+      } else if (data.type == 2) {
+        this.push1 = true;
+        apiGetMemberMatchAndUserRank(data, true).then(res => {
+          if (res.Data.length == 0) {
+            this.busy = true;
+            this.push1 = false;
+            this.noMore = true;
+            return;
+          }
+          for (let i = 0; i < res.Data.length; i++) {
+            this.rankList.push(res.Data[i]);
+            this.busy = false;
+          }
+          this.IndexNum++;
+          if (res.TotalPages == this.IndexNum - 1) {
+            this.busy = true;
+            this.push1 = false;
+          }
+        });
+      } else if (data.type == 3) {
+        this.push2 = true;
+        apiGetMemberMatchAndUserRank(data, true).then(res => {
+          if (res.Data.length == 0) {
+            this.busy = true;
+            this.push2 = false;
+            this.noMore = true;
+            return;
+          }
+          for (let i = 0; i < res.Data.length; i++) {
+            this.challageList.push(res.Data[i]);
+            this.busy = false;
+          }
+          this.IndexNum++;
+          if (res.TotalPages == this.IndexNum - 1) {
+            this.busy = true;
+            this.push2 = false;
+          }
+        });
+      }
+    },
+  },
+  created() {
+    this.lang = JSON.parse(localStorage.getItem("lang")).tag;
+  }
+};
+</script>
+
+<style scoped>
+.activeLv {
+  background: #36bb12;
+}
+
+.imgMatch {
+  position: absolute;
+  right: 0.1rem;
+  top: 0.08rem;
+  width: 1.24rem;
+  height: 1.24rem;
+}
+.glow {
+  font-weight: bold;
+  -webkit-animation: glow 1s infinite;
+  -khtml-animation: glow 1s infinite;
+  -moz-animation: glow 1s infinite;
+  -ms-animation: glow 1s infinite;
+  -o-animation: glow 1s infinite;
+  animation: glow 1s infinite;
+}
+@-webkit-keyframes glow {
+  0%,
+  100% {
+    color: red;
+  }
+  50% {
+    color: orange;
+  }
+}
+@-moz-keyframes glow {
+  0%,
+  100% {
+    color: red;
+  }
+  50% {
+    color: orange;
+  }
+}
+@-ms-keyframes glow {
+  0%,
+  100% {
+    color: red;
+  }
+  50% {
+    color: orange;
+  }
+}
+@-o-keyframes glow {
+  0%,
+  100% {
+    color: red;
+  }
+  50% {
+    color: orange;
+  }
+}
+@keyframes glow {
+  0%,
+  100% {
+    color: red;
+  }
+  50% {
+    color: orange;
+  }
+}
+</style>

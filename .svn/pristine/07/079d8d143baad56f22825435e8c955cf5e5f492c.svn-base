@@ -1,0 +1,313 @@
+.challenge {
+  &-head {
+    height: 1.1rem /* 124/100 */;
+    @include page_header_color($theme-red);
+    text-align: center;
+    line-height: 1.1rem;
+    @include page_header_text_color($theme-red-header-text-color);
+    font-size: 0.33rem; /* 33/100 */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  //
+  &-main {
+    margin-top: 1.1rem;
+    height: calc(100% - 2rem);
+    // 顶部
+    &-top {
+      position: relative;
+      height: 3.65rem;
+      background: url('~@/assets/challenge/bgc.png');
+      background-size: 100%;
+      .challenge-throy {
+        position: absolute;
+        left: 50%;
+        bottom: 1rem;
+        transform: translateX(-50%);
+        width: 1.26rem /* 126/100 */;
+        height: 1.33rem /* 133/100 */;
+        background: url('~@/assets/challenge/challenge_03.png');
+        background-size: 100%;
+        z-index: 1;
+      }
+      .challenge-button {
+        color: #6e3b12;
+        font-size: 0.38rem;
+        text-align: center;
+        position: absolute;
+        font-weight: 700;
+        left: 50%;
+        bottom: 0.34rem /* 16/100 */;
+        transform: translateX(-50%);
+        line-height: 0.81rem;
+        width: 4.32rem /* 432/100 */;
+        height: 0.81rem /* 81/100 */;
+        background: url('~@/assets/challenge/button.png');
+        background-size: 100%;
+        border: none;
+        .van-button__text {
+          span {
+            color: #6e3b12;
+            font-size: 0.32rem;
+          }
+        }
+      }
+    }
+    &-history {
+      position: relative;
+      padding: 0 0.2rem /* 8/100 */;
+      // padding-top: 0.53rem /* 53/100 */;
+      border-top-left-radius: 0.15rem /* 15/100 */;
+      border-top-right-radius: 0.15rem /* 15/100 */;
+      // height: 7.44rem /* 88/100 */;
+      // overflow: auto;
+      height: calc(79% - 1rem);
+      &-year {
+        height: 0.71rem /* 71/100 */;
+        position: relative;
+
+        text-align: center;
+        line-height: 0.71rem;
+        // .van-stepper {
+        //   height: 0.88rem;
+        //   margin: 0 auto;
+        //   text-align: center;
+        //   line-height: 0.88rem;
+        // }
+        .van-icon-arrow-left {
+          margin-right: 0.76rem /* 36/100 */;
+          margin-top: -0.01rem;
+          color: #6e6e6e;
+          font-weight: 600;
+        }
+        .van-icon-arrow {
+          margin-left: 0.76rem /* 36/100 */;
+          color: #6e6e6e;
+          font-weight: 600;
+          margin-top: 0.2rem;
+        }
+        &-num {
+          top: 37%;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          display: inline-block;
+          font-size: 0.3rem;
+          color: #6e6e6e;
+          font-weight: 600;
+        }
+      }
+      .history-top {
+        position: absolute;
+        width: 2.63rem /* 263/100 */;
+        height: 0.38rem /* 38/100 */;
+        background-color: #14151f;
+        font-size: 0.18rem /* 18/100 */;
+        color: #fff;
+        text-align: center;
+        border-bottom-left-radius: 0.15rem /* 15/100 */;
+        border-bottom-right-radius: 0.15rem /* 15/100 */;
+        top: -0.03rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .history-title {
+        width: 7.1rem /* 710/100 */;
+        border-bottom: 1px solid #d3d3d3;
+
+        margin: 0 auto;
+        margin-bottom: 0.55rem /* 55/100 */;
+        .icon-history {
+          display: inline-block;
+          width: 0.16rem /* 16/100 */;
+          height: 0.15rem /* 15/100 */;
+          background: url('~@/assets/challenge/challenge_09.png');
+          background-size: 100%;
+        }
+      }
+      .history-mouth {
+        text-align: center;
+
+        width: 1.22rem /* 122/100 */;
+        height: 1.22rem /* 122/100 */;
+        border: 1px solid #595959;
+        border-radius: 0.14rem /* 14/100 */;
+        float: left;
+        margin: 0 0.12rem /* 12/100 */;
+        margin-bottom: 0.73rem /* 73/100 */;
+        padding-top: 0.4rem /* 45/100 */;
+        p {
+          color: black;
+        }
+      }
+      .history-btn {
+        float: left;
+        width: 7.1rem /* 413/100 */;
+        height: 0.92rem /* 124/100 */;
+        background-color: #ef485e;
+        border-radius: 0.15rem /* 15/100 */;
+        box-shadow: 3px 2px 6px #e9d0d3;
+        text-align: center;
+        line-height: 0.92rem;
+      }
+      &-challenge {
+        .nomatchs {
+          // width: 5.01rem /* 501/100 */;
+          height: 4.42rem /* 542/100 */;
+          // background-color: red;
+          margin-top: 0.3rem /* 30/100 */;
+          background-image: url('~@/assets/noInfo.png');
+          background-position: center;
+          background-size: 65%;
+          background-repeat: no-repeat;
+          position: relative;
+          p {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #8b8b8b;
+          }
+        }
+        margin-top: 0.19rem /* 19/100 */;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        height: calc(100% - 2.5rem);
+        .el-collapse {
+          width: 7.1rem /* 710/100 */;
+          margin: 0 auto;
+          margin-bottom: 0.1rem /* 10/100 */;
+        }
+
+        .el-collapse-item {
+          .el-collapse-item__header {
+            background-color: #e3e3e3;
+
+            border-radius: 0.15rem;
+            height: 0.7rem /* 70/100 */;
+            padding-left: 0.36rem;
+          }
+          .el-collapse-item__header.is-active {
+            border-radius: 0px;
+            border-top-right-radius: 0.15rem /* 15/100 */;
+            border-top-left-radius: 0.15rem /* 15/100 */;
+          }
+          .el-collapse-item__wrap {
+            border-bottom-right-radius: 0.15rem /* 15/100 */;
+            border-bottom-left-radius: 0.15rem /* 15/100 */;
+
+            .el-collapse-item__content {
+              padding: 0.2rem 0.36rem;
+              padding-bottom: 0px;
+            }
+          }
+          .item-items {
+            position: relative;
+
+            .bgc {
+              position: absolute;
+              width: 1.43rem /* 143/100 */;
+              height: 1.41rem /* 141/100 */;
+              right: 0rem;
+              top: 0rem;
+              background: url('~@/assets/challenge/record_02_03.png');
+              background-size: 100%;
+              p {
+                width: 1.29rem /* 129/100 */;
+                height: 0.32rem /* 32/100 */;
+                background-color: #8d8d8d;
+                text-align: center;
+                color: #fff;
+                font-size: 0.2rem /* 20/100 */;
+                line-height: 0.32rem;
+                border-radius: 0.15rem /* 11/100 */;
+                position: absolute;
+                bottom: 4%;
+                left: 6%;
+              }
+            }
+            .bgc1 {
+              position: absolute;
+              width: 1.43rem /* 143/100 */;
+              height: 1.41rem /* 141/100 */;
+              right: 0rem;
+              top: 0rem;
+              background: url('~@/assets/challenge/record_03.png');
+              background-size: 100%;
+              p {
+                width: 1.29rem /* 129/100 */;
+                height: 0.32rem /* 32/100 */;
+                background-color: #697bff;
+                text-align: center;
+                color: #fff;
+                font-size: 0.2rem /* 20/100 */;
+                line-height: 0.32rem;
+                border-radius: 0.15rem /* 11/100 */;
+                position: absolute;
+                bottom: 4%;
+                left: 6%;
+              }
+            }
+            &-name {
+              &-home {
+                font-size: 0.3rem /* 24/100 */;
+                font-weight: 500;
+              }
+              &-vs {
+                font-weight: 500;
+                color: red;
+                font-size: 0.3rem /* 24/100 */;
+                margin: 0 0.12rem /* 67/100 */;
+              }
+              &-away {
+                font-weight: 500;
+
+                font-size: 0.3rem /* 24/100 */;
+              }
+            }
+            &-model {
+              font-size: 0.24rem /* 24/100 */;
+              font-weight: 600;
+              margin: 0.1rem /* 7/100 */ 0px;
+              line-height: 0.3rem;
+            }
+            &-result {
+              font-weight: 600;
+
+              font-size: 0.24rem /* 24/100 */;
+              margin: 0.1rem /* 7/100 */ 0px;
+              color: #6f6f6f;
+            }
+            &-ceng {
+              font-weight: 600;
+              margin: 0.1rem /* 7/100 */ 0px;
+              font-size: 0.24rem /* 24/100 */;
+              color: #6f6f6f;
+              .success {
+                color: #ff8900;
+              }
+              .fail {
+                color: red;
+              }
+            }
+            &-gold {
+              font-weight: 600;
+              border-top: 1px solid #e3e3e3;
+              // margin-top: 0.2rem;
+              width: 4.9rem;
+              padding-top: 0.2rem;
+              font-size: 0.24rem /* 24/100 */;
+              color: #6f6f6f;
+              margin-bottom: 0.5rem;
+            }
+            &-content {
+              // border-bottom: 1px solid #e3e3e3;
+            }
+          }
+        }
+      }
+    }
+  }
+}

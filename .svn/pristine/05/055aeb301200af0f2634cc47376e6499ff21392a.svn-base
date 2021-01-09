@@ -1,0 +1,115 @@
+.rank-ticket {
+  background: url('~@/assets/ticketbg.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  .rank-ticket-head {
+    height: 1.24rem /* 124/100 */;
+    background-color: #c12e3e;
+    // text-align: center;
+    // line-height: 1.24rem;
+    color: #f2f2f2;
+    font-size: 0.33rem; /* 33/100 */
+    .back-icon {
+      width: 0.25rem /* 42/100 */;
+      height: 0.42rem /* 42/100 */;
+      display: inline-block;
+
+      background-image: url('~@/assets/icons/back.png');
+      background-size: 100%;
+      margin-left: 0.31rem /* 31/100 */;
+      margin-top: 0.4rem;
+    }
+    position: relative;
+    div {
+      position: absolute;
+      font-size: 0.34rem /* 34/100 */;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .rank-ticket-main {
+    width: 6.5rem /* 650/100 */;
+    height: 3.5rem /* 350/100 */;
+    border: 1px solid #7f7f7f;
+    margin: 0 auto;
+    margin-top: 0.61rem /* 61/100 */;
+    padding: 0.23rem /* 23/100 */;
+    font-size: 0.22rem /* 22/100 */;
+    margin-bottom: 0.7rem /* 70/100 */;
+  }
+  .rank-ticket-button {
+    background: url('~@/assets/rank-buy.png');
+    background-size: 100%;
+    text-align: center;
+    width: 5.42rem /* 542/100 */;
+    height: 0.81rem /* 81/100 */;
+    margin-top: 0.3rem /* 38/100 */;
+    box-shadow: 6px 6px 6px #170507;
+    position: relative;
+    .rank-ticket-button-text1,
+    .rank-ticket-button-text2{
+      color: #5c2c09;
+      font-size: 0.42rem;
+      line-height: 0.42rem;
+      position: absolute;
+      top: 0.18rem;
+    }
+    .rank-ticket-button-text1 {
+      width: 30%;
+      left: 0.9rem;
+      text-align: center;
+    }
+    .rank-ticket-button-text2 {
+      width: 30%;
+      right: 0.9rem;
+      text-align: center;
+    }
+  }
+  &-top {
+    // background: url('~@/assets/head_01.png');
+    margin-top: 2.42rem /* 242/100 */;
+    display: flex;
+    justify-content: space-around;
+    div {
+      float: left;
+      width: 2.21rem /* 221/100 */;
+      height: 2.04rem /* 216/100 */;
+      background-size: 100%;
+    }
+    &-one {
+      background: url('~@/assets/ss.png');
+      background-size: 100%;
+    }
+    &-two {
+      background: url('~@/assets/s.png');
+    }
+    &-three {
+      background: url('~@/assets/3.png');
+    }
+  }
+  &-rule {
+    // background-color: #1e2340;
+    // height: 100%;
+    margin: 0 auto;
+    margin-top: 0.32rem /* 32/100 */;
+    border-radius: 0.08rem /* 8/100 */;
+    width: 7.1rem /* 710/100 */;
+    height: 4.49rem /* 449/100 */;
+    background-color: #1c1f2e;
+    border: 2px solid #9096a6;
+    padding: 0.28rem /* 28/100 */;
+    &-title {
+      color: #9296a2;
+      font-size: 0.28rem /* 28/100 */;
+      border-bottom: 1px solid #9096a6;
+      padding-bottom: 0.09rem /* 9/100 */;
+      text-align: center;
+    }
+    &-content {
+      font-size: 0.22rem /* 20/100 */;
+      color: #9296a2;
+      line-height: 0.43rem /* 43/100 */;
+    }
+  }
+}

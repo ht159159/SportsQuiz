@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang=en><head><meta http-equiv=pragma content=no-cache><meta http-equiv=Cache-Control content="no-cache, must-revalidate"><meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><link rel=manifest href="manifest.json?v=1"><meta name=format-detection content="telephone=no email=no"><meta name=apple-touch-fullscreen content=yes><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><link rel=icon href=/favicon.ico><link rel=apple-touch-icon-precomposed sizes=57x57 href=/resources/icons/Icon-App-57.png><link rel=apple-touch-icon-precomposed sizes=72x72 href=/resources/icons/Icon-App-72.png><link rel=apple-touch-icon-precomposed sizes=114x114 href=/resources/icons/Icon-App-114.png><link rel=apple-touch-icon-precomposed sizes=144x144 href=/resources/icons/Icon-App-144.png><meta http-equiv=expires content=0><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><title>Guess竞猜</title><link href=css/app.66cc3744.css rel=preload as=style><link href=css/chunk-vendors.786f4ac8.css rel=preload as=style><link href=js/app.01ceb9fa.js rel=preload as=script><link href=js/chunk-vendors.fcef84a9.js rel=preload as=script><link href=css/chunk-vendors.786f4ac8.css rel=stylesheet><link href=css/app.66cc3744.css rel=stylesheet></head><body ontouchstart><noscript><strong>We're sorry but agsport doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=eruda.js></script><script>//启用手机端调试
+		//eruda.init();
+
+		var u = navigator.userAgent,
+			isWebApp = window.navigator.standalone,
+			isLine = u.toLocaleLowerCase().indexOf("Line") > -1,
+			isApp = u.toLocaleLowerCase().indexOf("html5plus") > -1,
+			isMac = u.toLocaleLowerCase().indexOf("Macintosh") > -1,
+			isWin = u.toLocaleLowerCase().indexOf("Windows") > -1,
+			isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+			isAndroid = u.indexOf('android') > -1 || u.indexOf('linux') > -1,
+			isWechat = u.toLocaleLowerCase().indexOf("micromessenger") > -1;
+
+		// rem布局
+		(function (doc, win) {
+			var docEl = doc.documentElement,
+				resizeEvt =
+					'orientationchange' in window ? 'orientationchange' : 'resize',
+				recalc = function () {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth) return;
+					if (clientWidth >= 750) {
+						docEl.style.fontSize = '100px';
+					} else {
+						docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+					}
+				};
+
+			if (!doc.addEventListener) return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);</script><script>var isDebugger = true</script><script src=js/chunk-vendors.fcef84a9.js></script><script src=js/app.01ceb9fa.js></script></body></html>

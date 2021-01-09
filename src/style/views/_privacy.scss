@@ -1,0 +1,100 @@
+// 手機版樣式
+.privacy-Mobile {
+    width: 100%;
+    padding: 0.3rem;
+    background: #EAEAEA;
+    position: relative;
+    .header {
+        width: 100%;
+        height: auto;
+        padding: 0.35rem 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #EAEAEA;
+        .back-icon {
+            position: absolute;
+            top: 0.26rem;
+            left: 0;
+            margin-top: 0;
+        }
+        .title {
+            font-size: 0.24rem;
+            text-align: center;
+        }
+    }
+
+    p {
+        font-size: 0.24rem;
+        padding: 0.1rem 0;
+        text-align: justify;
+        text-indent: 2em;
+        line-height: 0.4rem;
+        letter-spacing: 0.05rem
+    }
+    p:nth-of-type(1) {
+        padding-top: 0.7rem;
+    }
+
+    .paragraph {
+        margin: 0;
+        padding: 0.3rem 0 0.3rem 0;
+        font-size: 0.32rem;
+        line-height: 0.32rem;
+    }
+}
+
+// 電腦版樣式
+.privacy-PC {
+    width: 100%;
+    padding: 15px;
+    background: #EAEAEA;
+    position: relative;
+    .header {
+        width: 100%;
+        height: auto;
+        padding: 10px 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #EAEAEA;
+        .back-icon {
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 18px;
+            left: 0;
+            margin-top: 0;
+        }
+        .title {
+            font-size: 16px;
+            text-align: center;
+            padding: 10px 0;
+        }
+    }
+
+    p {
+        margin: 0;
+        padding: 5px 0px;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: justify;
+        text-indent: 2em;
+    }
+
+    p:nth-of-type(1) {
+        padding-top: 60px;
+    }
+
+    .paragraph {
+        margin: 0;
+        padding: 15px 0 5px 0;
+        font-size: 16px;
+    }
+}

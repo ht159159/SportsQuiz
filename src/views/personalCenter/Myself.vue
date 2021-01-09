@@ -1,0 +1,763 @@
+<template>
+  <main class="myself" style="position: relative;">
+    <div class="myself-header" style="">
+      <!-- <back-b  @click="goBack" class="back-icon"></back-b> -->
+      <back class="back-icon img-he"></back>
+      <!-- <img
+        class="imgI"
+        @click="layout"
+        src="@/assets/guanbi.png"
+        style="float:right;width:.42rem;height:.42rem;margin:.45rem .48rem 0 0"
+      /> -->
+      <div class="logout" @click="layout" v-if="token"></div>
+      <div class="myself-header-name" v-if="token">
+        <!-- accept解决图片筛选问题 -->
+        <!-- <span class='bestWord'>{{msgList.RankName}}</span> -->
+        <!-- <img class='bigImgs' src='@/assets/vip_03.png' /> -->
+        <input
+          class="inputImg"
+          type="file"
+          name="image"
+          accept="image/*"
+          @change="updataImg"
+          style="display:none"
+        />
+        <div @click="goMyself" class="bgBoss">
+          <img
+            class="upImg"
+            :src="
+              msgList.UImg == '' ? require('@/assets/head.png') : msgList.UImg
+            "
+          />
+          <!-- <img class="upImg" :src='UImg' /> -->
+          <img
+            class="vips"
+            src="@/assets/vip/V1.png"
+            alt=""
+            v-if="msgList.RankId == '1'"
+          />
+          <img
+            class="vips"
+            src="@/assets/vip/V2.png"
+            alt=""
+            v-if="msgList.RankId == '2'"
+          />
+          <img
+            class="vips"
+            src="@/assets/vip/V3.png"
+            alt=""
+            v-if="msgList.RankId == '3'"
+          />
+          <img
+            class="vips"
+            src="@/assets/vip/V4.png"
+            alt=""
+            v-if="msgList.RankId == '4'"
+          />
+          <img
+            class="vips"
+            src="@/assets/vip/V5.png"
+            alt=""
+            v-if="msgList.RankId == '5'"
+          />
+          <img
+            class="vips"
+            src="@/assets/vip/V6.png"
+            alt=""
+            v-if="msgList.RankId == '6'"
+          />
+          <img
+            class="vips"
+            src="@/assets/vip/V7.png"
+            alt=""
+            v-if="msgList.RankId == '7'"
+          />
+          <img
+            class="vips"
+            src="@/assets/vip/V8.png"
+            alt=""
+            v-if="msgList.RankId == '8'"
+          />
+          <img
+            class="vips"
+            src="@/assets/vip/V9.png"
+            alt=""
+            v-if="msgList.RankId == '9'"
+          />
+          <img
+            class="vips"
+            src="@/assets/vip/V10.png"
+            alt=""
+            v-if="msgList.RankId == '10'"
+          />
+        </div>
+
+        <p
+          class="upName"
+          style="text-align:center;font-size: .26rem;margin-left: -.28rem;width: 1.9rem"
+        >
+          {{ msgList.NickName | noName }}
+        </p>
+        <!-- | noName(name) -->
+      </div>
+      <ul class="headerImgList" v-if="token">
+        <li class="my-header-list-wrap" @click="goRecharge()">
+          <div class="my-header-list-1"></div>
+          <div class="my-header-list-text">{{ $t('Deposit') }}</div>  <!--【 充值 】-->
+        </li>
+        <li class="my-header-list-wrap" @click="noVip">
+          <!-- <van-image
+            class="imgss"
+            :src="require('@/assets/myself_05.png')"
+            alt
+          /> -->
+          <div class="my-header-list-2"></div>
+          <div class="my-header-list-text">{{ $t('VIP') }}</div>  <!-- 【 VIP 】 -->
+        </li>
+        <li class="my-header-list-wrap">
+          <router-link to="/InvitationCode">
+            <!-- <van-image
+              class="imgss"
+              :src="require('@/assets/myself_07.png')"
+              alt
+            /> -->
+            <div class="my-header-list-3"></div>
+            <div class="my-header-list-text">{{ $t('Invite') }}</div>  <!-- 【 邀请 】 -->
+          </router-link>
+        </li>
+        <li class="my-header-list-wrap" @click="isExchangeBoxOpen=true">
+          <!-- <van-image
+            class="imgss"
+            :src="require('@/assets/myself_09.png')"
+            alt
+          /> -->
+          <div class="my-header-list-4"></div>
+          <div class="my-header-list-text">{{ $t('Exchange') }}</div>  <!-- 【 兑换 】 -->
+        </li>
+      </ul>
+      <div v-else class="noLogin">
+        <div class="noLogin-title">{{ $t('WelcomeLogin') }}</div>
+        <div class="noLogin-login" @click="login()">{{ $t('ClickLogin') }}</div>
+      </div>
+    </div>
+    <div class="myself-content">
+      <img src="@/assets/qian_03.png" />
+      <span class="myself-content-wallet">{{ $t('Wallet') }}</span>  <!-- 【 我的钱包 】 -->
+      <p class="myself-content-line"></p>
+      <ul class="myself-content-ul">
+        <li class="myself-content-ul-item">
+          <p class="myself-content-ul-item-num">{{ msgList.UDiamond }}</p>
+          <p class="myself-content-ul-item-ward">{{ $t('Coins') }}</p>  <!-- 【 金币 】 -->
+        </li>
+        <li class="myself-content-ul-item">
+          <p class="myself-content-ul-item-num">{{ msgList.UTicket }}</p>
+          <p class="myself-content-ul-item-ward">{{ $t('Tickets') }}</p>  <!-- 【 门票 】 -->
+        </li>
+        <li class="myself-content-ul-item">
+          <p class="myself-content-ul-item-num">{{ msgList.Lotteries }}</p>
+          <p class="myself-content-ul-item-ward">{{ $t('Lottery') }}</p>  <!-- 【 奖券 】 -->
+        </li>
+      </ul>
+    </div>
+    <div class="myself-list" id="list">
+      <div class="myself-list-big" style="margin-top: .2rem">
+        <div
+          class="myself-list-big-plet"
+          @click="goToPage(myData.routerName)"
+          v-for="(myData, index) in infoList[0]"
+        >
+          <!-- <img
+            class="imgI"
+            :src="myData.imgUrl"
+            alt
+            style="margin-left: .5rem"
+          /> -->
+
+          <div class="list-img" :class="myData.className"></div>
+          <span class="myself-list-big-plet-ward"> {{ myData.topic }}</span>
+          <span
+            class="spanNum"
+            v-show="myData.routerName == 'task' && unclaimedTaskReward > 0"
+            >{{ unclaimedTaskReward }}</span
+          >
+          <img
+            src="@/assets/myself/leftjian.png"
+            class="myself-list-big-plet-right"
+          />
+        </div>
+      </div>
+      <div class="myself-list-big" style="margin-top: .2rem">
+        <div
+          class="myself-list-big-plet"
+          @click="goToPage(listData.routerName)"
+          v-for="(listData, index) in infoList[1]"
+        >
+          <!-- <img class="imgI" :src="listData.imgUrl" alt /> -->
+          <div class="list-img" :class="listData.className"></div>
+          <span class="myself-list-big-plet-ward">{{ listData.topic }}</span>
+          <span
+            class="spanNum"
+            v-show="listData.routerName == 'myMessage' && countNum"
+            >{{ msgCount }}</span
+          >
+          <span
+            class="current-lang"
+            v-show="listData.routerName == 'lang'"
+            >{{ language }}</span
+          >
+          <img
+            src="@/assets/myself/leftjian.png"
+            class="myself-list-big-plet-right"
+          />
+        </div>
+
+        <!-- <p
+          class="myself-list-big-plet1"
+          @click="goExchange"
+        >
+          <img
+          class='imgI'
+            src='@/assets/duihuan.png'
+            alt
+          />
+          <span class="myself-list-big-plet-ward">兑换记录</span>
+          <img
+            src="@/assets/myself/leftjian.png"
+            class="myself-list-big-plet-right"
+          />
+        </p> -->
+
+        <!-- <p
+          class="myself-list-big-plet1"
+          @click="goBackRes"
+          style="border: 0"
+        >
+          <img
+          class='imgI'
+            src='@/assets/myself/mys_19.jpg'
+            alt
+            style="height:.24rem;width:.24rem"
+          />
+          <span class="myself-list-big-plet-ward">意见反馈</span>
+          <img
+            src="@/assets/myself/leftjian.png"
+            class="myself-list-big-plet-right"
+          />
+        </p> -->
+      </div>
+      <div  class="myself-list-rank"  style="margin-top: .2rem"  @click="goToPage(userData.routerName)"  v-for="(userData, index) in infoList[2]">
+        <!-- <img class="imgI"  :src="userData.imgUrl"  alt  style="margin-left: .6rem"/> -->
+        <div class="list-img" :class="userData.className"></div>
+        <span class="myself-list-rank-ward">{{ userData.topic }}</span>
+        <img  src="@/assets/myself/leftjian.png"  class="myself-list-rank-right"  style="margin-right:0.42rem"/>
+      </div>
+
+      <!-- 色系選擇 -->
+      <colorChoice />
+    </div>
+    <!-- 語系遮罩 -->
+    <transition name="fade">
+      <model v-if="showLan"></model>
+    </transition>
+    <transition name="fade">
+      <div class="lang-select-wrap" v-if="showLan">
+        <p v-for="(lang, index) in langList" :class="{'focus' : langIndex == index}" @click="langChoice(index)">{{ lang }}</p>
+        <div class="lang-btn-wrap">
+          <div class="lang-btn cancel" @click="cancel()">{{ $t("Cancel") }}</div>  <!-- 【 取消 】 -->
+          <div class="lang-btn" @click="confirm()">{{ $t("Confirm") }}</div>  <!-- 【 确认 】 -->
+        </div>
+      </div>
+    </transition>
+
+    <!-- 競猜指南暫時用彈窗 -->
+    <!-- <transition name="fade">
+      <model v-if="showGuide"></model>
+    </transition>
+    <transition name="fade">
+      <div class="guide-wrap" v-if="showGuide">
+        <p>{{ $t("ComingSoon") }}</p>
+        <div class="guide-btn" @click="ComingSoon()">{{ $t("Confirm") }}</div>
+      </div>
+    </transition> -->
+
+    <!-- 兌換彈窗 -->
+    <transition name="fade">
+		  <model v-if="isExchangeBoxOpen"></model>
+	  </transition>
+	  <transition name="fade">
+		<div class="fancy-box" v-if="isExchangeBoxOpen">
+			<img src="../../assets/club/ticket-header.png" alt="">
+      <div class="fancy-box-content">
+			  <p>{{ $t('Tips') }} : {{ $t('exchangePopupContent') }}</p>
+        <p>{{ $t('ComingSoon') }}</p>
+      </div>
+			<div class="fancy-box-btn">
+				<div class="fancy-box-btn-cancel" @click="isExchangeBoxOpen = !isExchangeBoxOpen">{{ $t('Confirm') }}</div>
+			</div>
+		</div>
+	</transition>
+  </main>
+</template>
+<script>
+import Vue from "vue";
+import { Toast } from "vant";
+import backB from "@/components/Botton/back.vue";
+Vue.use(Toast);
+import axios from "axios";
+import {
+  apiGetUserInfo,
+  apiUploadImg,
+  apiChangePwd,
+  apiGetVipGrade
+} from "@/api/User.js";
+import { apiUpload } from "@/api/Upload.js";
+import { apiGetUnreadMessageCount, apiSetMessageRead } from "@/api/Message.js";
+import { apiGetMissionUnGet } from "@/api/mission.js";
+import back from "@/components/Botton/back.vue";
+import colorChoice from "@/components/ColorChoice.vue";
+import model from "../../components/model";
+import { apiGetMemClubs } from "@/api/Club.js";
+export default {
+  name: "Myself",
+  components: {
+    back,
+    colorChoice,
+    model
+  },
+  filters: {
+    Uname(val) {
+      if (val == "") {
+        return 100;
+      }
+    },
+    F(val) {
+      if (val == "") {
+        return "no name";
+      }
+    },
+    noName(name) {
+      if (name == null) {
+        return "去设置昵称";
+      } else {
+        return name;
+      }
+    }
+  },
+  data() {
+    return {
+      infoList: [
+        [
+          {  topic: this.$t("MyRank"),  routerName: "rank" , className: "my-rank"}, //【 我的排位 】
+          {  topic: this.$t("MyChallenge"),  routerName: "challengehome", className: "my-challenge"}, //【 我的挑战 】
+          {  topic: this.$t("MyTask"),  routerName: "task", className: "my-mission"},  //【 我的任务 】
+          {  topic: this.$t("MyMedal"),  routerName: "medal", className: "my-medal"},  //【 我的勋章 】
+          {  topic: this.$t("Club"),  routerName: "CreateClub", className: "my-club"}  //【 俱樂部 】
+        ],
+        [
+          {  topic: this.$t("Profile"),  routerName: "selfMsg", className: "my-selfMsg"},  //【 个人讯息 】
+          {  topic: this.$t("Notification"),  routerName: "myMessage", className: "my-message"},  //【 系统消息 】
+          {  topic: this.$t("CashFlowLog"),  routerName: "cashFlowLog", className: "my-cash-flow-log"},  //【 金流日誌 】
+          {  topic: this.$t("BetList"),  routerName: "history", className: "my-history"},  //【 竞猜历史 】
+          {  topic: this.$t("Result"),  routerName: "gameResult", className: "my-game-result"},  //【 比赛结果 】
+          {  topic: this.$t("AddressManagement"),  routerName: "address", className: "my-address"},  //【 地址管理 】
+          {  topic: this.$t("Guide"),  routerName: "guize", className: "my-guize"},  //【 竞猜指南 】
+          {  topic: this.$t("Questionnaire"),  routerName: "questionnaire", className: "my-questionnaire"},  //【 问卷调查 】
+          {  topic: this.$t("ChangeLanguage"), routerName: "lang", className: "my-lang"},  //【 语种切换 】
+        ],
+        [
+          {  topic: this.$t("ChangePassword"),  routerName: "changePass", className: "my-change"}  //【 修改密码 】
+        ]
+      ],
+      isAddress: false,
+      myMoney: 1000, //金币
+      myTicket: 20, //门票
+      myLottery: 5, //奖券
+      UImg: "",
+      msgList: {
+        UImg: "",
+        UDiamond: 0,
+        UTicket: 0, //门票
+        Lotteries: 0 //奖券
+      },
+      msgCount: 0,
+      unclaimedTaskReward: 0,
+      countNum: false,
+      testList: {},
+      msgMsg: "",
+      imgUrl: "",
+
+      showLan: false,
+      language: "",
+      langIndex: undefined,
+      langList: ['简体中文','繁體中文','English'],
+
+      showGuide: false,
+      token: false,
+      isExchangeBoxOpen: false //兌換彈窗
+    };
+  },
+  methods: {
+    goToPage(routerName) {
+
+      // 語系切換
+      if (routerName == "lang") {
+        this.showLan = true;
+        if (this.language == "简体中文") {
+          this.langIndex = 0;
+        } else if (this.language == "繁體中文") {
+          this.langIndex = 1;
+        }
+        else if (this.language == "English") {
+          this.langIndex = 2;
+        }
+        return;
+      }
+
+      if (!this.token) {
+        const m = this.$message({
+          message: this.$t("Please_Login"),  // 【 请登录 】
+          duration: 1000,
+          type: "error",
+          center: true
+        });
+        setTimeout(() => m.close(), 1200);
+        return;
+      }else{
+        // 俱樂部
+        if (routerName === "CreateClub") {
+          // 獲取俱樂部會員資格與否   1 = 有資格;  2 = 無資格
+          // let userName = localStorage.getItem('uname')
+          // let data = {}
+          apiGetMemClubs("", true).then(res => {
+            if (res.Data == null) {
+              // 無會員
+              localStorage.setItem("isMember", 2);
+              this.$router.push("/CreateClub");
+            } else {
+              // 有會員
+              localStorage.setItem("isMember", 1);
+              localStorage.setItem("ClubId", res.Data.ClubId);
+              // 判斷是否為管理階級
+              if (res.Data.Name == "会长") {
+                localStorage.setItem("isManagement", 1);
+              } else if (res.Data.Name == "副会长"){
+                localStorage.setItem("isManagement", 2);
+              } else if (res.Data.Name == "会员"){
+                localStorage.setItem("isManagement", 3);
+              }
+              this.$router.push("/myClub");
+            }
+          });
+          return;
+        }
+        this.$router.push("/" + routerName);
+        switch (routerName) {
+          //系统信息
+          case "myMessage":
+            this.$router.push("/myMessage");
+            let data = {};
+            apiSetMessageRead(data, true).then(res => {
+              this.countNum = false;
+            });
+            break;
+  
+          default:
+            break;
+        }
+      }
+    },
+    goMyself() {
+      this.$router.push("/selfMsg");
+    },
+    noVip() {
+      // let config = {
+      //   headers: { "Content-Type": "application/json" }
+      // };
+      // let urlL = 'https://api-sf.linsio.cn/api/Payment/OTCLogin';
+      // let param = {
+      //   '': '123456'
+      // }
+      // //  添加请求头
+      // axios.post(urlL, param, config).then(response => {
+      // })
+      this.$router.push("/vip");
+    },
+
+    goRecharge() {
+      this.$router.push("/recharge");
+    },
+    //兌換提示
+    // goShop() {
+    //   // this.$router.push("/shop");  這版本先不用跳轉到商城，先跳一個警告訊息說敬請期待
+    //   const m = this.$message({
+    //       message: this.$t("ComingSoon"),
+    //       duration: 1000,
+    //       type: "success",
+    //       center: true
+    //     });
+    //     setTimeout(() => m.close(), 1200);
+    //     return;
+    // },
+    goBackRes() {
+      this.$router.push("/yijian");
+    },
+    goYao() {
+      this.$router.push("/invitationcode");
+    },
+    goExchange() {
+      this.$router.push("/exchange");
+    },
+
+    addressIn() {
+      this.isAddress = true;
+    },
+
+    layout() {
+      localStorage.removeItem("token");
+      localStorage.setItem("shops", "[]");
+      this.$router.push("/Login");
+    },
+    goBack() {
+      this.$router.go(-1);
+      // let data = {}
+      // this.$store.dispatch("getMsgList", data);
+    },
+
+    getMsg() {
+      let data = {};
+      apiGetUserInfo(data, true).then(res => {
+        //有token要加ture
+        this.msgList = res;
+        this.msgList.UImg = res.UImg;
+        localStorage.setItem("RankId", res.RankId);
+        localStorage.setItem("nickName", res.NickName);
+        localStorage.setItem("UImg", res.UImg);
+      });
+    },
+
+    getMsgNum() {
+      let data = {};
+      apiGetUnreadMessageCount(data, true).then(res => {
+        this.msgCount = res.UnreadMessageCount;
+        if (this.msgCount > 0) {
+          this.countNum = true;
+        }
+      });
+    },
+
+    getUnclaimedTaskReward() {
+      let data = {};
+      apiGetMissionUnGet(data, true).then(res => {
+        this.unclaimedTaskReward = res.Count;
+      });
+    },
+    // 上传图片
+    updataImg(e) {
+      var file = e.target.files[0];
+      // 获取图片的大小，做大小限制有用
+      let imgSize = file.size;
+      //图片压缩就是处理file
+
+      this.imgPreview(file);
+
+      var _this = this; // this指向问题，所以在外面先定义
+      if (imgSize <= 1024 * 1024) {
+
+        const imgName = JSON.stringify(file.name);
+        let param = new FormData(); // 创建form对象
+        param.append("file", file, file.name); // 通过append向form对象添加数据
+        let config = {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        };
+        let urlL = process.env.VUE_APP_API_BASE_URL + "/Uploader/UploadImg";
+        //  添加请求头
+        axios.post(urlL, param, config).then(response => {
+          if (response.status == 200) {
+            // 成功上传后处理逻辑
+            this.msgMsg = response.data.Msg;
+            this.msgList.UImg = response.data.Data.Url;
+            this.$Alert.showSuccess.call(this, this.msgMsg);
+            let data = {
+              UImg: this.msgList.UImg
+            };
+            apiUploadImg(data, true).then(res => {
+              if (res.Status == 1) {
+                // localStorage.setItem('imgs', this.imgUrl)
+              }
+            });
+          }
+        });
+      } else {
+        this.$Alert.showWarning.call(this, "图片太大啦！");
+      }
+    },
+    imgPreview(file) {
+      let self = this;
+      let Orientation;
+      // 创建一个reader
+      let reader = new FileReader();
+      // 将图片2将转成 base64 格式
+      reader.readAsDataURL(file);
+      reader.onloadend = function() {
+        let result = this.result;
+        let img = new Image();
+        img.src = result;
+        //判断图片是否大于100K,是就直接上传，反之压缩图片
+        if (this.result.length <= 1024 * 1024) {
+          self.headerImage = this.result;
+        } else {
+          img.onload = function() {
+            let data = self.compress(img, Orientation);
+            self.headerImage = data;
+          };
+        }
+      };
+    },
+    compress(img, Orientation) {
+      let canvas = document.createElement("canvas");
+      let ctx = canvas.getContext("2d");
+      //瓦片canvas
+      let tCanvas = document.createElement("canvas");
+      let tctx = tCanvas.getContext("2d");
+      let initSize = img.src.length;
+      let width = img.width;
+      let height = img.height;
+      //如果图片大于四百万像素，计算压缩比并将大小压至400万以下
+      let ratio;
+      if ((ratio = (width * height) / 4000000) > 1) {
+        ratio = Math.sqrt(ratio);
+        width /= ratio;
+        height /= ratio;
+      } else {
+        ratio = 1;
+      }
+      canvas.width = width;
+      canvas.height = height;
+      //        铺底色
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      //如果图片像素大于100万则使用瓦片绘制
+      let count;
+      if ((count = (width * height) / 1000000) > 1) {
+        count = ~~(Math.sqrt(count) + 1); //计算要分成多少块瓦片
+        //            计算每块瓦片的宽和高
+        let nw = ~~(width / count);
+        let nh = ~~(height / count);
+        tCanvas.width = nw;
+        tCanvas.height = nh;
+        for (let i = 0; i < count; i++) {
+          for (let j = 0; j < count; j++) {
+            tctx.drawImage(
+              img,
+              i * nw * ratio,
+              j * nh * ratio,
+              nw * ratio,
+              nh * ratio,
+              0,
+              0,
+              nw,
+              nh
+            );
+            ctx.drawImage(tCanvas, i * nw, j * nh, nw, nh);
+          }
+        }
+      } else {
+        ctx.drawImage(img, 0, 0, width, height);
+      }
+      //修复ios上传图片的时候 被旋转的问题
+      if (Orientation != "" && Orientation != 1) {
+        switch (Orientation) {
+          case 6: //需要顺时针（向左）90度旋转
+            this.rotateImg(img, "left", canvas);
+            break;
+          case 8: //需要逆时针（向右）90度旋转
+            this.rotateImg(img, "right", canvas);
+            break;
+          case 3: //需要180度旋转
+            this.rotateImg(img, "right", canvas); //转两次
+            this.rotateImg(img, "right", canvas);
+            break;
+        }
+      }
+      //进行最小压缩
+      let ndata = canvas.toDataURL("image/jpeg", 0.1);
+      //"压缩前：" + initSize
+      //"压缩后：" + ndata.length
+      //"压缩率：" + ~~((100 * (initSize - ndata.length)) / initSize) + "%"
+      tCanvas.width = tCanvas.height = canvas.width = canvas.height = 0;
+      return ndata;
+    },
+
+    // 語系初始化
+    langInit() {
+      this.language = JSON.parse(localStorage.getItem("lang")).name;
+    },
+
+    // 語系彈窗選擇
+    langChoice(index) {
+      this.langIndex = index;
+    },
+
+    // 關閉語系選擇彈窗
+    cancel() {
+      this.showLan = false;
+    },
+
+    // 確定選擇語言
+    confirm() {
+      if (this.langIndex == 0) {
+        localStorage.setItem("lang", JSON.stringify({ name: "简体中文", tag: "zh-CN" }));
+      } else if (this.langIndex == 1) {
+        localStorage.setItem("lang", JSON.stringify({ name: "繁體中文", tag: "zh-TW" }));
+      }
+      else if (this.langIndex == 2) {
+        localStorage.setItem("lang", JSON.stringify({ name: "English", tag: "en-US" }));
+      }
+      location.reload();
+    },
+
+    // 競猜指南暫時用確認按鈕
+    ComingSoon() {
+      this.showGuide = false;
+    },
+    //跳轉登入頁
+    login() {
+      this.$router.push("/Login");
+    }
+  },
+  mounted() {
+    if (this.token) {
+      this.getMsg();
+      this.getMsgNum();
+      this.getUnclaimedTaskReward();
+    }
+    this.langInit();
+  },
+  created() {
+    localStorage.getItem("token") ? this.token = true : this.token = false;
+  }
+};
+</script>
+
+<style scoped>
+.bigImgs {
+  position: absolute;
+  width: 1.85rem;
+  height: 1.4rem;
+  margin-left: -0.32rem;
+  /* z-index: 900000 */
+}
+
+.bestWord {
+  font-size: 0.24rem;
+  line-height: 0.4rem;
+  color: #f09843;
+  position: absolute;
+  top: 0.18rem;
+  left: -0.16rem;
+  z-index: 9;
+  font-weight: bold;
+}
+</style>

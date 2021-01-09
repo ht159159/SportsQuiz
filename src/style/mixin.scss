@@ -1,0 +1,1361 @@
+@import "../style/variable.scss";
+//  範例
+//    @mixin xxx($color) {
+//       background-color: $color;
+//  
+//       // 紅色版本時
+//       [data-theme="red"] & {
+//           background-color: $theme-red;
+//       }
+//       // 藍色版本時
+//       [data-theme="blue"] & {
+//           background-color: $theme-blue;
+//       }
+//       // 黑色版本時
+//       [data-theme="black"] & {
+//           background-color: $theme-black;
+//       }
+//       // 黃色版本時
+//       [data-theme="yellow"] & {
+//           background-color: $theme-yellow;
+//       }
+//   }
+
+// 調用 
+//   在css裡寫下 @include xxx($color)
+
+
+////////////////////////////////////////   共用部分   ////////////////////////////////////////
+////////// header顏色 //////////
+// 排位賽、
+// 排位賽排行榜、
+// 挑戰賽、一般賽事(漂浮)、
+// 排行榜、
+// 資訊、
+// 任務列表、
+// 勳章展示、
+// 個人信息、
+// 系统消息、
+// 竞猜历史、
+// 比赛结果、
+// 地址管理、
+// 競猜指南、
+// 問卷調查、
+@mixin page_header_color($color) {
+    color: $color;
+    [data-theme="red"] & {
+        background: $color;
+    }
+    [data-theme="blue"] & {
+        background: $theme-blue;
+    }
+    [data-theme="black"] & {
+        background: $theme-black;
+    }
+    [data-theme="yellow"] & {
+        background: $theme-yellow;
+    }
+}
+
+////////// header-文字顏色 //////////
+// 排位賽、
+// 排位賽排行榜、
+// 挑戰賽、
+// 一般賽事(漂浮)、
+// 資訊、
+// 任務列表、
+// 排行榜、
+// 我的大頭照文字、
+// 勳章展示、
+// 個人信息、
+// 系统消息、
+// 竞猜历史、
+// 比赛结果、
+// 地址管理、
+// 競猜指南、
+// 問卷調查、
+@mixin page_header_text_color($color) {
+    color: $color;
+    [data-theme="red"] & {
+        color: $color;
+    }
+    [data-theme="blue"] & {
+        color: $theme-blue-header-text-color;
+    }
+    [data-theme="black"] & {
+        color: $theme-black-header-text-color;
+    }
+    [data-theme="yellow"] & {
+        color: $theme-yellow-header-text-color;
+    }
+}
+
+////////// 子選單底線顏色 //////////
+// 排位賽排行榜、
+// 竞猜历史、
+@mixin category_color($color) {
+    background: $color;
+    [data-theme="red"] & {
+        background: $color;
+    }
+    [data-theme="blue"] & {
+        background: $theme-blue-category;
+    }
+    [data-theme="black"] & {
+        background: $theme-black-category;
+    }
+    [data-theme="yellow"] & {
+        background: $theme-yellow-category;
+    }
+}
+
+@mixin category_border_color($color) {
+    color: $color;
+    border-bottom:  3px solid $color;
+    box-sizing: border-box;
+    [data-theme="red"] & {
+        color: $color;
+        border-bottom:  3px solid $color;
+        box-sizing: border-box;
+    }
+    [data-theme="blue"] & {
+        color: $theme-blue-category;
+        border-bottom:  3px solid $theme-blue-category;
+        box-sizing: border-box;
+    }
+    [data-theme="black"] & {
+        color: $theme-black-category;
+        border-bottom:  3px solid $theme-black-category;
+        box-sizing: border-box;
+    }
+    [data-theme="yellow"] & {
+        color: $theme-yellow-category;
+        border-bottom:  3px solid $theme-yellow-category;
+        box-sizing: border-box;
+    }
+}
+////////// 子選單文字顏色 //////////
+// 排位賽排行榜、
+// 竞猜历史、
+@mixin category_text_color($color) {
+    color: $color;
+    [data-theme="red"] & {
+        color: $color;
+    }
+    [data-theme="blue"] & {
+        color: $theme-blue-category-text;
+    }
+    [data-theme="black"] & {
+        color: $theme-black-category-text;
+    }
+    [data-theme="yellow"] & {
+        color: $theme-yellow-category-text;
+    }
+}
+
+////////// 按鈕文字顏色 + 底色 //////////
+// 邀請好友、
+// 個人信息、
+// 地址管理 - 新增地址、
+// 問卷調查、
+@mixin  myself_btn() {
+    color: #fff;
+    background: linear-gradient(to right, #e73a51, #dc3849);
+    border: none;
+    [data-theme="red"] & {
+        color: #fff;
+        background: linear-gradient(to right, #e73a51, #dc3849);
+        border: none;
+    }
+    [data-theme="blue"] & {
+        color: #fff;
+        background: linear-gradient(-29deg, #cb9539 2%, #b38535 100%);
+        border: none;
+    }
+    [data-theme="black"] & {
+        color: #d59f2b;
+        border: 1px solid #d59f2b;
+        background: #fff;
+    }
+    [data-theme="yellow"] & {
+        color: #1b1b1b;
+        background: linear-gradient(131deg, #FFDF01 35%, #FFCC01 60%);
+        border: none;
+    }
+}
+
+////////// 返回按鈕 //////////
+@mixin back_icon() {
+    background: url('~@/assets/back.png') no-repeat center;
+    background-size: 50%;
+    [data-theme="red"] & {
+        background: url('~@/assets/back.png') no-repeat center;
+        background-size: 50%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/other/back.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/other/back.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/other/back.png') no-repeat center;
+        background-size: 50%;
+    }
+}
+
+////////////////////////////////////////   首頁   ////////////////////////////////////////
+
+//// header ////
+// 底色 / 底圖
+@mixin header_bgcolor($color) {
+    background-color: $color;
+    [data-theme="red"] & {
+        background-color: $theme-red;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/header/nav_bg.png') no-repeat center;
+    }
+    [data-theme="black"] & {
+        background-color: $theme-black;
+    }
+    [data-theme="yellow"] & {
+        background-color: $theme-yellow;
+    }
+}
+
+// header icon
+// 排位賽icon
+@mixin header_icon_pw {
+    background: url('~@/assets/index/header/pw.png') no-repeat center;
+    background-size: cover;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/header/pw.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/header/pw.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/header/pw.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/header/pw.png') no-repeat center;
+        background-size: cover;
+    }
+}
+// 挑戰賽icon
+@mixin header_icon_tz {
+    background: url('~@/assets/index/header/tz.png') no-repeat center;
+    background-size: cover;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/header/tz.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/header/tz.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/header/tz.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/header/tz.png') no-repeat center;
+        background-size: cover;
+    }
+}
+// 抽獎icon
+@mixin header_icon_cj {
+    background: url('~@/assets/index/header/cj.png') no-repeat center;
+    background-size: cover;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/header/cj.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/header/cj.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/header/cj.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/header/cj.png') no-repeat center;
+        background-size: cover;
+    }
+}
+// 資訊icon
+@mixin header_icon_zx {
+    background: url('~@/assets/index/header/zx.png') no-repeat center;
+    background-size: cover;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/header/zx.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/header/zx.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/header/zx.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/header/zx.png') no-repeat center;
+        background-size: cover;
+    }
+}
+
+// header 文字
+@mixin header_text_color($color) {
+    color: $color;
+    [data-theme="red"] & {
+        color: $color;
+    }
+    [data-theme="blue"] & {
+        color: $color;
+    }
+    [data-theme="black"] & {
+        color: $color;
+    }
+    [data-theme="yellow"] & {
+        color: $theme-yellow-text;
+    }
+}
+
+//// 首頁內容 ////
+// 首頁背景底圖(只有藍黑版有底圖 其他版為顏色)
+@mixin index_bg() {
+    background-color: $index-bg-white;
+    [data-theme="red"] & {
+        background-color: $index-bg-white;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/content/index_bg.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/content/index_bg.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="yellow"] & {
+        background-color: $index-bg-white;
+    }
+}
+// 主遊戲底圖(Tinder)
+@mixin content_bg() {
+    background: url('~@/assets/index/content/home_bg.png') no-repeat center;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/content/home_bg.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/content/home_bg.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/content/home_bg.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/content/home_bg.png') no-repeat center;
+        background-size: cover;
+    }
+}
+
+// 左右滑動箭頭圖片
+@mixin content_slide {
+    background: url('~@/assets/index/content/slide.png') no-repeat center;
+    background-size: 100%;
+    color: #fff;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/content/slide.png') no-repeat center;
+        background-size: 100%;
+        color: #fff;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/content/slide.png') no-repeat center;
+        background-size: 100%;
+        color: #fff;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/content/slide.png') no-repeat center;
+        background-size: 100%;
+        color: #fff;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/content/slide.png') no-repeat center;
+        background-size: 100%;
+        color: #3aac67;
+    }
+}
+
+// 賠率資訊欄位 1
+@mixin content_info_block {
+    background: url('~@/assets/index/content/info_block.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/content/info_block.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/content/info_block.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/content/info_block.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/content/info_block.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+// 賠率資訊欄位 2
+@mixin content_info_block2 {
+    background: url('~@/assets/index/content/info_block2.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/content/info_block2.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/content/info_block2.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/content/info_block2.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/content/info_block2.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+
+// 賠率資訊欄位文字顏色
+// 標題
+@mixin content_info_text($color) {
+    color: $color;
+    [data-theme="red"] & {
+        color: $theme-red-info;
+    }
+    [data-theme="blue"] & {
+        color: $theme-blue-info;
+    }
+    [data-theme="black"] & {
+        color: $theme-black-info;
+    }
+    [data-theme="yellow"] & {
+        color: $theme-yellow-info;
+    }
+}
+// 結果文字1
+@mixin content_info_text_result($color) {
+    color: $color;
+    [data-theme="red"] & {
+        color: $color;
+    }
+    [data-theme="blue"] & {
+        color: $color;
+    }
+    [data-theme="black"] & {
+        color: $color;
+    }
+    [data-theme="yellow"] & {
+        color: $theme-yellow-info-result;
+    }
+}
+// 結果文字2
+@mixin content_info_text_result2($color) {
+    color: $color;
+    [data-theme="red"] & {
+        color: $color;
+    }
+    [data-theme="blue"] & {
+        color: $color;
+    }
+    [data-theme="black"] & {
+        color: $color;
+    }
+    [data-theme="yellow"] & {
+        color: $color;
+    }
+}
+// 首頁一般賽事漂浮
+@mixin footer_icon_go_match() {
+    background: url('~@/assets/theme-black/index/content/go_match.png');
+        background-size: contain;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/content/go_match.png') no-repeat center;
+        background-size: contain;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/content/go_match.png') no-repeat center;
+        background-size: contain;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/content/go_match.png') no-repeat center;
+        background-size: contain;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/content/go_match.png') no-repeat center;
+        background-size: contain;
+    }
+}
+
+//// footer ////
+// footer-底色
+@mixin footer_bg() {
+    background-color: $theme-red-footer-bg;
+    [data-theme="red"] & {
+        background-color: $theme-red-footer-bg;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/footer/footer_bg.png')
+    }
+    [data-theme="black"] & {
+        background-color: $theme-black-footer-bg;
+    }
+    [data-theme="yellow"] & {
+        background-color: $theme-yellow-footer-bg;
+    }
+}
+
+// icon
+// 大廳 icon
+@mixin footer_icon_dt() {
+    background: url('~@/assets/index/footer/dt.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/footer/dt.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/footer/dt.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/footer/dt.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/footer/dt.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+// 大廳 icon-active
+@mixin footer_icon_dt_active() {
+    background: url('~@/assets/index/footer/dt.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/footer/dt.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/footer/dt_active.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/footer/dt_active.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/footer/dt_active.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+
+// // 商城 icon
+// @mixin footer_icon_sc() {
+//     background: url('~@/assets/index/footer/sc.png') no-repeat center;
+//     background-size: 100%;
+//     [data-theme="red"] & {
+//         background: url('~@/assets/index/footer/sc.png') no-repeat center;
+//         background-size: 100%;
+//     }
+//     [data-theme="blue"] & {
+//         background: url('~@/assets/theme-blue/index/footer/sc.png') no-repeat center;
+//         background-size: 100%;
+//     }
+//     [data-theme="black"] & {
+//         background: url('~@/assets/theme-black/index/footer/sc.png') no-repeat center;
+//         background-size: 100%;
+//     }
+//     [data-theme="yellow"] & {
+//         background: url('~@/assets/theme-yellow/index/footer/sc.png') no-repeat center;
+//         background-size: 100%;
+//     }
+// }
+// // 商城 icon-active
+// @mixin footer_icon_sc_active() {
+//     background: url('~@/assets/index/footer/sc.png') no-repeat center;
+//     background-size: 100%;
+//     [data-theme="red"] & {
+//         background: url('~@/assets/index/footer/sc.png') no-repeat center;
+//         background-size: 100%;
+//     }
+//     [data-theme="blue"] & {
+//         background: url('~@/assets/theme-blue/index/footer/sc_active.png') no-repeat center;
+//         background-size: 100%;
+//     }
+//     [data-theme="black"] & {
+//         background: url('~@/assets/theme-black/index/footer/sc_active.png') no-repeat center;
+//         background-size: 100%;
+//     }
+//     [data-theme="yellow"] & {
+//         background: url('~@/assets/theme-yellow/index/footer/sc_active.png') no-repeat center;
+//         background-size: 100%;
+//     }
+// }
+// 賽事 icon
+@mixin footer_icon_ss() {
+    background: url('~@/assets/index/footer/ss.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/footer/ss.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/footer/ss.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/footer/ss.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/footer/ss.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+
+// 排行 icon
+@mixin footer_icon_ph() {
+    background: url('~@/assets/index/footer/ph.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/footer/ph.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/footer/ph.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/footer/ph.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/footer/ph.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+
+// 我的 icon
+@mixin footer_icon_wd() {
+    background: url('~@/assets/index/footer/wd.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/footer/wd.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/footer/wd.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/footer/wd.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/footer/wd.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+
+// footer-字體顏色
+@mixin footer_text_color-default($color) {
+    color: $color;
+    [data-theme="red"] & {
+        color: $color;
+    }
+    [data-theme="blue"] & {
+        color: $theme-blue-footer-text-color-default;
+    }
+    [data-theme="black"] & {
+        color: $theme-black-footer-text-color-default;
+    }
+    [data-theme="yellow"] & {
+        color: $theme-yellow-footer-text-color-default;
+    }
+}
+// footer-字體顏色Active時
+@mixin footer_text_color($color) {
+    color: $color;
+    [data-theme="red"] & {
+        color: $color;
+    }
+    [data-theme="blue"] & {
+        color: $theme-blue-footer-text-color;
+    }
+    [data-theme="black"] & {
+        color: $theme-black-footer-text-color;
+    }
+    [data-theme="yellow"] & {
+        color: $theme-yellow-footer-text-color;
+    }
+}
+
+// footer-賽事按鈕 (目前由程式控制判斷語系及主題切換，暫時用沒用到)
+@mixin footer_icon_match() {
+    background: url('~@/assets/theme-black/index/footer/match.png');
+        background-size: cover;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/footer/match.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/footer/match.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/footer/match.png') no-repeat center;
+        background-size: cover;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/footer/match.png') no-repeat center;
+        background-size: cover;
+    }
+}
+// footer-賽事按鈕-彈出 (目前由程式控制判斷語系及主題切換，暫時用沒用到)
+@mixin footer_icon_match_pop() {
+    background: url('~@/assets/theme-black/index/footer/match_pop.png');
+        background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/index/footer/match_pop.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/index/footer/match_pop.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/index/footer/match_pop.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/index/footer/match_pop.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+
+// 排位賽排行榜排名金幣數量顏色
+@mixin page_header_text_color2($color) {
+    color: $color;
+    [data-theme="red"] & {
+        color: $color;
+    }
+    [data-theme="blue"] & {
+        color: $theme-blue-header-text-color2;
+    }
+    [data-theme="black"] & {
+        color: $theme-black-header-text-color2;
+    }
+    [data-theme="yellow"] & {
+        color: $theme-yellow-header-text-color2;
+    }
+}
+
+////////////////////////////////////////   商城   ////////////////////////////////////////
+// header
+// @mixin shop_header_bg() {
+//     background: url('~@/assets/shop/shop_header.png') no-repeat center;
+//         background-size: 100%;
+//     [data-theme="red"] & {
+//         background: url('~@/assets/shop/shop_header.png') no-repeat center;
+//         background-size: 100%;
+//     }
+//     [data-theme="blue"] & {
+//         background: url('~@/assets/theme-blue/shop/shop_header.png') no-repeat center;
+//         background-size: 100%;
+//     }
+//     [data-theme="black"] & {
+//         background: url('~@/assets/theme-black/shop/shop_header.png') no-repeat center;
+//         background-size: 100%;
+//     }
+//     [data-theme="yellow"] & {
+//         background: url('~@/assets/theme-yellow/shop/shop_header.png') no-repeat center;
+//         background-size: 100%;
+//     }
+// }
+// 商城編輯收貨地址提交按鈕
+@mixin  shop_btn() {
+    background: linear-gradient(to right, #e73a51, #dc3849);
+    color: #fff;
+    [data-theme="red"] & {
+        background: linear-gradient(to right, #e73a51, #dc3849);
+        color: #fff;
+    }
+    [data-theme="blue"] & {
+        background: linear-gradient(91deg, #cfab6a 10%, #c59d72 96%);
+        color: #fff;
+    }
+    [data-theme="black"] & {
+        background: linear-gradient(91deg, #cfab6a 10%, #c59d72 96%);
+        color: #fff;
+    }
+    [data-theme="yellow"] & {
+        background: linear-gradient(131deg, #FFDF01 35%, #FFCC01 60%);
+        color: #1b1b1b;
+    }
+}
+
+// 點選立即兌換 - 編輯收貨地址 header背景色
+@mixin  shop_edit_address() {
+    background: linear-gradient(to top, #a8222f, #c12f3e);
+    [data-theme="red"] & {
+        background: linear-gradient(to top, #a8222f, #c12f3e);
+    }
+    [data-theme="blue"] & {
+        background: #054e9c;
+    }
+    [data-theme="black"] & {
+        background: #1b1b1b;
+    }
+    [data-theme="yellow"] & {
+        background: linear-gradient(to top, #576ede, #4f60b5);
+    }
+}
+
+//////// 分頁 ////////
+//文字顏色 + border
+@mixin shop_pagination_text_color($color) {
+    color: $color;
+    border-top: 0.02rem solid $theme-red-shop-pagination;
+    [data-theme="red"] & {
+        color: $color;
+        border-top: 0.02rem solid $theme-red-shop-pagination;
+    }
+    [data-theme="blue"] & {
+        color: $theme-blue-shop-pagination;
+        border-top: 0.02rem solid $theme-blue-shop-pagination;
+    }
+    [data-theme="black"] & {
+        color: $theme-black-shop-pagination;
+        border-top: 0.02rem solid $theme-black-shop-pagination;
+    }
+    [data-theme="yellow"] & {
+        color: $theme-yellow-shop-pagination;
+        border-top: 0.02rem solid $theme-yellow-shop-pagination;
+    }
+}
+
+// 分頁icon
+// 金幣兌換 coin
+@mixin shop_pagination_icon_coin {
+    background: url('~@/assets/shop/jinbi.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/shop/jinbi.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/shop/jinbi.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/shop/jinbi.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/shop/jinbi.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+// 獎券兌換 cupon
+@mixin shop_pagination_icon_cupon {
+    background: url('~@/assets/shop/jiang1.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/shop/jiang1.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/shop/jiang1.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/shop/jiang1.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/shop/jiang1.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+
+////////////////////////////////////////   我的   ////////////////////////////////////////
+// header 背景圖
+@mixin myself_header_bg() {
+    background: url('~@/assets/myself/myself_01.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/myself/myself_01.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/myself/myself_01.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/myself/myself_01.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/myself/myself_01.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+// 登出按鈕圖
+@mixin myself_logout() {
+    background: url('~@/assets/myself/logout.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/myself/logout.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/myself/logout.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/myself/logout.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/myself/logout.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+
+// 充值icon
+// sass for 迴圈，圖片長寬還是寫在 _myself.scss裡
+@for $i from 1 to 5 {
+    .my-header-list-#{$i} {
+        background: url('~@/assets/myself/my-header-list-#{$i}.png') no-repeat center;
+        background-size: contain;
+        [data-theme="red"] & {
+            background: url('~@/assets/myself/my-header-list-#{$i}.png') no-repeat center;
+            background-size: contain;
+        }
+        [data-theme="blue"] & {
+            background: url('~@/assets/theme-blue/myself/my-header-list-#{$i}.png') no-repeat center;
+            background-size: contain;
+        }
+        [data-theme="black"] & {
+            background: url('~@/assets/theme-black/myself/my-header-list-#{$i}.png') no-repeat center;
+            background-size: contain;
+        }
+        [data-theme="yellow"] & {
+            background: url('~@/assets/theme-yellow/myself/my-header-list-#{$i}.png') no-repeat center;
+            background-size: contain;
+        }
+    }
+}
+// 充值icon - 文字
+@mixin myself_icon_text() {
+    background: linear-gradient(#FDD09E 81%, #FFB345 35%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    [data-theme="red"] & {
+        background: linear-gradient(#FDD09E 81%, #FFB345 35%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    [data-theme="blue"] & {
+        background: linear-gradient(#FDD09E 81%, #FFB345 35%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    [data-theme="black"] & {
+        background: linear-gradient(#FDD09E 81%, #FFB345 35%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    [data-theme="yellow"] & {
+        background: linear-gradient(#914e13 81%, #704b24 35%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+// 錢包資訊欄
+@mixin myself_wallet_bg() {
+    background: url('~@/assets/myself/bg_03.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/myself/bg_03.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/myself/bg_03.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/myself/bg_03.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/myself/bg_03.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+// 錢包資訊欄-文字顏色 1
+@mixin  myself_wallet_text1($color) {
+    color: $color;
+    [data-theme="red"] & {
+        color: $color;
+    }
+    [data-theme="blue"] & {
+        color: $theme-blue-wallet-text-color1;
+    }
+    [data-theme="black"] & {
+        color: $theme-black-wallet-text-color1;
+    }
+    [data-theme="yellow"] & {
+        color: $theme-yellow-wallet-text-color1;
+    }
+}
+// 錢包資訊欄-文字顏色 2
+@mixin  myself_wallet_text2($color) {
+    color: $color;
+    [data-theme="red"] & {
+        color: $color;
+    }
+    [data-theme="blue"] & {
+        color: $theme-blue-wallet-text-color2;
+    }
+    [data-theme="black"] & {
+        color: $theme-black-wallet-text-color2;
+    }
+    [data-theme="yellow"] & {
+        color: $theme-yellow-wallet-text-color2;
+    }
+}
+
+// 我的 頁面內容全部icon (色系ICON除外)
+// @for $i from 1 to 16 {
+//     .myself-list-img-#{$i} {
+//         background: url('~@/assets/myself/list-#{$i}.png') no-repeat center;
+//         background-size: contain;
+//         [data-theme="red"] & {
+//             background: url('~@/assets/myself/list-#{$i}.png') no-repeat center;
+//             background-size: contain;
+//         }
+//         [data-theme="blue"] & {
+//             background: url('~@/assets/theme-blue/myself/list-#{$i}.png') no-repeat center;
+//             background-size: contain;
+//         }
+//         [data-theme="black"] & {
+//             background: url('~@/assets/theme-black/myself/list-#{$i}.png') no-repeat center;
+//             background-size: contain;
+//         }
+//         [data-theme="yellow"] & {
+//             background: url('~@/assets/theme-yellow/myself/list-#{$i}.png') no-repeat center;
+//             background-size: contain;
+//         }
+//     }
+// }
+
+// 我的 頁面內容全部icon (色系ICON除外)
+@mixin myself_icons($className) {
+    background: url('~@/assets/myself/#{$className}.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/myself/#{$className}.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/myself/#{$className}.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/myself/#{$className}.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/myself/#{$className}.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+// 我的 - 色系icon (因為寫在新組件裡所以單獨拉出來)
+@mixin myself_colorful() {
+    background: url('~@/assets/myself/list-16.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/myself/list-16.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/myself/list-16.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/myself/list-16.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/myself/list-16.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+
+////////////////////////////////////////   VIP   ////////////////////////////////////////
+// VIP header
+@mixin myself_vip_header_bg() {
+    background: url('~@/assets/vip/VIPhead.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/vip/VIPhead.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/vip/VIPhead.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/vip/VIPhead.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/vip/VIPhead.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+// VIP content
+@mixin myself_vip_content_bg() {
+    background: #1c1c1c;
+    [data-theme="red"] & {
+        background: #1c1c1c;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/vip/VIPbg.jpg') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/vip/VIPbg.jpg') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: #1c1c1c;
+    }
+}
+
+
+////////////////////////////////////////   我的任務列表   ////////////////////////////////////////
+// 雖然與排位賽排行榜、竞猜历史一樣的功能，但是HTML架構寫法語不同，故先獨立出來。排位賽排行榜、竞猜历史在上方共用區
+@mixin  myself_task_category_text($color) {
+    color: $color;
+    border-bottom: 0.05rem solid $color;
+    [data-theme="red"] & {
+        color: $color;
+        border-bottom: 0.05rem solid $color;
+    }
+    [data-theme="blue"] & {
+        color: $theme-blue-category;
+        border-bottom: 0.05rem solid $theme-blue-category;
+    }
+    [data-theme="black"] & {
+        color: $theme-black-category;
+        border-bottom: 0.05rem solid $theme-black-category;
+    }
+    [data-theme="yellow"] & {
+        color: $theme-yellow-category;
+        border-bottom: 0.05rem solid $theme-yellow-category;
+    }
+}
+
+
+////////////////////////////////////////   我的勳章   ////////////////////////////////////////
+// 子分類 focus 圖
+@mixin myself_medal_category_focus() {
+    background: url('~@/assets/myself/medal/category-focus.png') no-repeat center;
+    background-size: 100%;
+    [data-theme="red"] & {
+        background: url('~@/assets/myself/medal/category-focus.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="blue"] & {
+        background: url('~@/assets/theme-blue/myself/medal/category-focus.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="black"] & {
+        background: url('~@/assets/theme-black/myself/medal/category-focus.png') no-repeat center;
+        background-size: 100%;
+    }
+    [data-theme="yellow"] & {
+        background: url('~@/assets/theme-yellow/myself/medal/category-focus.png') no-repeat center;
+        background-size: 100%;
+    }
+}
+// 子分類 focus 文字顏色
+@mixin  myself_medal_category_focus_text($color) {
+    color: $color;
+    [data-theme="red"] & {
+        color: $color;
+    }
+    [data-theme="blue"] & {
+        color: $theme-blue-medal-focus-text-color;
+    }
+    [data-theme="black"] & {
+        color: $theme-black-medal-focus-text-color;
+    }
+    [data-theme="yellow"] & {
+        color: $theme-yellow-medal-focus-text-color;
+    }
+}
+////////////////////////////////////////   語系選擇   ////////////////////////////////////////
+@mixin  myself_language_focus_text($color) {
+    background-color: $color;
+    color: #fff;
+    [data-theme="red"] & {
+        background-color: $color;
+        color: #fff;
+    }
+    [data-theme="blue"] & {
+        background-color: $theme-blue-language-focus;
+        color: #fff;
+    }
+    [data-theme="black"] & {
+        background-color: $theme-black-language-focus;
+        color: #fff;
+    }
+    [data-theme="yellow"] & {
+        background-color: $theme-yellow-language-focus;
+        color: #fff;
+    }
+}
+////////////////////////////////////////   邀請好友   ////////////////////////////////////////
+// @mixin invite_header_bg() {
+//     background: url('~@/assets/invite/InvitationCodehead.png') no-repeat center;
+//     background-size: 100%;
+//     [data-theme="red"] & {
+//         background: url('~@/assets/invite/InvitationCodehead.png') no-repeat center;
+//         background-size: 100%;
+//     }
+//     [data-theme="blue"] & {
+//         background: url('~@/assets/theme-blue/invite/InvitationCodehead.png') no-repeat center;
+//         background-size: 100%;
+//     }
+//     [data-theme="black"] & {
+//         background: url('~@/assets/theme-black/invite/InvitationCodehead.png') no-repeat center;
+//         background-size: 100%;
+//     }
+//     [data-theme="yellow"] & {
+//         background: url('~@/assets/theme-yellow/invite/InvitationCodehead.png') no-repeat center;
+//         background-size: 100%;
+//     }
+// }
+
+////////////////////////////////////////   廣告投放(充值按鈕)   ////////////////////////////////////////
+@mixin  adRecharge_btn() {
+    color: #dc3849;
+    background: none;
+    border: 0.01rem solid #b9b9b9;
+    font-size: 0.32rem;
+    box-shadow: none;
+    [data-theme="red"] & {
+        color: #dc3849;
+        background: none;
+        border: 0.01rem solid #b9b9b9;
+        font-size: 0.32rem;
+    }
+    [data-theme="blue"] & {
+        color: #b38535;
+        background: none;
+        border: 0.01rem solid #b9b9b9;
+        font-size: 0.32rem;
+    }
+    [data-theme="black"] & {
+        color: #d59f2b;
+        border: 1px solid #d59f2b;
+        background: none;;
+        font-size: 0.32rem;
+    }
+    [data-theme="yellow"] & {
+        color: #1b1b1b;
+        background: none;
+        border: 0.01rem solid #b9b9b9;
+        font-size: 0.32rem;
+    }
+}
+
+////////////////////////////////////////   俱樂部首頁背景色   ////////////////////////////////////////
+
+@mixin  club-bg-color($color) {
+    background-color: $color;
+    [data-theme="red"] & {
+        background-color: $color;
+    }
+    [data-theme="blue"] & {
+        background-color: $theme-blue;
+    }
+    [data-theme="black"] & {
+        background-color: $theme-black;
+    }
+    [data-theme="yellow"] & {
+        background-color: $theme-yellow;
+    }
+}
+////////////////////////////////////////   俱樂部背景色 + 文字顏色   ////////////////////////////////////////
+
+@mixin  club-theme-color($color) {
+    background-color: $color;
+    color: #fff;
+    [data-theme="red"] & {
+        background-color: $color;
+        color: #fff;
+    }
+    [data-theme="blue"] & {
+        background-color: $theme-blue;
+        color: #fff;
+    }
+    [data-theme="black"] & {
+        background-color: $theme-black;
+        color: #fff;
+    }
+    [data-theme="yellow"] & {
+        background-color: $theme-yellow;
+        color: #1b1b1b;
+    }
+}
+
+//首頁本場賽事時間
+@mixin startTime-theme-color() {
+    color: #fff;
+    // background: rgba(0,0,0,0.5);
+    // border: 0.01rem solid #4a5bac;
+    // [data-theme="red"] & {
+    //     background: rgba(0,0,0,0.5);
+    //     border: 0.01rem solid #4a5bac;
+    // }
+    // [data-theme="blue"] & {
+    //     background: rgba(0,0,0,0.5);
+    //     border: 1px solid #4a5bac;
+    // }
+    // [data-theme="black"] & {
+    //     background: rgba(11,12,16,0.5);
+    //     border: 1px solid #000;
+    // }
+    [data-theme="yellow"] & {
+        color: #000;
+        // background: rgba(173,138,39,0.5);
+        // border: 1px solid #ffd446;
+    }
+}

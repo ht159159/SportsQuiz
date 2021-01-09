@@ -1,0 +1,486 @@
+.myclub {
+    width: 100%;
+    height: 100%;
+    padding: 1.1rem 0 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    .myclub-header {
+        width: 100%;
+        height: 1.1rem;
+        line-height: 1.2rem;
+        text-align: center;
+        z-index: 1001;
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include page_header_color($theme-red);
+        .myclub-header-wrap {
+            // margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            h3 {
+                @include page_header_text_color($theme-red-header-text-color);
+                display: inline-block;
+            }
+            .back-icon {
+                position: absolute;
+                left: 0.5rem;
+                margin: 0;
+            }
+        }
+        .my-authority {
+            position: absolute;
+            right: 0.3rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            span {
+                margin-right: 0.05rem;
+                @include page_header_text_color($theme-red-header-text-color);
+            }
+        }
+    }
+
+    .club-info {
+        width: 100%;
+        // height: 4rem;
+        padding: 0.2rem 0.2rem 0.1rem;
+        @include club-bg-color($theme-red);
+        &-content {
+            width: 100%;
+            height: 3.3rem;
+            background: url("~@/assets/club/club_bg_2.png") no-repeat center;
+            position: relative;
+            padding-top: 1.25rem;
+            border-radius: 0.25rem;
+            background-size: 100% 100%;
+            // 進度條
+            .scale {
+                width: 100%;
+                height: 0.14rem;
+                background: url("~@/assets/club/bar_bg.png") no-repeat center;
+                background-size: 100% 100%;
+            }
+            .club-grow-bar {
+                position: relative;
+            }
+            .grow-bar-tooltip {
+                position: absolute;
+                top: -0.4rem;
+                left: 0;
+                &-text {
+                    color: #40d100;
+                }
+            }
+            // element UI 的 slide拉桿樣式
+            .el-slider {
+                width: 100%;
+                // margin-top: auto;
+            }
+            .el-slider__button {
+            // display: none !important;
+            width: 0.36rem;
+            height: 0.4rem;
+            background: url("~@/assets/club/pointer.png") no-repeat center;
+            background-size: 100% 100%;
+            border: none;
+            }
+            .el-slider__runway {
+            background-color: #949494;
+            margin: 0 0 0.1rem 0;
+            width: 80%;
+            margin: 0 auto;
+            }
+            .el-tooltip__popper {
+            padding: 0.05rem 0.02rem !important;
+            }
+            .el-slider__bar {
+                background: #f34c84; /* Old browsers */
+                background: -moz-linear-gradient(left, #f34c84 0%, #feea58 50%, #68bd14 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(left, #f34c84 0%,#feea58 50%,#68bd14 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to right, #f34c84 0%,#feea58 50%,#68bd14 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f34c84', endColorstr='#68bd14',GradientType=1 ); /* IE6-9 */
+            }
+
+            // 大頭照
+            .club-data-personal-img {
+                position: absolute;
+                top: -0.2rem;
+                left: calc((100% - 1rem) / 2);
+                width: 1rem;
+                height: 1rem;
+                border-radius: 0.5rem;
+                filter: drop-shadow(0px 6px 9px rgba(193,46,62,0.35));
+            }
+
+            // 俱樂部列表連結
+            .club-list-btn {
+                width: 0.52rem;
+                height: 0.52rem;
+                background: url("~@/assets/club/club-list.png") no-repeat center;
+                background-size: 100% 100%;
+                position: absolute;
+                top: 0.3rem;
+                left: 0.2rem;
+                transition: 0.3s;
+            }
+            .club-list-btn:active {
+                background-color: #c9c9c9;
+                transform: scale(0.95);
+                border-radius: 0.52rem
+            }
+            // 俱樂部活動按鈕
+            .activies-btn {
+                width: 2rem;
+                height: 0.6rem;
+                position: absolute;
+                top: 0.2rem;
+                right: 0;
+                @include club-theme-color($theme-red);
+                border-radius: 0.3rem 0 0 0.3rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                white-space: nowrap;
+                transition: 0.3s;
+            }
+            .activies-btn:active {
+                background-color: #c9c9c9;
+                transform: scale(0.95);
+            }
+
+            .club-data-level-wrap {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                margin-top: 0.2rem;
+                .club-data-club-info {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    p {
+                        font-size: 0.28rem;
+                        font-weight: bold;
+                        margin-bottom: 0.2rem;
+                    }
+                    span {
+                        color: #8c8c8c;
+                    }
+                }
+            }
+            .member-dynamics {
+                width: 100%;
+                height: 0.28rem;
+                margin-top: 0.5rem;
+                padding: 0 0.2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                overflow: hidden;
+                position: absolute;
+                bottom: 0.2rem;
+                // .member-dynamics-box {
+                    // margin: 0.05rem;
+                    // position: relative;
+                    .info {
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        left: 0.5rem;
+                        li {
+                            display: flex;
+                            height: 0.28rem;
+                        }
+                        p {
+                            font-size: 0.28rem;
+                            line-height: 0.28rem;
+                            color: #575757;
+                            margin: 0 0.05rem;
+                        }
+                    }
+                    .marquee_top {
+                        transition: all 0.5s;
+                        margin-top: -0.28rem;
+                    }
+                // }
+                .scroll-icon {
+                    position: absolute;
+                    right: 0.2rem;
+                    width: 0.18rem;
+                    height: 0.26rem;
+                    background: url("~@/assets/club/scroll.png") no-repeat center;
+                }
+            }
+        }
+
+    }
+    // 戰績
+    .club-data-record {
+        // height: 72%;
+        width: 100%;
+        background-size: 100% 100%;
+        padding: 0.16rem 0.25rem;
+        position: relative;
+        &-content {
+            width: 100%;
+            height: 90%;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-around;
+            justify-content: space-between;
+            &-box {
+                width: 48%;
+                // height: 2.7rem;
+                filter: drop-shadow(0px 5px 3.5px rgba(219,219,219,0.43));
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-around;
+                padding: 0.32rem 0.2rem;
+                border-radius: 0.25rem;;
+                margin: 0.2rem 0;
+                .state {
+                    width: 1rem;
+                    height: 1rem;
+                    background-color: #4355f6;
+                    border-radius: 0.5rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-bottom: 0.4rem;
+                    p {
+                        color: #fff;
+                        font-size: 0.48rem;
+                        line-height: 0.48rem;
+                    }
+                }
+                .text-bgcolor0 {
+                    background-color: #4355f6;
+                };
+                .text-bgcolor1 {
+                    background-color: #26dc66;
+                };
+                .text-bgcolor2 {
+                    background-color: #fe4d5f;
+                };
+                .text-bgcolor3 {
+                    background-color: #b0b2ca;
+                };
+                .times {
+                    display: flex;
+                    align-items: flex-end;
+                    margin-top: auto;
+                    margin-bottom: 0.1rem;
+                    p {
+                        font-size: 0.72rem;
+                        margin-right: 0.15rem;
+                        line-height: 0.6rem;
+                    }
+                    .smallText {
+                        font-size: 0.42rem;
+                    }
+                    span {
+                        width: 0.5rem;
+                    }
+                    .green {
+                        color: #3ef506;
+                    }
+                }
+                .tip {
+                    color: #737373;
+                }
+            }
+        }
+    }
+
+    // 公告
+    .club-notice {
+        padding: 0.2rem;
+    }
+    .club-notice-message-list {
+        padding: 0.2rem;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin: 0.2rem 0;
+        filter: drop-shadow(0px 5px 3.5px rgba(219,219,219,0.43));
+        &-up {
+            width: 100%;
+            display: flex;
+            position: relative;
+            &-right {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+                padding-left: 1rem;
+            }
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                margin-right: 0.1rem;
+            }
+        }
+        .club-notice-message-list-wrap {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.2rem;
+        }
+        .club-notice-message-list-title {
+            font-weight: bold;
+            margin-right: 0.2rem;
+            font-size: 0.28rem;
+        }
+        .club-notice-message-list-date {
+            color: #b4b4b4;
+            font-size: 0.16rem;
+        }
+        .club-notice-message-list-detail {
+            width: 6rem;
+            word-break: normal;
+            font-size: 0.24rem;
+            line-height: 0.32rem;
+            padding-right: 0.25rem;
+        }
+        .open-msg {
+            height:  auto;
+            white-space: normal;;
+            text-overflow: unset; ;
+            overflow: visible;
+        }
+        &-down {
+            width: 100%;
+            padding: 0.2rem;
+            text-align: right;
+            border-top: 1px solid #eaeaea;
+            margin-top: 0.25rem;
+        }
+    }
+
+    // 退出俱樂部按鈕
+    .quit-club {
+        width: 100%;
+        height: 1.1rem;
+        padding: 0.2rem;
+        &-btn {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #b9b9b9;
+            border-radius: 0.5rem;
+            color: #c12f3e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.32rem;
+            transition: 0.3s;
+        }
+        &-btn:active {
+            background-color: #c9c9c9;
+            transform: scale(0.95);
+        }
+    }
+    .club-title {
+        position: relative;
+        color: #232323;
+        font-weight: bold;
+        text-align: right;
+        // margin: 0.35rem 0;
+        font-size: 0.32rem;
+        line-height: 0.32rem;
+        text-align: left;
+        padding-left: 0.3rem;
+    }
+    .club-title::before {
+        content: "";
+        width: 0.1rem;
+        height: 0.3rem;
+        background-color: #5566f7ed;
+        position: absolute;
+        top: 0.01rem;
+        left: 0;
+    }
+
+    // 退出俱樂部彈窗
+    .fancy-box {
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        width: 95%;
+        height: auto;
+        background-size: contain;
+        position: fixed;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        border-radius: 0.2rem;
+        img {
+            width: 100%;
+        }
+        &-content {
+            width: 100%;
+            height: 3rem;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            p {
+                font-size: 0.32rem;
+                line-height: 0.32rem;
+            }
+        }
+        &-btn {
+            width: 100%;
+            // height: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+            padding-bottom: 0.2rem;
+            border-radius: 0 0 0.2rem 0.2rem;
+            p {
+                font-size: 0.28rem;
+                color: #dc3849;
+                margin-top: 0.25rem;
+            }
+            &-confirm {
+                width: 85%;
+                font-size: 0.4rem;
+                line-height: 0.4rem;
+                color: #ffffff;
+                padding: 0.3rem;
+                text-align: center;
+                border-radius: 0.5rem;
+                @include myself_btn();
+                margin: 0.2rem;
+            }
+            &-cancel {
+                width: 85%;
+                font-size:  0.4rem;
+                line-height: 0.4rem;
+                color: #ffffff;
+                padding: 0.3rem;
+                text-align: center;
+                border-radius: 0.5rem;
+                background-image: linear-gradient(-29deg, #acacac 4%, #c5c5c5 100%);
+            }
+        }
+    }
+}
+
+.el-slider__button-wrapper {
+    z-index: 1000!important;
+}

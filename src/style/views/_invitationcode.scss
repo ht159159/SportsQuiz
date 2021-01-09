@@ -1,0 +1,182 @@
+* {
+  font-family: '微软雅黑';
+}
+
+.friendcode {
+  .van-field__control {
+    color: #8c8c8a;
+    height: 100%;
+  }
+  .van-field__body {
+    line-height: 100%;
+    .van-field__control::placeholder {
+      padding-top: 0.08rem /* 3/100 */;
+      font-size: 0.22rem;
+    }
+  }
+}
+.my-code {
+  .van-field__control {
+    color: #8c8c8a;
+    height: 100%;
+  }
+  .van-field__body {
+    line-height: 100%;
+    .van-field__control::placeholder {
+      font-size: 0.2rem;
+    }
+  }
+}
+
+.maincode {
+  height: 100%;
+  .code {
+    height: calc(100% - 1rem);
+    overflow: auto;
+  }
+
+  box-sizing: border-box;
+  .code-header {
+    width: 7.5rem /* 750/100 */;
+    height: 3.8rem /* 385/100 */;
+    // background-color: red;
+    // @include invite_header_bg();
+    margin: 0 auto;
+    position: relative;
+    p {
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0.65rem;
+      color: #fff;
+      font-weight: bold;
+      
+    }
+    .US-text {
+      font-size: 0.4rem;
+      line-height: 0.4rem;
+    }
+    .CN-text {
+      font-size: 0.6rem;
+      line-height: 0.7rem;
+      bottom: 0.55rem;
+    }
+    .TW-text {
+      font-size: 0.6rem;
+      line-height: 0.7rem;
+      bottom: 0.55rem;
+    }
+  }
+  .code-header-CN {
+    background: url('~@/assets/invite/InvitationCodehead_CN.png') no-repeat center;
+    background-size: 100%;
+  }
+  .code-header-TW {
+    background: url('~@/assets/invite/InvitationCodehead_TW.png') no-repeat center;
+    background-size: 100%;
+  }
+  .code-header-US {
+    background: url('~@/assets/invite/InvitationCodehead_US.png') no-repeat center;
+    background-size: 100%;
+  }
+  .code-main {
+    margin-top: 0.32rem /* 32/100 */;
+    text-align: center;
+    .code-main-p {
+      line-height: 0.3rem /* 30/100 */;
+      font-weight: bold;
+      font-family: '微软雅黑';
+    }
+    .code-main-invent {
+      position: relative;
+      .van-button {
+        width: 1.75rem /* 175/100 */;
+        height: 0.68rem /* 68/100 */;
+        background-color: #ddb77a;
+        line-height: 0.68rem;
+        color: #ffffff;
+        font-size: 0.24rem; /* 24/100 */
+      }
+      .button1 {
+        position: absolute;
+        right: 0.6rem /* 30/100 */;
+        top: 0.05rem;
+        /* 2/100 */
+      }
+      .button2 {
+        position: absolute;
+        right: 0.6rem;
+        top: 1.24rem;
+      }
+
+      margin-top: 0.3rem /* 30/100 */;
+      .van-field {
+        width: 6.46rem /* 646/100 */;
+        height: 0.8rem /* 80/100 */;
+        margin: 0 auto;
+        border: 1px solid #8b8b8b;
+        border-radius: 0.05rem; /* 5/100 */
+        .van-field__body {
+          height: 100%;
+        }
+        .van-field__control {
+          font-size: 0.21rem /* 12/100 */;
+        }
+      }
+      .van-field:first-child {
+        margin-bottom: 0.37rem; /* 37/100 */
+      }
+      .code-inventcode,
+      .code-entercode {
+        width: 6.46rem /* 646/100 */;
+        height: 0.8rem /* 80/100 */;
+        border: 1px solid #8b8b8a;
+        border-radius: 0.05rem /* 5/100 */;
+        margin-bottom: 0.37rem /* 37/100 */;
+        margin-top: 0.24rem /* 24/100 */;
+      }
+      .code-entercode {
+        .entercode-input {
+          height: 0.8rem /* 80/100 */;
+          background-color: #f2f2f2;
+        }
+      }
+    }
+  }
+  .code-middle {
+    margin-top: 0.2rem;
+    text-align: center;
+    .van-button {
+      line-height: 0.8rem;
+      width: 6.46rem /* 646/100 */;
+      height: 0.8rem /* 80/100 */;
+      // margin-top: 0.2rem /* 115/100 */;
+      @include myself_btn();
+      border: none;
+      font-family: '微软雅黑';
+      // box-shadow: 5px 5px 5px #e6c6c9;
+      .van-button__text {
+        font-size: 0.32rem;
+      }
+    }
+
+    margin-bottom: 0.32rem; /* 232/100 */ /* 222/100 */
+  }
+  .code-rules {
+    text-align: center;
+    // height: 1.1rem; /* 110/100 */
+    color: #a7a7a7;
+    margin-top: 0.3rem /* 30/100 */;
+    p:first-child {
+      margin-bottom: 0.09rem /* 9/100 */;
+    }
+    p {
+      line-height: 0.32rem /* 24/100 */;
+    }
+  }
+  .code-rules-text {
+    padding: 0 0.5rem;
+  }
+}

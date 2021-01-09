@@ -1,0 +1,552 @@
+.mainHome {
+  overflow: hidden;
+  height: calc(100% - 2rem);
+  margin-top: 1.1rem;
+  @include index_bg();
+  .vue-tinder {
+    min-width: 95%;
+    max-width: 95%;
+  }
+  &-card {
+    width: 100%;
+    height:calc(100% - 0rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    @include content_bg();
+    overflow: auto;
+    &-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 0.2rem;
+      .pic_champion {
+        width: 0.75rem;
+        height: 0.72rem;
+      }
+      .game-name {
+        font-size: 0.32rem;
+        color: #16338c;
+        margin-top: 0.1rem;
+        line-height: 0.32rem;
+      }
+    }
+    &-more {
+      position: absolute;
+      right: 0.2rem;
+      top: 0.2rem;
+      padding: 0.06rem 0.1rem;
+      border: solid 0.02rem;
+      border-radius: 1rem;
+      color: $font-light-1;
+    }
+    .vsImg{
+      width: calc(100% - 0.00rem);
+      z-index: 8;
+      background: url('~@/assets/vs_bg.png') no-repeat bottom;
+      background-size: contain;
+      &-content{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding-bottom: 0.7rem;
+          .left-team,
+          .right-team{
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            -webkit-animation: Updown 0.8s infinite alternate;
+          }
+        .left-team-name,
+        .right-team-name{
+          color: #fff;
+          font-size: 0.4rem;
+          line-height: 0.4rem;
+          margin-top: 0.2rem;
+        }
+        .team-pic-wrap {
+          width: 1.46rem;
+          height: 1.6rem;
+          .left-team-pic,
+          .right-team-pic {
+            max-height: 100%;  
+            max-width: 100%; 
+            width: auto;
+            height: auto;
+          }
+        }
+        .vs-pic {
+          width: .65rem;
+          height: 0.83rem;
+          margin: 0;
+          padding: 0;
+          color: white;
+          display: inline-block;
+          font-size: 1rem;
+          text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e60073, 0 0 20px #e60073, 0 0 25px #e60073, 0 0 30px #e60073, 0 0 35px #e60073;
+        }
+      }
+      &-foot{
+        width: 3.4rem;
+        padding: 0;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        color: #fff;
+        margin-top: .23rem;
+        li{
+          color: #d2d3d3;
+          font-size: .24rem;
+          position: relative;
+          // height: 2rem;
+          p{
+            width: 3.3rem;
+            height: .45rem;
+            position: absolute;
+            top: .2rem;left: 0;
+            background-image: url('~@/assets/toast_03.png');
+            background-size: 100%;
+            line-height: .6rem;
+            color: #242c40;
+          }
+        }
+      }
+    }
+    .startTime{
+      @include startTime-theme-color();
+      width: 90%;
+      // height: 20px;
+      // color: #fff;
+      padding: 0.2rem;
+      border-radius: 0.2rem;
+      margin-bottom: 0.2rem;
+      font-size: 0.26rem;
+      text-align: center;
+    }
+    .wardColor{
+      color: #fcce13;
+    }
+    .slide-pic-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90%;
+      height: 1.25rem;
+      margin-bottom: 0.5em;
+    }
+    .slide-pic{
+      @include content_slide();
+      width: 100%;
+      height: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      p {
+        width: 50%;
+        font-size: 0.25rem;
+        line-height: 0.25rem;
+      }
+      .swipe-right {
+        text-align: right;
+      }
+    }
+    .info-block-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      margin-bottom: 0.2rem;
+      .info-block {
+        width: 90%;
+        height: 1.1rem;
+        @include content_info_block();
+        margin-bottom: 0.3rem;
+        padding-left: 1.55rem;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        .team-name {
+          width: 50%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+      .info-block2 {
+        width: 90%;
+        height: 1.1rem;
+        @include content_info_block2();
+        margin-bottom: 0.3em;
+        padding-left: 1.55rem;
+        display: flex;
+        align-items: center;
+      }
+      .info-block-font {
+        font-size: 0.32rem;
+        line-height: 0.4rem;
+        text-align: center;
+        @include content_info_text($theme-red-info)
+      }
+      .text-focus-blue {
+        // width: 1rem;
+        padding: 0 0.1rem;
+        height: 0.4rem;
+        background-color: #2a4184;
+        border-radius: 0.05rem;
+        margin: 0 0.1rem;
+      }
+      .text-focus-red {
+        // width: 1rem;
+        height: 0.4rem;
+        background-color: #c12f3e;
+        border-radius: 0.05rem;
+        margin: 0 0.1rem;
+      }
+      .yellow {
+        width: 1.4rem;
+        color: #fdc21d;
+      }
+      .white {
+        color: #fff;
+      }
+      .result {
+        // width: 1.4rem;
+        padding: 0px 0.28rem;
+        @include content_info_text_result($light-1);
+      }
+      .result2 {
+        // width: 1.4rem;
+        @include content_info_text_result2($theme-yellow-info-result);
+      }
+    }
+  }
+  &-foot{
+    width: calc(100% - 0.4rem);
+    border-radius: 0.2rem;
+    // height: 10.1rem;
+    background-color: #aaa;
+    margin: 0.2rem;
+    position: relative;
+    background: linear-gradient(to left, #252e48, #2d3550);
+    background-size: cover;
+    &-title {
+      position: absolute;
+      color: #fff;
+      top: 0.3rem;
+      left: 0.5rem;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0.05rem;
+        left: -0.2rem;
+        height: 0.3rem;
+        width: 0.08rem;
+        background-color: #fff;
+      }
+    }
+    &-more {
+      position: absolute;
+      right: 0.2rem;
+      top: 0.2rem;
+      padding: 0.06rem 0.1rem;
+      border: solid 0.02rem;
+      border-radius: 1rem;
+      color: $font-light-1;
+      color: #555e80;
+    }
+    &-show{
+      width: 3rem;
+      height: 3rem;
+      margin: 0 auto;
+      background: #c12f3e;
+      border-radius: 1.5rem;
+      position: relative;
+      z-index: 1;
+      .spanLeft{
+        color: #fff;
+      }
+    }
+    &-ul{
+      width: 100%;
+      padding: 0;
+      list-style: none;
+      &-item{
+        width: calc(100% - .34rem);
+        margin: 0 auto;
+        height: 3.31rem;
+        border-bottom: 1px dashed #535c7d;
+        .time{
+          font-size: .17rem;
+          line-height: .37rem;
+          color: #c2c2c2;
+          position: relative;
+          // top: .7rem;
+          // height: .9rem;
+          span{
+            font-size: .17rem;
+            line-height: .37rem;
+            color: #c2c2c2;
+          }
+          .right{
+            font-size: .17rem;
+            line-height: .37rem;
+            margin-left: .5rem;
+            color: #c2c2c2;
+          }
+        }
+        .gameName{
+          font-size: .24rem;
+          line-height: .36rem;
+          color: #c2c2c2;
+          margin: 0;
+          margin-bottom: .07rem;
+        }
+        .teamList{
+          padding: 0;
+          display: flex;
+          list-style: none;
+          &-left{
+            width: 2.5rem;
+            height: .77rem;
+            background: #ececec;
+            border-radius: .2rem;
+            &-img{
+              float: left;
+              width: .47rem;
+              height: .47rem;
+              border-radius: 50%;
+              background: #fff;
+              margin-left: .14rem;
+              margin-top: .16rem;
+            }
+            &-div{
+              float: left;
+              // width: 1.5rem;
+              margin-left: .11rem;
+              margin-top: .18rem;
+              .top{
+                font-size: .2rem;
+                line-height: .26rem;
+                color: #4c4c4c;
+                margin: 0;
+              }
+              .bot{
+                font-size: .16rem;
+                line-height: .22rem;
+                color: #f8374d;
+                margin: 0;
+                text-align: center;
+              }
+            }
+          }
+          &-center{
+            margin-left: .04rem;
+            width: 1.24rem;
+            height: .77rem;
+            background: #ececec;
+            border-radius: .2rem;
+            .top{
+              text-align: center;
+              line-height: .26rem;
+              color: #4c4c4c;
+              margin: 0;
+              margin-top: .18rem;
+            }
+            .bot{
+              font-size: .16rem;
+              line-height: .22rem;
+              color: #f8374d;
+              margin: 0;
+              text-align: center;
+            }
+          }
+          &-right{
+            margin-left: .04rem;
+            width: 2.5rem;
+            height: .77rem;
+            background: #ececec;
+            border-radius: .2rem;
+            &-img{
+              float: left;
+              width: .47rem;
+              height: .47rem;
+              border-radius: 50%;
+              background: #fff;
+              margin-left: .14rem;
+              margin-top: .16rem;
+            }
+            &-div{
+              float: left;
+              // width: 1.5rem;
+              margin-left: .11rem;
+              margin-top: .18rem;
+              .top{
+                font-size: .2rem;
+                line-height: .26rem;
+                margin: 0;
+                color: #4c4c4c;
+              }
+              .bot{
+                font-size: .16rem;
+                line-height: .22rem;
+                color: #f8374d;
+                margin: 0;
+                text-align: center;
+              }
+            }
+          }
+        }
+        p{
+          font-size: .2rem;
+          line-height: .2rem;
+          margin-top: .34rem;
+          color: #c2c2c2;
+          span{
+            font-size: .2rem;
+            line-height: .2rem;
+            // margin-top: .34rem;
+            color: #f8374d;
+          }
+          .btn{
+            display: inline-block;
+            width: 1.3rem;
+            height: .44rem;
+            background: #fd4f88;
+            color: #fff;
+            font-size: .22rem;
+            line-height: .44rem;
+            text-align: center;
+            margin-left: .79rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 主页teamlogo 悬浮*/
+@keyframes Updown{
+  0% {transform: translate(0, 0);} 
+	100% {transform: translate(0, 10px);}
+}
+@-webkit-keyframes Updown{
+	0% {transform: translate(0, 0);} 
+	100% {transform: translate(0, 10px);}
+}
+
+/* 主页VS效果*/
+h1:nth-child(0n + 0), h2:nth-child(5n + 0) {
+  -webkit-animation-name: animateGlithcy;
+          animation-name: animateGlithcy;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-duration: 0s;
+          animation-duration: 0s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+          animation-direction: alternate-reverse;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+h1:nth-child(0n + 1), h2:nth-child(5n + 1) {
+  -webkit-animation-name: animateGlithcy;
+          animation-name: animateGlithcy;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+          animation-direction: alternate-reverse;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+h1:nth-child(0n + 2), h2:nth-child(5n + 2) {
+  -webkit-animation-name: animateGlithcy;
+          animation-name: animateGlithcy;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+          animation-direction: alternate-reverse;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+h1:nth-child(0n + 3), h2:nth-child(5n + 3) {
+  -webkit-animation-name: animateGlithcy;
+          animation-name: animateGlithcy;
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+          animation-direction: alternate-reverse;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+h1:nth-child(0n + 4), h2:nth-child(5n + 4) {
+  -webkit-animation-name: animateGlithcy;
+          animation-name: animateGlithcy;
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+          animation-direction: alternate-reverse;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+h1:nth-child(0n + 5), h2:nth-child(5n + 5) {
+  -webkit-animation-name: animateGlithcy;
+          animation-name: animateGlithcy;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-duration: 2.5s;
+          animation-duration: 2.5s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+          animation-direction: alternate-reverse;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes animateGlithcy {
+  0% {
+    opacity: .1;
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    -webkit-filter: hue-rotate(360deg);
+            filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes animateGlithcy {
+  0% {
+    opacity: .4;
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    -webkit-filter: hue-rotate(360deg);
+            filter: hue-rotate(360deg);
+  }
+}
+/* 主页VS效果 end*/

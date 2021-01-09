@@ -1,0 +1,222 @@
+<template>
+  <div class="flowAd">
+    <transition name="fade">
+      <model v-if="isOpenAd"></model>
+    </transition>
+    <transition name="fade">
+      <div class="fancyBox" v-if="isOpenAd">
+        <div class="fancyBox-close" :disabled="isDataLoaded" @click="cancelBtn()"></div>
+        <div :class="[lang == 'zh-CN' ? 'fancyBoxTop-cn' : lang == 'en-US' ? 'fancyBoxTop-us' : 'fancyBoxTop-tw']"></div>
+        <span class="fancyText">{{ $t('ReceiveAward') }}</span><!--金币-->
+        <!--是否觀看廣告按鈕-->
+        <div class="gold-wrap">
+          <span>+</span>
+          <span class="gold-num">{{ reward }}</span>
+          <span>{{ $t('Coins') }} </span><!--金币-->
+        </div>
+        <div class="fancy-box-btn-wrap">
+          <!-- <input type="button" class="commit" :class="[isDataLoaded ? 'disable' : 'cancelBtn']"  :value=" $t('Cancel')" :disabled="isDataLoaded" @click="cancelBtn()"> -->
+          <input type="button" class="commit" :class="[isDataLoaded ? 'disable' : 'confirmBtn']"  :value="$t('WatchAds')" :disabled="isDataLoaded" @click="confirmBtnEvent()" >
+        </div>
+      </div>
+    </transition>
+
+    <!-- 觀看廣告失敗彈窗 -->
+    <transition name="fade">
+      <model v-if="isFasilAd"></model>
+    </transition>
+    <transition name="fade">
+      <div class="fancyBox" v-if="isFasilAd">
+        <span>{{ $t('WatchAdsAgain') }}?</span
+        ><!--是否觀看廣告按鈕-->
+        <div class="fancy-box-btn-wrap">
+          <input type="button" class="commit cancelBtn"  :value=" $t('Cancel')"  @click="failCancelBtn()">
+          <input type="button" class="commit confirmBtn" :value=" $t('Confirm')" @click="failConfirmBtn()" >
+        </div>
+      </div>
+    </transition>
+
+    <!-- iframe -->
+    <div class="iframe-wrap" v-if="openAdIframe">
+      <div class="count-down">
+        <div class="count-down-wrap" v-if="!isTimeUp">
+          <span>{{ $t('Reciprocal') }}: </span> <!--剩餘-->
+          <span>{{ restTime }}</span>
+          <span>{{ $t('Second') }}</span> <!--秒-->
+        </div>
+        <div class="closeAd-wrap" v-if="isTimeUp" @click="closeAd()">
+          <!-- <div class="closeAd"></div> -->
+          <span>{{ $t('Close') }}</span>
+        </div>
+      </div>
+      <iframe :src="FlowAdUrl" frameborder="0" width="100%" height="100%"></iframe>
+    </div>
+
+    <!-- 錯誤訊息 -->
+
+    <!-- 領取成功彈窗 -->
+    <transition name="fade">
+      <model v-if="isSucessAd"></model>
+    </transition>
+    <transition name="fade">
+      <div class="fancyBox" v-if="isSucessAd">
+        <div :class="[lang == 'zh-CN' ? 'fancyBoxTop-cn' : lang == 'en-US' ? 'fancyBoxTop-us' : 'fancyBoxTop-tw']"></div>
+        <span class="fancyText">{{ $t('SuccessfullyReceived') }}</span><!--領取成功-->
+        <div class="gold-wrap">
+          <span>+</span>
+          <span class="gold-num">{{ reward }}</span>
+          <span>{{ $t('Coins') }} </span><!--金币-->
+        </div>
+        <div class="fancy-box-btn-wrap">
+          <input type="button" class="commit confirmBtn" :value=" $t('Confirm')" @click="isSucessAd = !isSucessAd" >
+        </div>
+        <!-- <span class="tipText">需看完小视频，中途退出没有奖励哦</span> -->
+      </div>
+    </transition>
+  </div>
+</template>
+<script>
+import model from "@/components/model";
+import { apiGetFlowAdByType, apiWatchedFlowAd } from "@/api/FlowAd.js";
+export default {
+  props: {
+    isOpenAd: Boolean,
+    adTypeId: Number,
+    // isFinished: Boolean
+  },
+  components: {
+    model
+  },
+  watch: {
+    isOpenAd: function(bool) {
+      if(bool) {
+        this.getAdByType();
+      }
+    }
+  },
+  data() {
+    return {
+      isOpen: this.isOpenAd,
+      adType: 0,
+      flowAdId: undefined,
+      isDataLoaded: true,
+      watchTime: 0,
+      FlowAdUrl: "",
+      openAdIframe: false,
+      restTime: 0,
+      isTimeUp: false,
+      timer: "",
+      dataLen: undefined,
+      isFasilAd: false,
+      isSucessAd: false,
+      reward: "",
+      isFinish: false,
+      lang: "",
+    };
+  },
+  created() {
+    this.lang = JSON.parse(localStorage.getItem("lang")).tag;
+  },
+  methods: {
+    // 獲取廣告
+    async getAdByType() {
+      let data = {
+        flowAdTypeId: this.adTypeId
+      };
+      await apiGetFlowAdByType(data, true).then(res => {
+        let len = res.Data.Id;
+        this.dataLen = len;
+        this.flowAdId = res.Data.Id;
+        this.watchTime = res.Data.WatchTime;
+        this.FlowAdUrl = res.Data.FlowAdUrl;
+        this.reward = res.Data.Amount;
+        // 取到廣告ID值之前按鈕先鎖住，等取到之後再解鎖
+        this.isDataLoaded = false;
+      });
+    },
+    // 取消觀看廣告按鈕
+    cancelBtn() {
+      this.isOpen = false;
+      this.$emit("update:isOpenAd", this.isOpen);
+    },
+    // 確認觀看廣告按鈕
+    async confirmBtnEvent() {
+      this.isOpen = false;
+      this.$emit("update:isOpenAd", this.isOpen);
+
+      if (this.dataLen > 0) {
+        this.openAdIframe = true;
+        this.countDownTimer();
+      } else {
+        let vm = this;
+        const m = vm.$message({
+          message: "目前無廣告",
+          duration: 3000,
+          type: "error",
+          center: true
+        });
+        setTimeout(() => m.close(), 2000);
+      }
+    },
+
+    // 計時器
+    countDownTimer() {
+      this.isTimeUp = false;
+      this.timer = "";
+      clearInterval(this.timer);
+      this.restTime = this.watchTime;
+      this.timer = setInterval(() => {
+        if (this.restTime == 0) {
+          this.isTimeUp = true;
+          return;
+        }
+        this.restTime = this.restTime - 1;
+      }, 1000);
+    },
+
+    // 點擊關閉廣告
+    closeAd() {
+      let data = {
+        Id: this.flowAdId
+      }
+      apiWatchedFlowAd(data, true).then(res => {
+        // 清除計時器
+        if (this.isFasilAd == false) {
+          clearInterval(this.timer);
+          this.timer = "";
+        }
+        // 觀看完成成功 & 失敗情況
+        if (Math.abs(res.Code) >= 600) {
+          this.isFasilAd = true;
+        } else {
+          this.isFasilAd = false;
+          this.openAdIframe = false;
+          this.isSucessAd = true;
+        }
+      });
+    },
+
+    // 觀看廣告失敗取消按鈕
+    failCancelBtn() {
+      this.isFasilAd = false;
+      this.openAdIframe = false;
+      clearInterval(this.timer);
+    },
+    // 觀看廣告失敗確認按鈕
+    failConfirmBtn() {
+      this.isFasilAd = false;
+      this.openAdIframe = false;
+
+      this.getAdByType().then(() => {
+        this.confirmBtnEvent();
+      })
+    },
+  },
+
+  // 離開本頁時清除計時器
+  destroyed() {
+    this.timer = "";
+    clearInterval(this.timer);
+  },
+};
+</script>

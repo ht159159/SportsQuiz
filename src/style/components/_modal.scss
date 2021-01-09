@@ -1,0 +1,104 @@
+// 彈窗通用
+.modal {
+  position: fixed;
+  z-index: 30000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  &-bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(#000, 0.8);
+  }
+  &-main {
+    position: absolute;
+    top: 1.8rem;
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
+}
+
+// 簽到
+.modal-signin {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('~@/assets/ModalSignInBackground.png');
+  width: 6.44rem;
+  height: 7.71rem;
+  &-header {
+    padding-top: 3.3rem;
+    text-align: center;
+    &-day {
+      background-color: #000;
+      color: $font-light-1;
+      margin: 0 auto;
+      margin-top: 0.08rem;
+      width: 2.9rem;
+      height: 0.55rem;
+      line-height: 0.55rem;
+      border-radius: 0.25rem;
+      color: $font-gray-1;
+      span {
+        color: #feb700;
+      }
+    }
+  }
+  &-body {
+    padding-top: 0.6rem;
+    text-align: center;
+    &-signs {
+      box-sizing: border-box;
+      display: flex;
+      width: 100%;
+      padding: 0.35rem 0.2rem 0 0.2rem;
+      align-items: center;
+      justify-content: space-between;
+      &-item{
+        &-item {
+          border-radius: 0.09rem;
+          flex-grow: 1;
+          margin: 0 0.1rem;
+          padding: 0.15rem 0;
+          width: .6rem;
+          background-color: #e4e4e4;
+          &-text {
+            font-weight: bold;
+            padding-bottom: 0.08rem;
+            color: $font-gray-2;
+          }
+          &-icon {
+            display: block;
+            max-width: 0.6rem;
+            max-height: 0.3rem;
+            margin: 0 auto;
+            width: .3rem;
+            height: .3rem;
+          }
+        }
+      }
+      
+    }
+    &-tip,
+    &-sub {
+      color: $font-gray-2;
+      span {
+        color: $primary;
+      }
+    }
+    &-tip {
+      padding-top: 0.8rem;
+    }
+  }
+  &-footer {
+    position: absolute;
+    top: calc(100% + 0.8rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0.8rem;
+    height: 0.8rem;
+    background-image: url('~@/assets/error.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}

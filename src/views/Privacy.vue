@@ -1,0 +1,251 @@
+<template>
+    <div :class="[isM ? 'privacy-Mobile' : 'privacy-PC']">
+
+        <!-- 簡中版 -->
+        <template v-if="lang == 'zh-CN'">
+            <div class="header">
+                <back class="back-icon img-he"></back>
+                <div class="title">CrazyGuess隐私政策</div>
+            </div>
+            <p>我们重视用户的隐私，CrazyGuess是壹款提供体育信息数据服务类的产品，为说明您在使用我们产品时会有可能使用或储存您的个人信息，我们将通过本指引向您阐述相关事宜。</p>
+
+            <div class="paragraph">一、我们收集的信息</div>
+            <p></p>
+            <p>在您使用CrazyGuess服务过程中，我们会按照如下方式记录您在使用服务时主动提供或因为使用服务而产生的信息，用以向您提供服务、优化我们的服务以及保障您的账号安全。</p>
+            <p>1. 当您注册CrazyGuess用户服务时，我们会验证您的昵称、头像、手机号码有效性，这些信息是为了帮助您完成球探用户注册，保护您的账号安全。手机号码信息是为满足法律法规的网络实名制要求。</p>
+            <p>2. 当您使用CrazyGuess推送服务时，为保障您的正常使用，维护服务的正常运行，改进及优化服务体验以及保障账号安全，系统会记录您的设备型号、操作系统、唯壹设备标识符、登录IP地址、 接入网络的方式、操作日志、服务故障信息等日志信息。这类信息是为提供服务必须收集的基础信息。</p>
+            <p>3. 当您需要发表照片、评论、点赞等操作时，我们可能会您许可证存储权限，发表的信息会储存在我们的服务器中，储存是实现这壹功能所必需的，我们会以加密的方式储存您的隐私内容。</p>
+            <p></p>
+
+            <div class="paragraph">二、 信息的储存</div>
+            <p></p>
+            <p>1. 储存的地点</p>
+            <p>1.1 我们会按照法律法规规定，将境内收集的用户个人信息储存于中国境内。</p>
+            <p>2. 信息储存的期限</p>
+            <p>2.1 手机号码： 若您需要使用CrazyGuess服务，我们将壹直保存您的手机号码，以保证您正常使用该功能与服务，当您注销CrazyGuess账号后，我们也将删除相应的信息。</p>
+            <p>2.2 当您发送了内容，我们需要进行信息保存，以保证您正常使用，当您删除内容后，我们也将删除相应的信息。 当我们的产品或服务停止运营的情况时，我们将会以推送通知、站内信等形式告知您，并在壹个合理的期间内删除您的个人信息。</p>
+            <p></p>
+
+            <div class="paragraph">三、 信息的收集形式</div>
+            <p></p>
+            <p>1.当您初次启动CrazyGuess App时，我们会以弹窗询问的形式，征求您的同意，以收集唯壹设备标识符等信息。</p>
+            <p>2.当您更换/设置用户头像时，我们会以弹窗询问的形式，征求您的同意，以收集照片、照相机权限等信息。</p>
+            <p>3.当您使用语音录音功能时，我们会以弹窗询问的形式 ，征求的的同意，已收集设备麦克风权限的信息。</p>
+            <p>4.当您使用内容发布功能时，我们会默认后台储存的内容信息，以确保您可正常使用我们的产品服务。</p>
+            <p></p>
+
+            <div class="paragraph">四、信息的更新</div>
+            <p></p>
+            <p>1. 我们将尽壹切可能采取适当的技术手段，保证您可以了解、更新和更正自己的注册信息或使用我们的服务时提供的其他用户信息。在了解、更新、更正和删除前述信息时，我们可能会要求您进行身份验证，以保障账户安全。</p>
+            <p>2. 如您需要更新、更正和删除您提交的用户信息时，可以通过访问CrazyGuess服务的相关操作完成。壹般情况下，您可随时修改自己提交的信息，但出于安全性和身份识别的考虑，您可能无法修改注册时提供的某些初始注册信息及验证信息。</p>
+            <p></p>
+
+            <div class="paragraph">五、收集信息的使用</div>
+            <p></p>
+            <p>1. 为确保服务质量，我们可能记录相关信息以了解应用程序的运行情况，例如：使用应用程序的频率、崩溃数据、总体使用情况、性能数据以及应用程序的来源。我们不会将分析信息与您在应用程序中提供的任何个人身份信息相结合。</p>
+            <p>2. 如我们使用您的个人信息，超出了与收集时所声称的目的及具有直接或合理关联的范围，我们将在使用您的个人信息前，再次向您告知并征得您的明示同意。</p>
+            <p></p>
+
+            <div class="paragraph">六、个人信息的安全</div>
+            <p></p>
+            <p>1. 我们不会主动共享或转让您的个人信息至CrazyGuess以外的第三方，如存在其他共享或转让您的个人信息或您需要我们将您的个人信息共享或转让至CrazyGuess外的第三方情形时，我们会直接或确认第三方征得您对上述行为的明示同意。</p>
+            <p>2. 我们不会对外公开披露其收集的个人信息，如必须公开披露时，我们会向您告知此次公开披露的目的、披露信息的类型及可能涉及的敏感信息，并征得您的明示同意。</p>
+            <p>3. 我们将在合理的安全水平内使用各种安全保护措施以保障信息的安全。如：使用加密技术（如SSL）、匿名化处理等手段来保护妳的个人信息。</p>
+            <p>4. 我们建立专门的管理制度、流程和组织以保障信息的安全。如：严格限制访问信息的人员范围，要求他们遵守保密义务，并进行审计。</p>
+            <p>5.若发生个人信息泄露等安全事件，我们会启动应急预案，阻止安全事件扩大，并以推送通知、公告等形式告知妳。</p>
+            <p></p>
+
+            <div class="paragraph">七、未成年人保护</div>
+            <p></p>
+            <p>我们非常重视对未成年人个人信息的保护。根据相关法律法规的规定，若您是14周岁以下的未成年人，在使用球探服务前，应事先取得您的家长或法定监护人的书面同意。若您是未成年人的监护人，当您对您所监护的未成年人的个人信息有相关疑问时，请通过本隐私政策最后的联系方式与我们联系。</p>
+            <p></p>
+
+            <div class="paragraph">八、《隐私政策》的修订</div>
+            <p></p>
+            <p>随着我们服务范围的扩大或变更，我们可能会适时修订本隐私政策的相关条款，当政策条款发生变更时，我们会在客户端显著的位置或其他方式向您展示修订后的政策内容。请您注意，当您确认或继续使用产品时，我们才会按照更新后的政策执行。</p>
+            <p></p>
+
+            <div class="paragraph">九、联系我们</div>
+            <p></p>
+            <p>如您有其他的疑问、投诉、建议等相关合理的问题时，可通过以下方式与我们进行联系，我们会在尽快审核所涉问题，并在确认妳的用户身份后的15天内予以回复。</p>
+            <p>邮箱:chenchengde2021@gmail.com</p>
+            <p>更新日期：2020年12月3日</p>
+            <p></p>
+        </template>
+
+        <!-- 繁中版 -->
+        <template v-if="lang == 'zh-TW'">
+            <div class="header">
+                <back class="back-icon img-he"></back>
+                <div class="title">CrazyGuess隱私政策</div>
+            </div>
+            <p>我們重視用戶的隱私，CrazyGuess是壹款提供體育資訊數據服務類的產品，為說明您在使用我們產品時會有可能使用或儲存您的個人信息，我們將通過本指引向您闡述相關事宜。</p>
+
+            <div class="paragraph">一、我們收集的信息</div>
+            <p></p>
+            <p>在您使用CrazyGuess服務過程中，我們會按照如下方式記錄您在使用服務時主動提供或因為使用服務而產生的信息，用以向您提供服務、優化我們的服務以及保障您的賬號安全。</p>
+            <p>1. 當您註冊CrazyGuess用戶服務時，我們會驗證您的昵稱、頭像、手機號碼有效性，這些信息是為了幫助您完成球探用戶註冊，保護您的賬號安全。手機號碼信息是為滿足法律法規的網絡實名制要求。</p>
+            <p>2. 當您使用CrazyGuess推送服務時，為保障您的正常使用，維護服務的正常運行，改進及優化服務體驗以及保障賬號安全，系統會記錄您的設備型號、操作系統、唯壹設備標識符、登錄IP地址、 接入網絡的方式、操作日誌、服務故障信息等日誌信息。這類信息是為提供服務必須收集的基礎信息。</p>
+            <p>3. 當您需要發表照片、評論、點贊等操作時，我們可能會您授權儲存權限，發表的信息會儲存在我們的服務器中，儲存是實現這壹功能所必需的，我們會以加密的方式儲存您的隱私內容。</p>
+            <p></p>
+
+            <div class="paragraph">二、 信息的儲存</div>
+            <p></p>
+            <p>1. 儲存的地點</p>
+            <p>1.1 我們會按照法律法規規定，將境內收集的用戶個人信息儲存於中國境內。</p>
+            <p>2. 信息儲存的期限</p>
+            <p>2.1 手機號碼： 若您需要使用CrazyGuess服務，我們將壹直保存您的手機號碼，以保證您正常使用該功能與服務，當您註銷CrazyGuess賬號後，我們也將刪除相應的信息。</p>
+            <p>2.2 當您發送了內容，我們需要進行信息保存，以保證您正常使用，當您刪除內容後，我們也將刪除相應的信息。 當我們的產品或服務停止運營的情況時，我們將會以推送通知、站內信等形式告知您，並在壹個合理的期間內刪除您的個人信息。</p>
+            <p></p>
+
+            <div class="paragraph">三、 信息的收集形式</div>
+            <p></p>
+            <p>1.當您初次啟動CrazyGuess App時，我們會以彈窗詢問的形式，征求您的同意，以收集唯壹設備標識符等信息。</p>
+            <p>2.當您更換/設置用戶頭像時，我們會以彈窗詢問的形式，征求您的同意，以收集照片、照相機權限等信息。</p>
+            <p>3.當您使用語音錄音功能時，我們會以彈窗詢問的形式 ，征求的的同意，已收集設備麥克風權限的信息。</p>
+            <p>4.當您使用內容發布功能時，我們會默認後臺儲存的內容信息，以確保您可正常使用我們的產品服務。</p>
+            <p></p>
+
+            <div class="paragraph">四、信息的更新</div>
+            <p></p>
+            <p>1. 我們將盡壹切可能采取適當的技術手段，保證您可以了解、更新和更正自己的註冊信息或使用我們的服務時提供的其他用戶信息。在了解、更新、更正和刪除前述信息時，我們可能會要求您進行身份驗證，以保障帳戶安全。</p>
+            <p>2. 如您需要更新、更正和刪除您提交的用戶信息時，可以通過訪問CrazyGuess服務的相關操作完成。壹般情況下，您可隨時修改自己提交的信息，但出於安全性和身份識別的考慮，您可能無法修改註冊時提供的某些初始註冊信息及驗證信息。</p>
+            <p></p>
+
+            <div class="paragraph">五、收集信息的使用</div>
+            <p></p>
+            <p>1. 為確保服務質量，我們可能記錄相關信息以了解應用程序的運行情況，例如：使用應用程序的頻率、崩潰數據、總體使用情況、性能數據以及應用程序的來源。我們不會將分析信息與您在應用程序中提供的任何個人身份信息相結合。</p>
+            <p>2. 如我們使用您的個人信息，超出了與收集時所聲稱的目的及具有直接或合理關聯的範圍，我們將在使用您的個人信息前，再次向您告知並征得您的明示同意。</p>
+            <p></p>
+
+            <div class="paragraph">六、個人信息的安全</div>
+            <p></p>
+            <p>1. 我們不會主動共享或轉讓您的個人信息至CrazyGuess以外的第三方，如存在其他共享或轉讓您的個人信息或您需要我們將您的個人信息共享或轉讓至CrazyGuess外的第三方情形時，我們會直接或確認第三方征得您對上述行為的明示同意。</p>
+            <p>2. 我們不會對外公開披露其收集的個人信息，如必須公開披露時，我們會向您告知此次公開披露的目的、披露信息的類型及可能涉及的敏感信息，並征得您的明示同意。</p>
+            <p>3. 我們將在合理的安全水平內使用各種安全保護措施以保障信息的安全。如：使用加密技術（如SSL）、匿名化處理等手段來保護妳的個人信息。</p>
+            <p>4. 我們建立專門的管理制度、流程和組織以保障信息的安全。如：嚴格限制訪問信息的人員範圍，要求他們遵守保密義務，並進行審計。</p>
+            <p>5.若發生個人信息泄露等安全事件，我們會啟動應急預案，阻止安全事件擴大，並以推送通知、公告等形式告知妳。</p>
+            <p></p>
+
+            <div class="paragraph">七、未成年人保護</div>
+            <p></p>
+            <p>我們非常重視對未成年人個人信息的保護。根據相關法律法規的規定，若您是14周歲以下的未成年人，在使用球探服務前，應事先取得您的家長或法定監護人的書面同意。若您是未成年人的監護人，當您對您所監護的未成年人的個人信息有相關疑問時，請通過本隱私政策最後的聯系方式與我們聯系。</p>
+            <p></p>
+
+            <div class="paragraph">八、《隱私政策》的修訂</div>
+            <p></p>
+            <p>隨著我們服務範圍的擴大或變更，我們可能會適時修訂本隱私政策的相關條款，當政策條款發生變更時，我們會在客戶端顯著的位置或其他方式向您展示修訂後的政策內容。請您註意，當您確認或繼續使用產品時，我們才會按照更新後的政策執行。</p>
+            <p></p>
+
+            <div class="paragraph">九、聯系我們</div>
+            <p></p>
+            <p>如您有其他的疑問、投訴、建議等相關合理的問題時，可通過以下方式與我們進行聯系，我們會在盡快審核所涉問題，並在確認妳的用戶身份後的15天內予以回復。</p>
+            <p>郵箱:chenchengde2021@gmail.com</p>
+            <p>更新日期：2020年12月3日</p>
+            <p></p>
+        </template>
+
+        <!-- 英文版 -->
+        <template v-if="lang == 'en-US'">
+            <div class="header">
+                <back class="back-icon img-he"></back>
+                <div class="title">CrazyGuess Privacy Policy</div>
+            </div>
+            <p>We value user privacy. CrazyGuess is a product that provides sports information data services. In order to explain that you may use or store your personal information when using our products, we will explain relevant matters to you through this guide.</p>
+
+            <div class="paragraph">Information we collect</div>
+            <p></p>
+            <p>During your use of the CrazyGuess service, we will record the information you actively provide when you use the service or generated by using the service as follows to provide you with services, optimize our services, and protect your account security.</p>
+            <p>1. When you register for the CrazyGuess user service, we will verify the validity of your nickname, avatar, and mobile phone number. This information is to help you complete the scout user registration and protect your account security. The mobile phone number information is to meet the network real-name system requirements of laws and regulations.</p>
+            <p>2. When you use the CrazyGuess push service, in order to ensure your normal use, maintain the normal operation of the service, improve and optimize the service experience and ensure account security, the system will record your device model, operating system, unique device identifier, Log information such as login IP address, network access method, operation log, service failure information, etc. This type of information is the basic information that must be collected to provide services.</p>
+            <p>3. When you need to post photos, comments, likes and other operations, we may authorize storage permissions for you, and the published information will be stored on our server. Storage is necessary to realize this function, and we will encrypt it Way to store your private content.</p>
+            <p></p>
+
+            <div class="paragraph">Information storage</div>
+            <p></p>
+            <p>1. Storage location</p>
+            <p>1.1 We will store the personal information of users collected in China in China in accordance with laws and regulations.</p>
+            <p>2. Period of information storage</p>
+            <p>2.1 Mobile phone number: If you need to use the CrazyGuess service, we will always save your mobile phone number to ensure that you use the functions and services normally. When you log out of your CrazyGuess account, we will also delete the corresponding information.</p>
+            <p>2.2 When you send the content, we need to save the information to ensure your normal use. When you delete the content, we will also delete the corresponding information. When our products or services cease to operate, we will notify you in the form of push notifications, station messages, etc., and delete your personal information within a reasonable period.</p>
+            <p></p>
+
+            <div class="paragraph">Information collection form</div>
+            <p></p>
+            <p>1. When you launch the CrazyGuess App for the first time, we will ask for your consent in the form of a pop-up inquiry to collect information such as unique device identifiers.</p>
+            <p>2. When you change/set the user profile picture, we will ask for your consent in the form of a pop-up window to collect information such as photos and camera permissions.</p>
+            <p>3. When you use the voice recording function, we will ask for the consent in the form of a pop-up window, and have collected the information about the microphone permissions of the device.</p>
+            <p>4. When you use the content publishing function, we will default to the content information stored in the background to ensure that you can use our products and services normally.</p>
+            <p></p>
+
+            <div class="paragraph">Information update</div>
+            <p></p>
+            <p>1. We will do everything possible to adopt appropriate technical means to ensure that you can understand, update and correct your registration information or other user information provided when using our services. When we understand, update, correct and delete the aforementioned information, we may require you to verify your identity to protect your account.</p>
+            <p>2. If you need to update, correct and delete the user information you submitted, you can complete it by accessing the relevant operations of the CrazyGuess service. In general, you can modify the information you submit at any time, but for security and identification considerations, you may not be able to modify some of the initial registration information and verification information provided during registration.</p>
+            <p></p>
+
+            <div class="paragraph">Use of collected information</div>
+            <p></p>
+            <p>1. To ensure the quality of service, we may record relevant information to understand the operation of the application, such as: frequency of application use, crash data, overall usage, performance data and the source of the application. We will not combine analytical information with any personally identifiable information you provide in the app.</p>
+            <p>2. If we use your personal information beyond the stated purpose at the time of collection and the scope of direct or reasonable connection, we will notify you again and obtain your express consent before using your personal information.</p>
+            <p></p>
+
+            <div class="paragraph">Security of personal information</div>
+            <p></p>
+            <p>1. We will not actively share or transfer your personal information to a third party other than CrazyGuess, if there are other sharing or transfer of your personal information or you need us to share or transfer your personal information to a third party other than CrazyGuess , We will directly or confirm that a third party obtains your express consent to the above behavior.</p>
+            <p>2. We will not publicly disclose the personal information it collects. If public disclosure is necessary, we will inform you of the purpose of this public disclosure, the type of information disclosed and the sensitive information that may be involved, and obtain your express consent .</p>
+            <p>3. We will use various security protection measures within a reasonable security level to ensure the security of information. Such as: use encryption technology (such as SSL), anonymization and other means to protect your personal information.</p>
+            <p>4. We have established special management systems, procedures and organizations to ensure information security. For example, strictly restrict the scope of persons who can access information, require them to observe confidentiality obligations and conduct audits.</p>
+            <p>5. In the event of a security incident such as personal information leakage, we will initiate an emergency plan to prevent the expansion of the security incident, and notify you in the form of push notifications, announcements, etc.</p>
+            <p></p>
+
+            <div class="paragraph">Protection of minors</div>
+            <p></p>
+            <p>We attach great importance to the protection of personal information of minors. According to relevant laws and regulations, if you are a minor under the age of 14, you should obtain the written consent of your parent or legal guardian before using the scout service. If you are the guardian of a minor, when you have any questions about the personal information of the minor under your supervision, please contact us through the contact information at the end of this privacy policy.</p>
+            <p></p>
+
+            <div class="paragraph">Revision of "Privacy Policy</div>
+            <p></p>
+            <p>As the scope of our services expand or change, we may revise the relevant terms of this privacy policy in due course. When the policy terms are changed, we will show you the revised policy content in a prominent position on the client side or in other ways. Please note that when you confirm or continue to use the product, we will implement the updated policy.</p>
+            <p></p>
+
+            <div class="paragraph">Contact us</div>
+            <p></p>
+            <p>If you have other questions, complaints, suggestions and other related reasonable issues, you can contact us through the following methods. We will review the issues as soon as possible and reply within 15 days after confirming your user identity.</p>
+            <p>Email: chenchengde2021@gmail.com</p>
+            <p>Update date: December 3, 2020</p>
+            <p></p>
+        </template>
+    </div>
+</template>
+<script>
+import back from "@/components/Botton/back.vue";
+export default {
+    components: {
+        back
+    },
+    data() {
+        return {
+            isM: false,
+            lang: "",
+        }
+    },
+    created() {
+        this.lang = JSON.parse(localStorage.getItem("lang")).tag;
+    },
+    mounted() {
+        if (this.isMobile()) {
+            this.isM = true;
+        } else {
+            this.isM = false;
+        }
+    },
+    methods: {
+        // 偵測裝置，手機或電腦
+        isMobile() {
+            try{ document.createEvent("TouchEvent"); return true; }
+            catch(e){ return false;}
+        }
+    },
+}
+</script>

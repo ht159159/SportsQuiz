@@ -1,0 +1,151 @@
+.flowAd {
+    .fancyBox {
+        position: fixed;
+        top: calc((100% - 4.5rem) / 2);
+        left: calc((100% - 6.44rem) / 2);
+        width: 6.44rem;
+        height: 4.5rem;
+        background: #fff;
+        z-index: 1002;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        border-radius: 0.2rem;
+        padding-top: 1.2rem;
+        .fancyBox-close {
+            width: 0.32rem;
+            height: 0.32rem;
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: url('~@/assets/ad/close-ad.png') no-repeat center;
+            z-index: 1000;
+        }
+        .fancy-box-btn-wrap {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .commit{
+                // width: 3.5rem;
+                height: 0.8rem;
+                border: none;
+                font-size: 0.32rem;
+                line-height: 0.8rem;
+                border-radius: 40px;
+                color: #ffffff;
+                display: block;
+                margin: 0 auto;
+                -webkit-transition: 0.3s;
+                transition: 0.3s;
+                text-align: center;
+                box-shadow: 6px 6px 6px #8c7d7f;
+                padding: 0 0.5rem;
+            }
+            .cancelBtn {
+                background: #64656d;
+               
+            }
+            .confirmBtn {
+                @include myself_btn();
+            }
+            .disable {
+                background-color: #cccccc;
+                color: #999;
+            }
+        }
+        .fancyBoxTop-cn {
+            width: 100%;
+            height: 3.4rem;
+            position: absolute;
+            top: -1.6rem;
+            left: -0.36rem;
+            background: url('~@/assets/ad/sucess-bg.png') no-repeat center;
+        }
+        .fancyBoxTop-us{
+            width: 100%;
+            height: 3.4rem;
+            position: absolute;
+            top: -1.6rem;
+            left: -0.36rem;
+            background: url('~@/assets/ad/sucess-bg-us.png') no-repeat center;
+        }
+        .fancyBoxTop-tw {
+            width: 100%;
+            height: 3.4rem;
+            position: absolute;
+            top: -1.6rem;
+            left: -0.36rem;
+            background: url('~@/assets/ad/sucess-bg-tw.png') no-repeat center;
+        }
+        .fancyText {
+            font-weight: bold;
+            color: #000;
+            font-size: 0.4rem;
+        }
+        .gold-wrap {
+            display: flex;
+            justify-content: center;
+            span {
+                color: #c89505;
+                font-size: 0.32rem;
+            }
+            .gold-num {
+                font-size: 0.8rem;
+            }
+        }
+        .tipText {
+            font-size: 0.28rem;
+            color: #555555;
+        }
+    }
+
+    .iframe-wrap {
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        .count-down{
+            width: 2.4rem;
+            height: 0.85rem;
+            position: absolute;
+            top: 0.5rem;
+            right: 0rem;
+            display: flex;
+            background: url('~@/assets/ad/count-down.png') no-repeat center;
+            justify-content: center;
+            padding-left: 0.5rem;
+            .count-down-wrap  {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #ffffff;
+                span {
+                    color: #ffffff;
+                    font-size: 0.32rem;
+                    line-height: 0.32rem;
+                }
+            }
+            .closeAd-wrap {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                span {
+                    color: #ffffff;
+                    font-size: 0.36rem;
+                    line-height: 0.36rem;
+                }
+                .closeAd {
+                    width: 0.36rem;
+                    height: 0.36rem;
+                    background: url('~@/assets/icons/x.png') no-repeat center;
+                    margin-right: 0.2rem;
+                }
+            }
+        }
+    }
+}

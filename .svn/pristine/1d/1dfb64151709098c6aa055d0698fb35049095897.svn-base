@@ -1,0 +1,463 @@
+.recommended .content::-webkit-scrollbar {
+    display: none;
+}
+.searchClub {
+    width: 100%;
+    height: 100%;
+    background: #f2f2f2;
+    position: relative;
+    &-header {
+        width: 100%;
+        height: 1.1rem;
+        line-height: 1.2rem;
+        text-align: center;
+        @include page_header_color($theme-red);
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        h3 {
+            @include page_header_text_color($theme-red-header-text-color);
+            display: inline-block;
+            margin-left: -0.5rem;
+        }
+        .img-he {
+            margin-left: 0.3rem;
+            float: left;
+            margin-top: 0.4rem;
+            width: 0.42rem;
+            height: 0.42rem;
+        }
+        .img-he:active {
+            transform: scale(0.95);
+        }
+        .filter {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            right: 0.2rem;
+            font-weight: bold;;
+            @include page_header_text_color($theme-red-header-text-color);
+            span {
+                font-size: 0.28rem;
+                line-height: 0.28rem;
+                flex-shrink: 0;
+            }
+        }
+    }
+    .back-ciub-list-wrap {
+        height: 1.1rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 0.2rem;
+        border: 1px solid #dddddd;
+        .back-ciub-list {
+            width: 0.5rem;
+            height: 0.8rem;
+            background: url('~@/assets/icons/back.png') no-repeat center;
+            margin-right: 0.2rem;
+            background-size: 30%;
+        }
+    }
+    .filter-wrap {
+        // margin-top: 1.1rem;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: -100%;
+        overflow: hidden;
+        position: fixed;
+        z-index: 1;
+        background-color: #f2f2f2;
+        transform: translateX(0%);
+        transition-timing-function: ease-in;
+        transition: 0.2s;
+    }
+    .category-wrap {
+        height: calc(100% - 2.1rem);
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        .category-list {
+            display: flex;
+            align-items: center;
+            padding: 0.35rem 0.2rem;
+            border-bottom: 1px dashed #bdbcbc;
+            img {
+                width: 0.5rem;
+                height: 0.5rem;
+                margin-right: 0.2rem;
+            }
+            p {
+                font-size: 0.30rem;
+            }
+        }
+        .category-list:active {
+            background-color: #c9c9c9;
+            transform: scale(0.95);
+        }
+    }
+    // .category {
+    //     width: 100%;
+    //     // margin-top: 1.1rem;
+    //     position: fixed;
+    //     top: 1.1rem;
+    //     overflow: auto;
+    //     display: flex;
+    //     justify-content: space-between;
+    //     align-items: center;
+    //     background-color: #fff;
+    //     z-index: 1;
+    //     filter: drop-shadow(0px 5px 6.5px rgba(147,147,147,0.29));
+
+    // }
+    // .category-wrap {
+    //     display: flex;
+    // }
+    // .category-type {
+    //     width: 2.5rem;
+    //     height: 0.8rem;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     position: relative;
+    //     p {
+    //         width: 90%;
+    //         height: 100%;
+    //         text-align: center;
+    //         font-size: 0.3rem;
+    //         line-height: 0.8rem;
+    //         color: #8c8c8c;
+    //         overflow:hidden;
+    //         white-space: nowrap; // 死不換行
+    //         text-overflow: ellipsis; // 縮短 ...
+    //     }
+    //     .category-type-active {
+    //         @include myself_task_category_text($theme-red-category);
+    //         box-sizing: border-box;
+    //     }
+    // }
+    // .category-type {
+    //     &::after {
+    //         content: "|";
+    //         position: absolute;
+    //         top: 0.24rem;
+    //         right: 0;
+    //         color: #d1d1d1;
+    //     }
+    // }
+
+    .club-Box{
+        width: 100%;
+        height: calc(100% - 2.1rem);
+        overflow: auto;
+        margin-top: 1.1rem;
+        margin-bottom: 0.2rem;
+        // text-align: center;
+        .no-data {
+            background: url("~@/assets/noInfo.png");
+            background-position: center;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            height: 6.2rem;
+            width: 68%;
+            margin: 0 auto;
+            position: relative;
+            p {
+              position: absolute;
+              bottom: 0.5rem;
+              left: 50%;
+              transform: translateX(-50%);
+              color: #8b8b8b;
+            }
+        }
+        .search-bar {
+            width: 100%;
+            height: 1rem;
+            position: relative;
+            padding: 0.22rem;
+            input {
+                width: 100%;
+                height: 100%;
+                border-radius: 0.3rem;
+                border: 1px solid gray;
+                padding-left: 0.25rem;
+            }
+            .search-icon {
+                width: 0.4rem;
+                height: 0.4rem;
+                background: url('~@/assets/club/icon-search.png') no-repeat center;
+                background-size: contain;
+                position: absolute;
+                top: 0.28rem;
+                right: 0.35rem;
+            }
+        }
+        .club-list{
+            width: 100%;
+            padding: 0.15rem 0.22rem;
+            box-sizing: border-box;
+
+            .clubs{
+                width: 100%;
+                border-radius: 0.2rem;
+                filter: drop-shadow(0px 0.1rem 0.07rem rgba(219,219,219,0.43));
+                background-color: #fff;
+                padding: 0.1rem 0.3rem 0.1rem 0;
+                box-sizing: border-box;
+                position: relative;
+
+                img{
+                    width: 0.7rem;
+                }
+
+                &-box{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    &-bg{
+                        width: 1.04rem;
+                        height: 1.04rem;
+                        border-radius: 10px;
+                        filter: drop-shadow(0px 0.08rem 0.1rem rgba(162,162,162,0.39));
+                        background: #fff;
+                        position: relative;
+                        left: -0.1rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        img{
+                            width: 38px;
+                        }
+                    }
+
+                    &-content{
+                        display: flex;
+                        width: 85%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        color: #575757;
+                        padding-left: 15px;
+                        box-sizing: border-box;
+
+                        .content-box{
+                            div{
+                                line-height: initial;
+                            }
+
+                            &-title{
+                                font-size: 0.32rem;
+                            }
+                            &-statement{
+                                font-size: 0.24rem;
+                                color: #898989;
+                            }
+                        }
+
+                        .clubs-btn-member {
+                            width: 0.32rem;
+                            height: 0.32rem;
+                            position: absolute;
+                            top: calc((100% - 0.32rem) / 2);
+                            right: 0.3rem;
+                            color: #fff;
+                            background-image: url('~@/assets/club/joinClub-icon2.png');
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                        }
+                        .clubs-btn{
+                            width: 0.32rem;
+                            height: 0.32rem;
+                            position: absolute;
+                            top: calc((100% - 0.32rem) / 2);
+                            right: 0.3rem;
+                            color: #fff;
+                            background-image: url('~@/assets/club/joinClub-icon.png');
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                            z-index: 1001;
+                        }
+                    }
+                }
+            }
+            .clubs:active {
+                background-color: #c9c9c9;
+                transform: scale(0.95);
+            }
+
+            .clubs-box:last-child .clubs-box-content{
+                border-bottom: none;
+            }
+            .more{
+                margin-top: 10px;
+            }
+        }
+    }
+
+    .noMission{
+        width: 65%;
+        margin-top: 1rem;
+    }
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity 0.5s;
+    }
+
+    .fade-enter,
+    .fade-leave-to {
+        opacity: 0;
+    }
+
+    .fade-leave,
+    .fade-enter-to {
+        opacity: 1;
+    }
+
+    // .changeBtn {
+    //     color: #fff;
+    //     background: -webkit-gradient(linear, left top, right top, from(#e73a51), to(#dc3849));
+    //     background: linear-gradient(to right, #e73a51, #dc3849);
+    //     border: none;
+    // }
+    .btn-wrap {
+        width: 100%;
+        // background-color: #fff;
+        position: fixed;
+        bottom: 0;
+        .changeBtnHasMember {
+            display: block;
+            border: 0;
+            width: 6.82rem;
+            height: 0.8rem;
+            border-radius: 0.6rem;
+            margin: 0 auto;
+            outline: none;
+            box-shadow: 3px 6px 9px #8b8b8b;
+            background:#EBEBEB;
+            color:#999;
+        }
+        .changeBtn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 0;
+            width: 6.82rem;
+            height: 0.8rem;
+            border-radius: 0.6rem;
+            // color: #c12f3e;
+            @include myself_btn();
+            margin: 0 auto;
+            outline: none;
+            // border: 1px solid #b9b9b9;
+            // box-shadow: 3px 6px 9px #a08083;
+            box-shadow: 3px 6px 9px #dfa9ae;
+        }
+        .changeBtn:active {
+            background-color: #c9c9c9;
+            transform: scale(0.95);
+        }
+    }
+
+    .fancy-box {
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        width: 95%;
+        height: auto;
+        background-size: contain;
+        position: fixed;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        border-radius: 0.2rem;
+        img {
+            width: 100%;
+        }
+        &-content {
+            width: 100%;
+            height: 3rem;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            p {
+                font-size: 0.32rem;
+                line-height: 0.32rem;
+            }
+        }
+        &-btn {
+            width: 100%;
+            // height: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+            padding-bottom: 0.2rem;
+            border-radius: 0 0 0.2rem 0.2rem;
+            p {
+                font-size: 0.28rem;
+                color: #dc3849;
+                margin-top: 0.25rem;
+            }
+            &-confirm {
+                width: 85%;
+                font-size: 0.4rem;
+                line-height: 0.4rem;
+                color: #ffffff;
+                padding: 0.3rem;
+                text-align: center;
+                border-radius: 0.5rem;
+                @include myself_btn();
+                margin: 0.2rem;
+            }
+            &-cancel {
+                width: 85%;
+                font-size:  0.4rem;
+                line-height: 0.4rem;
+                color: #ffffff;
+                padding: 0.3rem;
+                text-align: center;
+                border-radius: 0.5rem;
+                background-image: linear-gradient(-29deg, #acacac 4%, #c5c5c5 100%);
+            }
+        }
+    }
+
+    .popLeftIn{
+        transition: 0.25s;
+        transition-timing-function: ease-out;
+        transform: translateX(100%);
+        opacity: 1;
+    }
+
+    // 彈出
+    // .pop-enter-active {
+    //     transition: 0.3s;
+    //     // transform: scale(1);
+    //     left: -100%;
+    // }
+    
+    // .pop-enter {
+    //     // transform: scale(0);
+    //     left: 100%;
+    // }
+    
+    // .pop-leave-active {
+    //     transition: 0.3s;
+    //     transform: scale(0);
+    // }
+    // .pop-leave {
+    //     transform: scale(1);
+    // }
+}

@@ -1,0 +1,260 @@
+.luck {
+  background-color: #140c0a !important;
+  width: 100%;
+  overflow-x: hidden !important;
+}
+.luck-CN {
+  background: url("~@/assets/lotteybgc_CN.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.luck-TW {
+  background: url("~@/assets/lotteybgc_TW.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.luck-US {
+  background: url("~@/assets/lotteybgc_US.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.lottery {
+  margin-top: 2.1rem /* 68/100 */;
+  position: relative;
+  z-index: 2;
+  &-top {
+    width: 2.55rem /* 255/100 */;
+    height: 0.56rem /* 56/100 */;
+    background: url('~@/assets/turntable_03.png');
+    background-size: 100%;
+    position: absolute;
+    left: 50%;
+    top: -2%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  &-bottom {
+    width: 2.55rem /* 255/100 */;
+    height: 0.56rem /* 56/100 */;
+    background: url('~@/assets/turntable_15.png');
+    background-size: 100%;
+    position: absolute;
+    left: 50%;
+    bottom: -2%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  &-left {
+    width: 0.54rem /* 54/100 */;
+    height: 2.54rem /* 254/100 */;
+    position: absolute;
+    background: url('~@/assets/turntable_10.png');
+    background-size: 100%;
+    top: 50%;
+    left: 4%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  &-right {
+    width: 0.54rem /* 54/100 */;
+    height: 2.54rem /* 254/100 */;
+    position: absolute;
+    background: url('~@/assets/turntable_07.png');
+    background-size: 100%;
+    top: 50%;
+    right: 4%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+}
+.share {
+  padding-left: 0.2rem /* 20/100 */;
+  padding-right: 0.2rem /* 20/100 */;
+  margin-top: 1rem /* 100/100 */;
+  .copy {
+    width: 2.27rem /* 227/100 */;
+    height: 1.38rem /* 138/100 */;
+    background: url('~@/assets/copy.png');
+    background-size: 100%;
+    float: left;
+    margin-right: 0.13rem /* 13/100 */;
+    background-repeat: no-repeat;
+    transition: all 0.3s;
+  }
+  .copy:active {
+    transform: scale(0.95);
+  }
+  .wexin {
+    width: 2.26rem /* 226/100 */;
+    height: 1.37rem /* 137/100 */;
+    background: url('~@/assets/wexin.png');
+    background-size: 100%;
+    float: left;
+    transition: all 0.3s;
+  }
+  .wexin:active {
+    transform: scale(0.95);
+  }
+  .pyj {
+    width: 2.26rem /* 226/100 */;
+    height: 1.25rem /* 125/100 */;
+    background: url('~@/assets/friend.png');
+    background-size: 100%;
+    float: left;
+    background-repeat: no-repeat;
+    margin-top: 0.12rem /* 12/100 */;
+    margin-right: 0.13rem /* 13/100 */;
+    transition: all 0.3s;
+  }
+  .pyj:active {
+    transform: scale(0.95);
+  }
+}
+.luck-dialog {
+  width: 6.7rem /* 670/100 */;
+  height: 4.85rem /* 485/100 */;
+  background: url('~@/assets/Number_of_draws.png');
+  background-size: 100%;
+  position: absolute;
+  left: 50%;
+  top: 4%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  .luck-dialog-p {
+    font-size: 0.5rem /* 50/100 */;
+    color: #fff5ce;
+    width: 6.8rem /* 680/100 */;
+    position: absolute;
+    text-align: center;
+    bottom: 22%;
+  }
+  .pgold {
+    font-size: 0.3rem /* 30/100 */;
+  }
+  &-btn {
+    text-align: center;
+    background-color: #dc3849;
+    width: 3.4rem /* 340/100 */;
+    height: 0.78rem /* 78/100 */;
+    position: absolute;
+    bottom: -38%;
+    left: 26%;
+    // transform: translateX(-50%);
+    border-radius: 0.5rem /* 27/100 */;
+    font-size: 0.3rem /* 30/100 */;
+    line-height: 0.78rem;
+    color: #fff;
+    transition: 0.3s;
+  }
+  &-btn:active {
+    transform: scale(0.95);
+  }
+}
+.luck-rule {
+  width: 7.1rem /* 710/100 */;
+  margin: 0 auto;
+  margin-top: 1.5rem /* 240/100 */;
+
+  p {
+    font-size: 0.23rem /* 21/100 */;
+    color: #949494;
+    line-height: 0.3rem /* 30/100 */;
+  }
+  .title {
+    // font-size: 0.24rem /* 24/100 */;
+    color: #dedede;
+  }
+  a{
+    display: block;
+    margin-top: 10px;
+  }
+}
+.luck-button {
+  margin: 0 auto;
+  margin-top: 0.23rem /* 23/100 */;
+  background: url('~@/assets/challenge/button.png');
+  background-size: 100%;
+  width: 4.32rem /* 432/100 */;
+  height: 0.81rem /* 81/100 */;
+  font-size: 0.36rem /* 36/100 */;
+  color: #84521f;
+  text-align: center;
+  line-height: 0.8rem;
+}
+.turntable {
+  //   position: absolute;
+  //   left: calc(50% - 2rem);
+  //   top: calc(50% - 2rem);
+  margin: 0 auto;
+  width: 6.6rem;
+  height: 6.6rem;
+}
+.turntable-name {
+  /*background: pink;*/
+  position: absolute;
+  left: 0.1rem;
+  top: 1.8rem;
+  width: calc(100% - 0.2rem);
+  font-size: 0.26rem;
+  text-align: center;
+  color: #fff;
+}
+
+.lotterytai {
+  width: 6.52rem /* 652/100 */;
+  height: 1.62rem /* 162/100 */;
+  background: url('~@/assets/stage.png');
+  position: absolute;
+  background-size: 100%;
+  bottom: -14%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  p {
+    position: absolute;
+    left: 3%;
+    bottom: 6%;
+    color: #fff4e8;
+    font-size: 0.33rem;
+    white-space: nowrap;
+    width: 93%;
+    /* height: 36%; */
+    height: 0.33rem;
+    line-height: 0.33rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+.turntable-img {
+  position: absolute;
+  /*要居中就要50% - 宽度 / 2*/
+  left: calc(50% - 0.8rem / 2);
+  top: 0.6rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.pointer {
+  position: absolute;
+  left: 40%;
+  top: 25%;
+  // transform: translate(-50%, -50%);
+  width: 1.61rem;
+  height: 2.47rem;
+  // background-image: url('http://demo.sc.chinaz.net/Files/DownLoad/webjs1/201803/jiaoben5789/images/start.png');
+
+  background: url('~@/assets/pointer.png');
+  background-size: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.3s;
+}
+.pointer:active {
+  // transform: scale(0.95);
+  transform: scale(0.95);
+}

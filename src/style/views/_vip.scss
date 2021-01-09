@@ -1,0 +1,273 @@
+.vip {
+  background-color: #1c1c1c;
+  &-head {
+    @include myself_vip_header_bg();
+    height: 2.8rem /* 280/100 */;
+    background-size: 100%;
+    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    &-img {
+      width: 1.74rem /* 174/100 */;
+      height: 1.57rem /* 153/100 */;
+      // background: url('~@/assets/vip/VIPimg_03.png');
+      background-size: 100%;
+      position: absolute;
+      left: 50%;
+      top: 22%;
+
+      transform: translateX(-50%);
+      &-pic {
+        display: inline-block;
+        width: 1.32rem /* 132/100 */;
+        height: 1.32rem /* 132/100 */;
+        margin-top: 0.12rem;
+        margin-left: 0.12rem;
+        border-radius: 50%;
+        border: 1px solid #000;
+        box-sizing: content-box;
+      }
+    }
+    &-leave {
+      width: 0.74rem /* 74/100 */;
+      height: 0.65rem /* 65/100 */;
+      left: 32.5%;
+      top: 26%;
+      position: absolute;
+      // background: url('~@/assets/vip/V1.png');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      color: #e88645;
+      font-size: 0.24rem /* 24/100 */;
+      text-align: center;
+      line-height: 0.55rem;
+      font-weight: 600;
+      img {
+        width: 120%;
+        height: 120%;
+        display: inline-block;
+      }
+    }
+  }
+  &-main {
+    margin-top: 2.8rem;
+    @include myself_vip_content_bg();
+    // height: calc(100% - 2.8rem);
+    height: 10.54rem /* 1054/100 */;
+    padding-top: 1.63rem /* 163/100 */;
+    &-desk {
+      background: url('~@/assets/vip/VIPdesk_04.png');
+      background-size: 100%;
+      width: 6.86rem /* 686/100 */;
+      height: 1.1rem /* 110/100 */;
+      margin: 0 auto;
+      position: relative;
+      margin-bottom: 1.37rem /* 127/100 */;
+      &-vip10 {
+        position: absolute;
+        left: 50%;
+        top: -115%;
+        transform: translateX(-50%);
+        width: 2.05rem /* 205/100 */;
+        height: 1.92rem /* 192/100 */;
+        background: url('~@/assets/vip/vip10.png');
+        background-size: 100%;
+      }
+      &-vip10hui {
+        position: absolute;
+        left: 50%;
+        top: -115%;
+        transform: translateX(-50%);
+        width: 2.05rem /* 205/100 */;
+        height: 1.92rem /* 192/100 */;
+        background: url('~@/assets/vip/vip10hui.png');
+        background-size: 100%;
+      }
+      &-vip9 {
+        position: absolute;
+        right: 8%;
+        top: -86%;
+        transform: translateX(-50%);
+        width: 1.61rem /* 205/100 */;
+        height: 1.55rem /* 192/100 */;
+        background: url('~@/assets/vip/vip9.png');
+        background-size: 100%;
+      }
+      &-vip9hui {
+        position: absolute;
+        left: 30%;
+        top: -86%;
+        transform: translateX(-50%);
+        width: 1.61rem /* 205/100 */;
+        height: 1.55rem /* 192/100 */;
+        background: url('~@/assets/vip/vip9hui.png');
+        background-size: 100%;
+      }
+      &-vip8 {
+        position: absolute;
+        left: 30%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.69rem /* 205/100 */;
+        height: 1.63rem /* 192/100 */;
+        background: url('~@/assets/vip/vip8.png');
+        background-size: 100%;
+      }
+      &-vip8hui {
+        position: absolute;
+        right: 8%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.69rem /* 205/100 */;
+        height: 1.63rem /* 192/100 */;
+        background: url('~@/assets/vip/vip8hui.png');
+        background-size: 100%;
+      }
+      &-vip7 {
+        position: absolute;
+        right: -5%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.91rem /* 205/100 */;
+        height: 1.57rem /* 192/100 */;
+        background: url('~@/assets/vip/vip7.png');
+        background-size: 100%;
+      }
+      &-vip7hui {
+        position: absolute;
+        right: -5%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.91rem /* 205/100 */;
+        height: 1.57rem /* 192/100 */;
+        background: url('~@/assets/vip/vip7hui.png');
+        background-size: 100%;
+      }
+      &-vip6 {
+        position: absolute;
+        right: 24%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.9rem /* 205/100 */;
+        height: 1.56rem /* 192/100 */;
+        background: url('~@/assets/vip/vip6.png');
+        background-size: 100%;
+      }
+      &-vip6hui {
+        position: absolute;
+        right: 24%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.9rem /* 205/100 */;
+        height: 1.56rem /* 192/100 */;
+        background: url('~@/assets/vip/vip6hui.png');
+        background-size: 100%;
+      }
+      &-vip5 {
+        position: absolute;
+        left: 22%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.24rem /* 205/100 */;
+        height: 1.57rem /* 192/100 */;
+        background: url('~@/assets/vip/vip5.png');
+        background-size: 100%;
+      }
+      &-vip5hui {
+        position: absolute;
+        left: 22%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.24rem /* 205/100 */;
+        height: 1.57rem /* 192/100 */;
+        background: url('~@/assets/vip/vip5hui.png');
+        background-size: 100%;
+      }
+      &-vip4 {
+        position: absolute;
+        right: -1%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.27rem /* 205/100 */;
+        height: 1.6rem /* 192/100 */;
+        background: url('~@/assets/vip/vip4.png');
+        background-size: 100%;
+      }
+      &-vip4hui {
+        position: absolute;
+        right: -1%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.27rem /* 205/100 */;
+        height: 1.6rem /* 192/100 */;
+        background: url('~@/assets/vip/vip4hui.png');
+        background-size: 100%;
+      }
+      &-vip3 {
+        position: absolute;
+        right: 20%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.27rem /* 205/100 */;
+        height: 1.61rem /* 192/100 */;
+        background: url('~@/assets/vip/vip3.png');
+        background-size: 100%;
+      }
+      &-vip3hui {
+        position: absolute;
+        right: 20%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.27rem /* 205/100 */;
+        height: 1.61rem /* 192/100 */;
+        background: url('~@/assets/vip/vip3hui.png');
+        background-size: 100%;
+      }
+      &-vip2 {
+        position: absolute;
+        left: 40%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.27rem /* 205/100 */;
+        height: 1.61rem /* 192/100 */;
+        background: url('~@/assets/vip/VIP2.png');
+        background-size: 100%;
+      }
+      &-vip2hui {
+        position: absolute;
+        left: 40%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.27rem /* 205/100 */;
+        height: 1.61rem /* 192/100 */;
+        background: url('~@/assets/vip/vip2hui.png');
+        background-size: 100%;
+      }
+      &-vip1 {
+        position: absolute;
+        left: 19%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.27rem /* 205/100 */;
+        height: 1.61rem /* 192/100 */;
+        background: url('~@/assets/vip/vip1.png');
+        background-size: 100%;
+      }
+      &-vip1hui {
+        position: absolute;
+        left: 19%;
+        top: -93%;
+        transform: translateX(-50%);
+        width: 1.27rem /* 205/100 */;
+        height: 1.61rem /* 192/100 */;
+        background: url('~@/assets/vip/vip1hui.png');
+        background-size: 100%;
+      }
+    }
+    &-desk:last-child {
+      margin-bottom: 0px;
+    }
+  }
+}

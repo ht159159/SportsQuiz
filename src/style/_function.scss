@@ -1,0 +1,4 @@
+// 設定H1-6文字字型大小
+@function setFontSize($basicPX, $level){
+  @return ($basicPX - 0.4 * $level) * 0.1rem
+}

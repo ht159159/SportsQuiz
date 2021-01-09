@@ -1,0 +1,372 @@
+<template>
+  <div>
+    <dialog-comp v-if="showModal" :classMain="'modal-signin'">
+      <template #header>
+        <div class="modal-signin-header">
+          <img @click="question" class="imgII" src="@/assets/icon_03.png" />
+          <h1>{{ $t("SignInSuccessfully") }}</h1>
+          <div class="modal-signin-header-day h5">
+            {{ $t("ContinuousSighnIn") }}
+            <span class="h5">{{ listMsg.ContinuousSignDays }}</span
+            >{{ $t("Day") }}
+          </div>
+        </div>
+      </template>
+      <template #body>
+        <div class="modal-signin-body">
+          <p class="modal-signin-body-sub">
+            {{ $t("Sign3ConsecutiveAnd7Days") }}
+          </p>
+          <ul class="modal-signin-body-signs">
+            <li class="modal-signin-body-signs-item notclick">
+              <div
+                class="modal-signin-body-signs-item-item modal-signin-body-signs-item-active"
+                @click="getNum1()"
+                :style="{ background: bgColor1 }"
+              >
+                <div class="modal-signin-body-signs-item-item-text">1</div>
+                <img
+                  class="modal-signin-body-signs-item-item-icon"
+                  :src="srcImg1"
+                />
+              </div>
+            </li>
+            <li class="modal-signin-body-signs-item notclick">
+              <div
+                class="modal-signin-body-signs-item-item modal-signin-body-signs-item-active"
+                @click="getNum2()"
+                :style="{ background: bgColor2 }"
+              >
+                <div class="modal-signin-body-signs-item-item-text">2</div>
+                <img
+                  class="modal-signin-body-signs-item-item-icon"
+                  :src="srcImg2"
+                />
+              </div>
+            </li>
+            <li class="modal-signin-body-signs-item notclick">
+              <div
+                class="modal-signin-body-signs-item-item modal-signin-body-signs-item-active"
+                @click="getNum3()"
+                :style="{ background: bgColor3 }"
+              >
+                <div class="modal-signin-body-signs-item-item-text">3</div>
+                <img
+                  class="modal-signin-body-signs-item-item-icon"
+                  :src="srcImg3"
+                  style="width:.5rem;height:.4rem"
+                />
+                <!-- :src="num==3 ? require('@/assets/succ.png') : require('@/assets/ii_03.png')" -->
+              </div>
+            </li>
+            <li class="modal-signin-body-signs-item notclick">
+              <div
+                class="modal-signin-body-signs-item-item modal-signin-body-signs-item-active"
+                @click="getNum4()"
+                :style="{ background: bgColor4 }"
+              >
+                <div class="modal-signin-body-signs-item-item-text">4</div>
+                <img
+                  class="modal-signin-body-signs-item-item-icon"
+                  :src="srcImg4"
+                />
+              </div>
+            </li>
+            <li class="modal-signin-body-signs-item notclick">
+              <div
+                class="modal-signin-body-signs-item-item modal-signin-body-signs-item-active"
+                @click="getNum5()"
+                :style="{ background: bgColor5 }"
+              >
+                <div class="modal-signin-body-signs-item-item-text">5</div>
+                <img
+                  class="modal-signin-body-signs-item-item-icon"
+                  :src="srcImg5"
+                />
+              </div>
+            </li>
+            <li class="modal-signin-body-signs-item notclick">
+              <div
+                class="modal-signin-body-signs-item-item modal-signin-body-signs-item-active"
+                @click="getNum6()"
+                :style="{ background: bgColor6 }"
+              >
+                <div class="modal-signin-body-signs-item-item-text">6</div>
+                <img
+                  class="modal-signin-body-signs-item-item-icon"
+                  :src="srcImg6"
+                />
+              </div>
+            </li>
+            <li class="modal-signin-body-signs-item notclick">
+              <div
+                class="modal-signin-body-signs-item-item modal-signin-body-signs-item-active"
+                @click="getNum7()"
+                :style="{ background: bgColor7 }"
+              >
+                <div class="modal-signin-body-signs-item-item-text">7</div>
+                <img
+                  class="modal-signin-body-signs-item-item-icon"
+                  :src="srcImg7"
+                  style="width:.5rem;height:.4rem"
+                />
+              </div>
+            </li>
+          </ul>
+          <p class="modal-signin-body-tip" v-show="singSuccess">
+            {{ $t("SignSuccessfully") }}，{{ $t("Obtain") }}
+            <span>{{ listMsg.RewardNum }}{{ $t("Coins") }}</span
+            >{{ $t("Reward") }}
+          </p>
+        </div>
+      </template>
+      <template #footer>
+        <div class="modal-signin-footer" @click.prevent="hide">
+          <div class="modal-signin-footer-btn-close"></div>
+        </div>
+      </template>
+    </dialog-comp>
+    <!-- 廣告 -->
+    <FlowAd :isOpenAd.sync="isOpenAd" :adTypeId="adTypeId" :AdObj ="AdObj"/>
+  </div>
+</template>
+
+<script>
+import DialogComp from "./index.vue";
+import { apiSign } from "@/api/User.js";
+import Vue from "vue";
+import { Toast } from "vant";
+import FlowAd from "../FlowAd.vue";
+import { apiGetFlowAdByType} from "@/api/FlowAd.js";
+Vue.use(Toast);
+export default {
+  name: "SignIn",
+  props: {
+    showModal: {
+      type: Boolean,
+      default: false
+    }
+  },
+  components: {
+    DialogComp,
+    FlowAd
+  },
+  filters: {
+    numDay(num) {
+      if ((num = null)) {
+        return 0;
+      } else {
+        return num;
+      }
+    }
+  },
+  data() {
+    return {
+      srcImg1: require("@/assets/iconI_06.png"),
+      srcImg2: require("@/assets/iconI_06.png"),
+      srcImg3: require("@/assets/ii_03.png"),
+      srcImg4: require("@/assets/iconI_06.png"),
+      srcImg5: require("@/assets/iconI_06.png"),
+      srcImg6: require("@/assets/iconI_06.png"),
+      srcImg7: require("@/assets/ii_03.png"),
+      days: Array(7),
+      money: 2,
+      singSuccess: false,
+      day: 0,
+      list: [],
+      listMsg: {
+        ContinuousSignDays: 0
+      },
+      bgColor1: "#e4e4e4",
+      bgColor2: "#e4e4e4",
+      bgColor3: "#e4e4e4",
+      bgColor4: "#e4e4e4",
+      bgColor5: "#e4e4e4",
+      bgColor6: "#e4e4e4",
+      bgColor7: "#e4e4e4",
+      num: 0,
+      feng: this.showModal,
+      isOpenAd: false,
+      adTypeId: 0,
+      AdObj: {},
+    };
+  },
+  methods: {
+    hide() {
+      // 彈出廣告
+      this.adTypeId = 3;
+      let data = {
+        flowAdTypeId: this.adTypeId
+      };
+      apiGetFlowAdByType(data, true).then(res => {
+        if(res.Data.Id == 0) {
+          this.isOpenAd = false;
+          } else {
+          this.isOpenAd = true;
+          this.AdObj = res.Data;
+        }
+      });
+      let self = this;
+      this.$emit("update:showModal", false);
+      this.feng = false;
+    },
+    getDayDate() {
+      let data = {};
+      let self = this;
+      apiSign(data, true).then(res => {
+        if (res.code == 200) {
+          self.feng = true;
+          this.$emit("update:showModal", true);
+          Toast({ message: res.message, duration: 1000 });
+          this.listMsg.ContinuousSignDays = res.data.ContinuousSignDays;
+          if (this.listMsg.ContinuousSignDays == 1) {
+            this.getNum1();
+          }
+          if (this.listMsg.ContinuousSignDays == 2) {
+            this.getNum1();
+            this.getNum2();
+          }
+          if (this.listMsg.ContinuousSignDays == 3) {
+            this.getNum1();
+            this.getNum2();
+            this.getNum3();
+          }
+          if (this.listMsg.ContinuousSignDays == 4) {
+            this.getNum1();
+            this.getNum2();
+            this.getNum3();
+            this.getNum4();
+          }
+          if (this.listMsg.ContinuousSignDays == 5) {
+            this.getNum1();
+            this.getNum2();
+            this.getNum3();
+            this.getNum4();
+            this.getNum5();
+          }
+          if (this.listMsg.ContinuousSignDays == 6) {
+            this.getNum1();
+            this.getNum2();
+            this.getNum3();
+            this.getNum4();
+            this.getNum5();
+            this.getNum6();
+          }
+          if (this.listMsg.ContinuousSignDays == 7) {
+            this.getNum1();
+            this.getNum2();
+            this.getNum3();
+            this.getNum4();
+            this.getNum5();
+            this.getNum6();
+            this.getNum7();
+          }
+        } else {
+          this.listMsg.ContinuousSignDays = res.data.ContinuousSignDays;
+          if (this.listMsg.ContinuousSignDays == 1) {
+            this.getNum1();
+          }
+          if (this.listMsg.ContinuousSignDays == 2) {
+            this.getNum1();
+            this.getNum2();
+          }
+          if (this.listMsg.ContinuousSignDays == 3) {
+            this.getNum1();
+            this.getNum2();
+            this.getNum3();
+          }
+          if (this.listMsg.ContinuousSignDays == 4) {
+            this.getNum1();
+            this.getNum2();
+            this.getNum3();
+            this.getNum4();
+          }
+          if (this.listMsg.ContinuousSignDays == 5) {
+            this.getNum1();
+            this.getNum2();
+            this.getNum3();
+            this.getNum4();
+            this.getNum5();
+          }
+          if (this.listMsg.ContinuousSignDays == 6) {
+            this.getNum1();
+            this.getNum2();
+            this.getNum3();
+            this.getNum4();
+            this.getNum5();
+            this.getNum6();
+          }
+          if (this.listMsg.ContinuousSignDays == 7) {
+            this.getNum1();
+            this.getNum2();
+            this.getNum3();
+            this.getNum4();
+            this.getNum5();
+            this.getNum6();
+            this.getNum7();
+          }
+        }
+      });
+    },
+    getNum1() {
+      this.num = 1;
+      this.bgColor1 = "#feb700";
+      this.srcImg1 = require("@/assets/succ.png");
+    },
+    getNum2() {
+      this.num = 2;
+      this.bgColor2 = "#feb700";
+      this.srcImg2 = require("@/assets/succ.png");
+    },
+    getNum3() {
+      this.num = 3;
+      this.bgColor3 = "#feb700";
+      this.srcImg3 = require("@/assets/li.png");
+    },
+    getNum4() {
+      this.num = 4;
+      this.bgColor4 = "#feb700";
+      this.srcImg4 = require("@/assets/succ.png");
+    },
+    getNum5() {
+      this.num = 5;
+      this.bgColor5 = "#feb700";
+      this.srcImg5 = require("@/assets/succ.png");
+    },
+    getNum6() {
+      this.num = 6;
+      this.bgColor6 = "#feb700";
+      this.srcImg6 = require("@/assets/succ.png");
+    },
+    getNum7() {
+      this.num = 7;
+      this.bgColor7 = "#feb700";
+      this.srcImg7 = require("@/assets/li.png");
+    },
+    question() {}
+  },
+  created() {
+    let token = localStorage.getItem("token");
+    if (token) {
+      this.getDayDate();
+    }
+  }
+};
+</script>
+
+<style scoped>
+.active {
+  background: #f099;
+}
+/* 禁止点击 */
+.notclick {
+  pointer-events: none;
+}
+.imgII {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.24rem;
+  width: 0.36rem;
+  height: 0.36rem;
+}
+</style>

@@ -1,0 +1,168 @@
+.activities-bet {
+    width: 100%;
+    height: 100%;
+    padding: 1.1rem 0px 1rem;
+    &-header {
+        width: 100%;
+        height: 1.1rem;
+        line-height: 1.2rem;
+        text-align: center;
+        z-index: 1001;
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include page_header_color($theme-red);
+        &-wrap {
+            // margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            h3 {
+                @include page_header_text_color($theme-red-header-text-color);
+                display: inline-block;
+            }
+            .back-icon {
+                position: absolute;
+                left: 0.5rem;
+                margin: 0;
+            }
+        }
+    }
+
+    &-content {
+        padding: 0.2rem;
+        filter: drop-shadow(0px 5px 3.5px rgba(219,219,219,0.43));
+    }
+    .activities-bet-vsImg {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.2rem;
+        &-top {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+        }
+        .activities-bet-vsImg-box {
+            width: calc(100% / 3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 1.2rem;
+                height: 1.2rem;
+                margin-bottom: 0.2rem;
+            }
+            p {
+                font-size: 0.32rem;
+                line-height: 0.32rem;
+            }
+        }
+        .activities-bet-vs {
+            width: calc(100% / 3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.5rem;
+            line-height: 0.5rem;
+            color: #4659ff;
+            position: absolute;
+            top: 0.4rem;
+            left: calc((100% - (100% / 3)) / 2);
+        }
+        &-bottom {
+            padding: 0.25rem 1.2rem;
+            font-size: 0.28rem;
+            background-color: #3649e6;
+            color: #fff;
+            border-radius: 0.35rem;
+            margin-top: 0.3rem;
+        }
+    }
+    .bet-block {
+        width: 100%;
+        border-radius: 0.25rem;
+        background-color: #fff;
+        padding: 0.2rem;
+        .bet-block-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 0.2rem;
+            &-title-wrap {
+                display: flex;
+                .bet-block-box-title {
+                    margin-bottom: 0.2rem;
+                }
+                .bet-block-box-tips {
+                    color: #34bc10;
+                    margin-left: 0.2rem;
+                }
+            }
+            input {
+                width: 100%;
+                height: 0.7rem;
+                padding-left: 0.2rem;
+                border: 1px solid #cdcdcd;
+                border-radius: 0.1rem;
+            }
+        }
+        .odds {
+            width: 1.5rem;
+            background-color: #ebebeb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.2rem;
+            .blue {
+                color: #0066ff;
+            }
+        }
+        .bet-num-select {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            &-box {
+                width: calc((100% - 0.5rem) / 3);
+                height: 0.75rem;
+                background-color: #ef485e;
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 0.32rem;
+                line-height: 0.32rem;
+                margin: 0.2rem 0;
+                border-radius: 0.2rem;
+            }
+            &-focus {
+                background-color: #bf8d37;
+            }
+        }
+    }
+    .activities-bet-btn {
+        width: 6.82rem;
+        height: 0.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0;
+        border-radius: 0.6rem;
+        @include myself_btn();
+        margin: 0 auto;
+        outline: none;
+        box-shadow: 3px 6px 9px #dfa9ae;
+        position: fixed;
+        left: calc((100% - 6.82rem) / 2);
+        bottom: 0.5rem;
+        font-size: 0.32rem;
+        line-height: 0.32rem;
+    }
+}

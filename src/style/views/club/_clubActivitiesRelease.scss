@@ -1,0 +1,266 @@
+.activities-release {
+    position: relative;
+    &-header {
+      width: 100%;
+      height: 1.1rem;
+      line-height: 1.2rem;
+      text-align: center;
+      z-index: 1001;
+      position: fixed;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include page_header_color($theme-red);
+      &-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        h3 {
+          @include page_header_text_color($theme-red-header-text-color);
+          display: inline-block;
+        }
+        .back-icon {
+          position: absolute;
+          left: 0.5rem;
+          margin: 0;
+        }
+      }
+    }
+    .activities-release-content {
+        margin-top: 1.1rem;
+        padding: 0 0.2rem;
+        .activities-release-title {
+          position: relative;
+          padding: 0.2rem;
+          font-size: 0.28rem;
+          line-height: 0.28rem;
+          &::before {
+            content: "";
+            width: 0.1rem;
+            height: 0.3rem;
+            background-color: #5566f7ed;
+            position: absolute;
+            top: 0.2rem;
+            left: 0rem;
+          }
+        }
+        .league-box {
+          width: 2rem;
+          height: 1.75rem;
+          background-color: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 calc((100% - 93%) / 3);
+          position: relative;
+          &-img {
+            width: 1rem;
+            height: 1rem;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+            top: 0.2rem;
+            left: calc((100% - 1rem) / 2);
+          }
+          &-no-img {
+            width: 1rem;
+            height: 1rem;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+            top: 0.2rem;
+            left: calc((100% - 1rem) / 2);
+            background: url("~@/assets/instead_logo1.png") no-repeat center;
+            background-size: 100%;
+          }
+          .selested {
+            width: 0.3rem;
+            height: 0.3rem;
+            background: url("~@/assets/club/select.png") no-repeat center;
+            position: absolute;
+            top: 0.1rem;
+            right: 0.1rem;
+          }
+          .unSelect {
+            width: 0.3rem;
+            height: 0.3rem;
+            background: url("~@/assets/club/unselect.png") no-repeat center;
+            position: absolute;
+            top: 0.1rem;
+            right: 0.1rem;
+          }
+          .matchName {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 0.1rem;
+          }
+        }
+        .enter-title {
+          width: 100%;
+          height: 0.7rem;
+          padding-left: 0.2rem;
+          border: 1px solid #cdcdcd;
+          border-radius: 0.1rem;
+        }
+        .select-wrap {
+          display: flex;
+          align-items: center;
+          padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+          input {
+            height: 0.75rem;
+            width: 1.5rem;
+            text-align: center;
+            border: 1px solid #cdcdcd;
+            border-radius: 0.1rem;
+          }
+          .select-num {
+            width: 1rem;
+            height: 1rem;
+            background-color: #fff;
+            font-size: 0.64rem;
+            line-height: 0.64rem;
+            color: #cdcdcd;
+            border: 1px solid #cdcdcd;
+            border-radius: 0.1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 0.2rem;
+          }
+          .select-num-active {
+            width: 1rem;
+            height: 1rem;
+            background-color: #6a79fe;
+            font-size: 0.64rem;
+            line-height: 0.64rem;
+            color: #fff;
+            border: 1px solid #cdcdcd;
+            border-radius: 0.1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 0.2rem;
+          }
+        }
+        .select-title {
+          margin-right: 0.2rem;
+          font-size: 0.28rem;
+          color: #7c7c7c;
+        }
+    }
+    &-btn {
+        display: block;
+        border: 0;
+        width: 6.82rem;
+        height: 0.8rem;
+        border-radius: 0.6rem;
+        @include myself_btn();
+        margin: 0 auto;
+        outline: none;
+        box-shadow: 3px 6px 9px #dfa9ae;
+        position: fixed;
+        left: calc((100% - 6.82rem) / 2);
+        bottom: 0.5rem;
+    }
+    &-btn:active {
+      background-color: #c9c9c9;
+      transform: scale(0.95);
+    }
+}
+
+.swiper-container {
+    height: 4.5rem;
+}
+.swiper-slide {
+    padding: 0 0 0.5rem 0;
+}
+.swiper-slide {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.fancy-box {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: 95%;
+  height: auto;
+  background-size: contain;
+  position: fixed;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 0.2rem;
+  img {
+      width: 100%;
+  }
+  &-content {
+      width: 100%;
+      height: 3rem;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      p {
+          font-size: 0.32rem;
+          line-height: 0.32rem;
+      }
+  }
+  &-btn {
+      width: 100%;
+      // height: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #fff;
+      padding-bottom: 0.2rem;
+      border-radius: 0 0 0.2rem 0.2rem;
+      p {
+          font-size: 0.28rem;
+          color: #dc3849;
+          margin-top: 0.25rem;
+      }
+      &-confirm {
+          width: 85%;
+          font-size: 0.4rem;
+          line-height: 0.4rem;
+          color: #ffffff;
+          padding: 0.3rem;
+          text-align: center;
+          border-radius: 0.5rem;
+          @include myself_btn();
+          margin: 0.2rem;
+      }
+      &-confirm:active {
+        background-color: #c9c9c9;
+        transform: scale(0.95);
+      }
+      &-cancel {
+          width: 85%;
+          font-size:  0.4rem;
+          line-height: 0.4rem;
+          color: #ffffff;
+          padding: 0.3rem;
+          text-align: center;
+          border-radius: 0.5rem;
+          background-image: linear-gradient(-29deg, #acacac 4%, #c5c5c5 100%);
+      }
+      &-cancel:active {
+        background-color: #c9c9c9;
+        transform: scale(0.95);
+      }
+  }
+}

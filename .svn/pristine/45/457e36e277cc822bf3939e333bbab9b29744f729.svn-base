@@ -1,0 +1,5 @@
+NODE_ENV=production
+VUE_APP_API_BASE_URL=https://cg-api.linsio.cn/api
+VUE_APP_IMG_BASE_URL=https://cdn.juyuanhe.com.cn/crazyguess/resources/gameImages/
+VUE_APP_RESOURSE_BASE_URL=https://cdn.juyuanhe.com.cn/crazyguess/resources/
+VUE_APP_UPDATE_URL=https://cdn.juyuanhe.com.cn/crazyguess/app/check.json

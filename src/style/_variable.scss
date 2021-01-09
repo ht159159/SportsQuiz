@@ -1,0 +1,107 @@
+:root {
+  --primary-color: #c12f3e;
+}
+
+// 網站主題顏色
+$theme-red: #c12f3e;
+$theme-blue: #054e9c;
+$theme-black: #1b1b1b;
+$theme-yellow: #ffdf01;
+
+
+// 基礎顏色
+$light-0: #f2f2f2;
+$light-1: #fff;
+
+$primary: var(--primary-color);
+
+//文字顏色
+$font-light-1: #dfdfe1;
+$font-dark-1: #474646;
+$font-dark-2: #3b3b4a;
+$font-gray-1: #7e7e7e;
+$font-gray-2: #505050;
+$theme-yellow-text: #1b1b1b;
+
+// 首頁背景色
+$index-bg-white: #fff;
+
+// 首頁主遊戲文字顏色
+$theme-red-info:#2a4184;
+$theme-blue-info:#8f8f8f;
+$theme-black-info:#8f8f8f;
+$theme-yellow-info:#fff;
+
+$theme-yellow-info-result: #ffdf01;
+
+// footer背景色
+$theme-red-footer-bg: #fff;
+$theme-black-footer-bg: #121212;
+$theme-yellow-footer-bg: #fff;
+
+// footer文字顏色default
+$theme-red-footer-text-color-default: #3b3b4a;
+$theme-blue-footer-text-color-default: #dfdfe1;
+$theme-black-footer-text-color-default: #dfdfe1;
+$theme-yellow-footer-text-color-default: #3b3b4a;
+// footer文字顏色Active時候
+$theme-red-footer-text-color: #c12f3e;
+$theme-blue-footer-text-color: #009cff;
+$theme-black-footer-text-color: #fed399;
+$theme-yellow-footer-text-color: #3b3b4a;
+
+// header文字底色
+$theme-red-header-text-color: #fff;
+$theme-blue-header-text-color: #fff;
+$theme-black-header-text-color:#fff;
+$theme-yellow-header-text-color: #1b1b1b;
+
+// 排位賽排行榜排名金幣數量顏色
+$theme-red-header-text-color2: #ffe942;
+$theme-blue-header-text-color2: #ffc700;
+$theme-black-header-text-color2:#ffc700;
+$theme-yellow-header-text-color2: #c12e3e;
+
+// 子選單底線 + 文字顏色
+// 排位賽排行榜及排行榜
+// 竞猜历史
+$theme-red-category: #c12f3e;
+$theme-blue-category: #054e9c;
+$theme-black-category: #d59f2b;
+$theme-yellow-category: #3aac67;
+
+// 子選單文字顏色
+$theme-red-category-text: #c12f3e;
+$theme-blue-category-text: #054e9c;
+$theme-black-category-text: #d59f2b;
+$theme-yellow-category-text: #2d2c2c;
+
+// 商城分頁文字顏色 + borderTop顏色
+$theme-red-shop-pagination: #e21847;
+$theme-blue-shop-pagination: #0d64c1;
+$theme-black-shop-pagination: #e21847;
+$theme-yellow-shop-pagination: #e21847;
+
+// 我的錢包資訊 + 單位文字顏色
+$theme-red-wallet-text-color1: #3c1401;
+$theme-blue-wallet-text-color1: #3c1401;
+$theme-black-wallet-text-color1: #3c1401;
+$theme-yellow-wallet-text-color1: #fff;
+
+// 我的錢包資訊餘額文字顏色
+$theme-red-wallet-text-color2: #3c1401;
+$theme-blue-wallet-text-color2: #3c1401;
+$theme-black-wallet-text-color2: #3c1401;
+$theme-yellow-wallet-text-color2: #ffdd19;
+
+// 勳章 focus 文字底色
+$theme-red-medal-focus-text-color: #fff;
+$theme-blue-medal-focus-text-color: #fff;
+$theme-black-medal-focus-text-color:#fff;
+$theme-yellow-medal-focus-text-color: #1b1b1b;
+
+// 語系選擇focus 文字底色
+$theme-red-language-focus: #c12f3e;
+$theme-blue-language-focus: #054e9c;
+$theme-black-language-focus: #d59f2b;
+$theme-yellow-language-focus: #576ede;

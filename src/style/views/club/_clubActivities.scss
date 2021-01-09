@@ -1,0 +1,618 @@
+.myclub-activities {
+    width: 100%;
+    height: 100%;
+    padding: 1.1rem 0px 0rem;
+    overflow: hidden!important;
+    &-header {
+        width: 100%;
+        height: 1.1rem;
+        line-height: 1.2rem;
+        text-align: center;
+        z-index: 1001;
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include page_header_color($theme-red);
+        &-wrap {
+            // margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            h3 {
+                @include page_header_text_color($theme-red-header-text-color);
+                display: inline-block;
+            }
+            .back-icon {
+                position: absolute;
+                left: 0.5rem;
+                margin: 0;
+            }
+        }
+    }
+
+    
+        .activities-type {
+            display: flex;
+            padding: 0.2rem;
+            // margin-top: 0.5rem;
+            &-btn {
+                padding: 0.2rem 0.4rem;
+                font-size: 0.28rem;
+                border: 1px solid #3649e6;
+                color: #3649e6;
+                border-radius: 0.3rem;
+                margin-right: 0.2rem;
+                transition: 0.3s;
+            }
+            &-btn:active {
+                background-color: #c9c9c9;
+                transform: scale(0.95);
+            }
+            &-btn-active {
+                padding: 0.2rem 0.4rem;
+                font-size: 0.28rem;
+                background-color: #3649e6;
+                color: #fff;
+                border-radius: 0.3rem;
+                margin-right: 0.2rem;
+            }
+        }
+        .activities-challenge-wrap {
+            height: 100%;
+            position: relative;
+            .activities-challenge {
+                padding: 0.2rem;
+                &-tab {
+                    width: 100%;
+                    height: 0.5rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0 0.2rem;
+                    &-wrap {
+                        display: flex;
+                        position: relative;
+                        p {
+                            white-space: nowrap;
+                        }
+                        .activities-challenge-title {
+                            position: relative;
+                            margin: 0 0.2rem;
+                            font-size: 0.28rem;
+                            color: #787879;
+                        }
+                        .titile-focus {
+                            font-size: 0.32rem;
+                            color: #000;
+                        }
+                        .divider {
+                            width: 0.1rem;
+                            height: 0.3rem;
+                            background-color: #5566f7ed;
+                            // position: absolute;
+                            // top: -0.03rem;
+                            // left: 1.55rem;
+                        }
+                    }
+                    &-check {
+                        display: flex;
+                        &-text {
+                            margin: 0 0.1rem;
+                            font-size: 0.28rem;
+                            line-height: 0.28rem;
+                            color: #c12e3e;
+                        }
+                        &-arrow {
+                            width: 0.26rem;
+                            height: 0.26rem;
+                            background: url("~@/assets/club/go_activities.png") no-repeat center;
+                            background-size: 100% 100%;
+                        }
+                    }
+                }
+                .wipeLoading {
+                    font-size: .24rem;
+                    text-align:center;
+                    line-height: .48rem;
+                    margin-top: 0.3rem
+                }
+                .activities-challenge-content-wrap {
+                    height: 100%;
+                }
+                &-content {
+                    height: 100%;
+                    overflow: auto;
+                    display: flex;
+                    flex-direction: column;
+                    .block {
+                        width: 100%;
+                        background-color: #fff;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        padding: 0.1rem;
+                        position: relative;
+                        margin-top: 0.2rem;
+                        filter: drop-shadow(0px 5px 3.5px rgba(219,219,219,0.43));
+                        flex-shrink: 0;
+                        .date {
+                            color: #a1a1a1;
+                            font-size: 0.28rem;
+                            margin: 0.1rem 0;
+                        }
+                        .abridge-content {
+                            width: 50%;
+                            overflow:hidden;
+                            white-space: nowrap; // 死不換行
+                            text-overflow: ellipsis; // 縮短 ...
+                            margin: 0.1rem 0;
+                        }
+                        .activities-challenge-btn-wrap {
+                            position: absolute;
+                            bottom: 0.1rem;
+                            right: 0.1rem;
+                            display: flex;
+                            align-items: center;
+                            .join {
+                                padding: 0.2rem 0.4rem;
+                                font-size: 0.28rem;
+                                background-color: #3649e6;
+                                color: #fff;
+                                border-radius: 0.3rem;
+                            }
+                            .join:active {
+                                background-color: #c9c9c9;
+                                transform: scale(0.95);
+                            }
+                            .notJoin {
+                                padding: 0.2rem 0.4rem;
+                                font-size: 0.28rem;
+                                background-image: linear-gradient(-29deg, #acacac 4%, #c5c5c5 100%);
+                                color: #fff;
+                                border-radius: 0.3rem;
+                            }
+                            .joinSuccess {
+                                padding: 0.2rem 0.4rem;
+                                font-size: 0.28rem;
+                                background-color: #36bb12;
+                                color: #fff;
+                                border-radius: 0.3rem;
+                            }
+                            .joinSuccess:active {
+                                background-color: #c9c9c9;
+                                transform: scale(0.95);
+                              }
+                            .delete {
+                                width: 0.6rem;
+                                height: 0.6rem;
+                                background: url("~@/assets/club/delete.png") no-repeat center;
+                                margin-left: 0.2rem;
+                                background-size: 100% 100%;
+                            }
+                            .delete:active {
+                                background-color: #c9c9c9;
+                                transform: scale(0.95);
+                                border-radius: 0.6rem;
+                            }
+                        }
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            .activities-challenge-new {
+                height: calc(100% - 2.8rem);
+            }
+            .activities-challenge-new-member {
+                height: calc(100% - 2.5rem);
+            }
+            .activities-challenge-history {
+                height: calc(100% - 2.8rem);
+                .activities-challenge-content {
+                    height: 100%;
+                    overflow: auto;
+                }
+            }
+            .activities-challenge-history-member {
+                height: calc(100% - 2.5rem);
+                .activities-challenge-content {
+                    height: 100%;
+                    overflow: auto;
+                }
+            }
+        }
+        .activities-bet-wrap {
+            height: 100%;
+            position: relative;
+            .activities-bet {
+                padding: 0.2rem ;
+                height: 100%;
+                &-tab {
+                    width: 100%;
+                    height: 0.5rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding:  0 0.2rem;
+                    &-wrap {
+                        display: flex;
+                        position: relative;
+                        .activities-bet-tab-title {
+                            position: relative;
+                            margin: 0 0.2rem;
+                            font-size: 0.28rem;
+                            color: #787879;
+                            white-space: nowrap;
+                        }
+                    }
+                    .titile-focus {
+                        font-size: 0.32rem;
+                        color: #000;
+                    }
+                    .divider {
+                        width: 0.1rem;
+                        height: 0.3rem;
+                        background-color: #5566f7ed;
+                        // position: absolute;
+                        // top: -0.03rem;
+                        // left: 1.55rem;
+                    }
+                }
+                .activities-bet-content-list-wrap {
+                    height: calc(100% - 2.8rem);
+                    overflow: auto;
+                }
+                &-content {
+                    // height: calc(100% - 3.4rem);
+                    // overflow: auto;
+                    &-list {
+                        width: 100%;
+                        padding: 0.2rem;
+                        background-color: #fff;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        margin-bottom: 0.25rem;
+                        position: relative;
+                        filter: drop-shadow(0px 5px 3.5px rgba(219,219,219,0.43));
+                        &-detail {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            margin-top: 5px;
+                            p {
+                                margin-right: 0.1rem;
+                            }
+                        }
+                        // &-detail:nth-of-type(1) {
+                        //     width: 25%;
+                        // }
+                        // &-detail:nth-of-type(2) {
+                        //     width: 30%;
+                        // }
+                        // &-detail:nth-of-type(3) {
+                        //     width: 45%;
+                        // }
+                        img {
+                            width: 1.2rem;
+                            height: 1.2rem;
+                        }
+                        &:nth-last-of-type(1) {
+                            margin-bottom: 0;
+                        }
+                        &-left {
+                            width: 75%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            margin-left: 0.2rem;
+                            &-up {
+                                width: 100%;
+                                display: flex;
+                                margin: 0.1rem 0;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                &-title {
+                                    font-weight: bold;
+                                    margin-right: 0.2rem;
+                                    font-size: 0.28rem;
+                                    line-height: 0.28rem;
+                                    overflow:hidden;
+                                    white-space: nowrap; // 死不換行
+                                    text-overflow: ellipsis; // 縮短 ...
+                                }
+                                &-date {
+                                    color: #b4b4b4;
+                                    font-size: 0.16rem;
+                                    margin: 0.1rem 0 0;
+                                    display: flex;
+                                    justify-content: flex-start;
+                                    align-items: center;
+                                    span {
+                                        color: #c12e3e;
+                                        margin-right: 0.1rem;
+                                    }
+                                }
+                            }
+                            &-down {
+                                // margin: 0.1rem 0;
+                                width: 100%;
+                                display: flex;
+                                align-items: baseline;
+                                // justify-content: space-between;
+                                flex-flow: column;
+                            }
+                            .text-blue {
+                                color: #3649e6;
+                            }
+                        }
+                        &-right {
+                            // width: 2.5rem;
+                            position: absolute;
+                            // top: 0.75rem;
+                            bottom: 0.25rem;
+                            right: 0.2rem;
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
+                            .edit {
+                                width: 0.42rem;
+                                height: 0.46rem;
+                                background: url("~@/assets/club/comment.png") no-repeat center;
+                                background-size: contain;
+                            }
+                            .del {
+                                width: 0.6rem;
+                                height: 0.6rem;
+                                background: url("~@/assets/club/delete.png") no-repeat center;
+                                background-size: 100% 100%;
+                                margin-left: 0.2rem;
+                            }
+                            .del:active {
+                                background-color: #c9c9c9;
+                                transform: scale(0.95);
+                                border-radius: 0.6rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .bet-status-btn {
+            width: 0.6rem;
+            height: 0.6rem;
+            // background-color: #34bc10;
+            // color: #fff;
+            // padding: 0.15rem 0.25rem;
+            // border-radius: 0.3rem;
+        }
+        .bet-status-btn:active {
+            background-color: #c9c9c9;
+            transform: scale(0.95);
+            border-radius: 0.6rem;
+        }
+        .watchResult{
+            background: url("~@/assets/club/watchResultIcon.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+        .participate{
+            background: url("~@/assets/club/participateIcon.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+        .unableParticipate{
+            background: url("~@/assets/club/unableParticipateIcon.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        .bet-status-btn-disable {
+            width: 1.5rem;
+            background-color: #acacac ;
+            color: #fff;
+            padding: 0.15rem 0.25rem;
+            border-radius: 0.3rem;
+        }
+        .check-result {
+            display: flex;
+            &-text {
+                margin: 0 0.1rem;
+                font-size: 0.28rem;
+                line-height: 0.28rem;
+                color: #c12e3e;
+                white-space: nowrap;
+            }
+            &-arrow {
+                width: 0.26rem;
+                height: 0.26rem;
+                background: url("~@/assets/club/go_activities.png") no-repeat center;
+                background-size: 100% 100%;
+            }
+        }
+        .no-data {
+            background: url("~@/assets/noInfo.png");
+            background-position: center;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            height: 2.2rem;
+            width: 50%;
+            margin: 0 auto;
+            position: relative;
+            p {
+              position: absolute;
+              bottom: -0.5rem;
+              left: 50%;
+              transform: translateX(-50%);
+              color: #8b8b8b;
+            }
+        }
+        .release-btn-wrap {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.2rem;
+            position: fixed;
+            bottom: 0;
+            .release-btn {
+                width: 100%;
+                height: 0.8rem;
+                text-align: center;
+                line-height: 0.8rem;
+                font-size: 0.32rem;
+                border-radius: 0.5rem;
+                color: #c12f3e;
+                border: 1px solid #b9b9b9;
+                filter: drop-shadow(0px 7px 5px rgba(188,41,56,0.21));
+            }
+            .release-btn:active {
+                background-color: #c9c9c9;
+                transform: scale(0.95);
+            }
+        }
+        .ticketTip-US {
+            height: 95%;
+        }
+        .ticketTip {
+            width: 95%;
+            // background: url("~@/assets/club/ticket-bg.png") no-repeat center;
+            background-size: contain;
+            // padding-top: 1.5rem;
+            position: fixed;
+            z-index: 1002;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            border-radius: 0.2rem;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            img {
+                width: 100%;
+            }
+            &-title {
+                width: 100%;
+                height: 1rem;
+                font-size: 0.32rem;
+                color: #009cf6;
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+                align-items: center;
+                background-color: #fff;
+                border-bottom: 1px solid #d8d8d8;
+                span {
+                    font-size: 0.32rem;
+                    margin: 0.08rem 0;
+                }
+
+            }
+            &-content {
+                width: 100%;
+                height: calc(100% - 5.8rem);
+                overflow-y: scroll;
+                font-size: 0.28rem;
+                line-height: 0.44rem;
+                color: #343333;
+                padding: 0.1rem;
+                background-color: #fff;
+                border-bottom: 1px solid #d8d8d8;
+            }
+            &-btn {
+                width: 100%;
+                // height: 3rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                background-color: #fff;
+                padding-bottom: 0.2rem;
+                border-radius: 0 0 0.2rem 0.2rem;
+                p {
+                    font-size: 0.28rem;
+                    color: #dc3849;
+                    margin-top: 0.25rem;
+                }
+                &-buy {
+                    width: 85%;
+                    font-size: 0.4rem;
+                    line-height: 0.4rem;
+                    color: #ffffff;
+                    padding: 0.3rem;
+                    text-align: center;
+                    border-radius: 0.5rem;
+                    @include myself_btn();
+                    margin: 0.2rem;
+                }
+                &-buy:active {
+                    background-color: #c9c9c9;
+                    transform: scale(0.95);
+                }
+                &-cancel {
+                    width: 85%;
+                    font-size:  0.4rem;
+                    line-height: 0.4rem;
+                    color: #ffffff;
+                    padding: 0.3rem;
+                    text-align: center;
+                    border-radius: 0.5rem;
+                    background-image: linear-gradient(-29deg, #acacac 4%, #c5c5c5 100%);
+                }
+                &-cancel:active {
+                    background-color: #c9c9c9;
+                    transform: scale(0.95);
+                }
+            }
+        }
+        .deleteConent{
+            height: 3rem;
+            color: #000;
+        }
+        .fancyBox {
+            position: fixed;
+            top: calc((100% - 3.44rem) / 2);
+            left: calc((100% - 6.44rem) / 2);
+            width: 6.44rem;
+            height: 3.44rem;
+            background: #fff;
+            z-index: 1002;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            border-radius: 0.2rem;
+            span {
+                font-size: 0.36rem;
+                color: #64656d;
+                line-height: 0.36rem;
+            }
+            .fancy-box-btn-wrap {
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                .confirmBtn {
+                  width: 2.5rem;
+                  height: 0.8rem;
+                  background: var(--primary-color);
+                  border: none;
+                  font-size: 0.32rem;
+                  line-height: 0.8rem;
+                  border-radius: 40px;
+                  color: #ffffff;
+                  display: block;
+                  margin: 0 auto;
+                  -webkit-transition: 0.3s;
+                  transition: 0.3s;
+                  text-align: center;
+                  box-shadow: 6px 6px 6px #8c7d7f;
+                }
+            }
+        }
+        .sipeLoading {
+            text-align: center;
+        }
+}

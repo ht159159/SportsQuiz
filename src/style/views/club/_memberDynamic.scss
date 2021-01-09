@@ -1,0 +1,141 @@
+.member-dynamic {
+    width: 100%;
+    height: 100%;
+    padding: 1.1rem 0px 0rem;
+    &-header {
+        width: 100%;
+        height: 1.1rem;
+        line-height: 1.2rem;
+        text-align: center;
+        z-index: 1001;
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include page_header_color($theme-red);
+        &-wrap {
+            // margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            h3 {
+                @include page_header_text_color($theme-red-header-text-color);
+                display: inline-block;
+            }
+            .back-icon {
+                position: absolute;
+                left: 0.5rem;
+                margin: 0;
+            }
+        }
+    }
+    &-content-wrap {
+        padding: 0.5rem 0.2rem 0.2rem 0.2rem;
+        height: 100%;
+    }
+    .member-dynamic-title-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+    }
+    &-title {
+        font-size: 0.28rem;
+        margin: 0 0.2rem;
+        color: #787879;
+    }
+    &-title-focus {
+        font-size: 0.32rem;
+        margin: 0 0.2rem;
+    }
+    .divider {
+        width: 0.1rem;
+        height: 0.3rem;
+        background-color: #5566f7ed;
+    }
+    &-content {
+        width: 100%;
+        height: calc(100% - 1rem);
+        overflow: auto;
+        background-color: #fff;
+        border-radius: 0.2rem;
+        margin-top: 0.5rem;
+        .members {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0.2rem;
+            border-bottom: 1px solid #f2f2f2;
+            .members-head-shot {
+                width: 0.8rem;
+                height: 0.8rem;
+                border-radius: 0.5rem;
+            }
+            .members-data {
+                width: 70%;
+                margin-left: 0.2rem;
+                .members-name-wrap {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    .members-name {
+                        font-size: 0.28rem;
+                        line-height: initial;
+                    }
+                    .present {
+                        width: 0.98rem;
+                        height: 0.32rem;
+                        background: url("~@/assets/club/president.png") no-repeat center;
+                        background-size: 100% 100%;
+                        margin-left: 0.2rem;
+                        text-align: center;
+                        line-height: 0.32rem;
+                        color: #fff;
+                    }
+                    .vice-present {
+                        width: 0.98rem;
+                        height: 0.32rem;
+                        background: url("~@/assets/club/vice-president.png") no-repeat center;
+                        margin-left: 0.2rem;
+                        text-align: center;
+                        line-height: 0.32rem;
+                        color: #fff;
+                    }
+                }
+                .members-bet {
+                    width: 100%;
+                    display: flex;
+                    flex-flow: column;
+                    margin: 0.1rem 0;
+                    span {
+                        font-size: 0.28rem;
+                        line-height: initial;
+                    }
+                    .bet-times {
+                        width: 100%;
+                        font-size: 0.28rem;
+                        // margin-right: 0.5rem;
+                        line-height: initial;
+                    }
+                    .contribution {
+                        line-height: initial;
+                    }
+                }
+                .last-bet-time {
+                    width: 100%;
+                    font-size: 0.28rem;
+                    line-height: 0.28rem;
+                    color: #8f8f8f;
+                }
+            }
+        }
+        .blue-text {
+            color: #2335d8;
+        }
+        .green-text {
+            color: #4da40d;
+        }
+    }
+}

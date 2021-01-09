@@ -1,0 +1,406 @@
+.rank-match {
+  .match {
+    -webkit-overflow-scrolling: touch;
+  }
+  [v-cloak] {
+    display: none;
+  }
+  position: relative;
+  .dialog {
+    z-index: 1001 !important;
+
+    position: relative;
+    .close {
+      width: 0.82rem /* 82/100 */;
+      height: 0.8rem /* 82/100 */;
+      background-color: red;
+
+      background: url('~@/assets/xxx_50.png');
+      background-size: 100%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -1.6rem;
+    }
+    box-sizing: border-box;
+    width: 6.44rem /* 644/100 */;
+    // height: 7.27rem /* 727/100 */;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 38%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    .bet-head {
+      width: 6.44rem /* 644/100 */;
+      height: 1.97rem /* 197/100 */;
+
+      background: url('~@/assets/betbgc.png') no-repeat;
+      background-size: 100%;
+    }
+    //下注
+    .bet-main {
+      // padding: 0.6rem; /* 60/100 */
+      // font-weight: 600;
+      span {
+        margin: 0 0.05rem; /* 5/100 */
+        font-size: 0.28rem /* 34/100 */;
+      }
+      .betin,
+      .getmoney {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        line-height: 100%;
+        margin-top: 0.4rem /* 40/100 */;
+        .betin-span {
+          color: #636363;
+          font-size: 0.3rem /* 30/100 */;
+        }
+        .betin-input {
+          width: 2.64rem /* 264/100 */;
+          height: 0.64rem /* 264/100 */;
+          border-radius: 0.1rem /* 10/100 */ /* 3/100 */;
+          border: 1px solid #5e5e5e;
+
+          font-size: 0.26rem /* 26/100 */;
+          color: #636363;
+        }
+        .add {
+          display: inline-block;
+          width: 0.4rem /* 40/100 */;
+          height: 0.4rem;
+          background-color: red;
+          // margin-top: 0.2rem /* 20/100 */;
+          margin-left: 0.14rem /* 14/100 */;
+          background: url('~@/assets/add.png') no-repeat center;
+          background-size: 100%;
+        }
+        .lose {
+          display: inline-block;
+          width: 0.4rem /* 40/100 */;
+          height: 0.4rem;
+          background-color: red;
+          // margin-top: 0.2rem /* 20/100 */;
+          margin-left: 0.14rem /* 14/100 */;
+          background: url('~@/assets/lose.png') no-repeat center;
+
+          background-size: 100%;
+        }
+      }
+      .getmoney {
+        margin-top: 0.2rem;
+      }
+      .rules {
+        margin-top: 0.4rem /* 40/100 */;
+        .rules-text {
+          color: #a1a1a1;
+        }
+        .rules-money {
+          color: #d5ab81;
+        }
+      }
+      .betbtn {
+        width: 4.37rem /* 437/100 */;
+        height: 0.8rem /* 80/100 */;
+        margin: 0 auto;
+        margin-top: 0.54rem /* 58/100 */;
+        text-align: center;
+        box-shadow: 6px 6px 6px #8c7d7f;
+      }
+    }
+  }
+  height: 100%;
+
+  background: url('~@/assets/matchbgc.png') no-repeat center center fixed;
+  background-size: 115%;
+  .banner {
+    box-sizing: border-box;
+    margin-top: 0.12rem /* 12/100 */;
+    margin-left: 0.2rem /* 20/100 */;
+    margin-bottom: 0.29rem /* 29/100 */;
+    width: 100%;
+    height: 0.53rem /* 53/100 */;
+    // background: url('~@/assets/match-main1.png');
+    background-size: 100%;
+    &-quset {
+      display: inline-block;
+      width: 0.43rem /* 43/100 */;
+      height: 0.43rem /* 43/100 */;
+      background: url('~@/assets/questyellow.png');
+      background-size: 100%;
+      float: right;
+      margin-right: 0.5rem /* 50/100 */;
+    }
+    &-tabs {
+      box-sizing: border-box;
+      position: relative;
+      .tab {
+        position: absolute;
+        box-sizing: border-box;
+        float: left;
+        width: 2.2rem /* 186/100 */;
+        height: 0.53rem /* 53/100 */;
+        background-color: #2c3650;
+        border-top-left-radius: 0.07rem /* 7/100 */;
+        border-top-right-radius: 0.07rem /* 7/100 */;
+        border: 1px solid #3a4666;
+        bottom: -0.53rem;
+        text-align: center;
+        line-height: 0.53rem /* 0.53/100 */;
+        color: #62739f;
+      }
+      .tab:nth-child(2) {
+        left: 2rem /* 163/100 */;
+        z-index: 1;
+      }
+      .tab:nth-child(3) {
+        left: 4.1rem /* 326/100 */;
+      }
+      .tab-active {
+        width: 2.3rem /* 187/100 */;
+        height: 0.58rem /* 58/100 */;
+        background-color: #facf3b;
+        z-index: 10;
+        color: #161525;
+      }
+    }
+  }
+
+  .match {
+    height: calc(100% - 1rem);
+    .rank-match-head {
+      background: url('~@/assets/head-bgc_01.png') no-repeat;
+      background-size: 100%;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+  }
+  .main-main {
+    padding-top: 0.09rem /* 9/100 */;
+  }
+  .rank-match-head {
+    margin-bottom: 0.72rem /* 72/100 */;
+    position: relative;
+    height: 1.1rem /* 152/100 */;
+    @include page_header_color($theme-red);
+    .back-icon {
+      width: 0.42rem /* 42/100 */;
+      height: 0.42rem /* 42/100 */;
+      display: inline-block;
+      background-image: url('~@/assets/icons/back.png');
+      background-size: 100%;
+      margin-left: 0.31rem /* 31/100 */;
+      margin-top: 0.35rem;
+    }
+    .title {
+      box-sizing: border-box;
+      margin: 0 auto;
+      color: #f2f2f2;
+      font-size: 0.33rem; /* 33/100 */
+      position: absolute;
+      left: 50%;
+      top: 40%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      overflow: auto;
+      line-height: 0.33rem;
+
+    }
+    .num {
+      color: #fed750;
+      left: 50%;
+      bottom: 17%;
+      position: absolute;
+      transform: translateX(-50%);
+    }
+    .myrank {
+      text-align: center;
+      position: absolute;
+      left: 1.18rem;
+      bottom: -0.5rem;
+    }
+    .gold {
+      text-align: center;
+      position: absolute;
+      right: 1.35rem;
+      bottom: -0.5rem;
+    }
+    .ptop {
+      font-size: 0.3rem /* 30/100 */;
+      color: white;
+      line-height: 0.33rem /* 0.33/100 */;
+      margin-bottom: 0.05rem /* 5/100 */;
+    }
+    .pcontent {
+      font-size: 0.22rem /* 22/100 */;
+      color: #ffc700;
+      font-weight: 700;
+    }
+  }
+  .rank-match-main {
+    width: 7.1rem /* 710/100 */;
+    margin: 0 auto;
+    margin-bottom: 0.3rem /* 30/100 */;
+    .title {
+      width: 100%;
+      height: 0.63rem /* 62/100 */;
+      background: url('~@/assets/match-title.png') no-repeat;
+      background-size: 100%;
+      position: relative;
+      .left {
+        width: 40%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .right {
+      width: 40%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+  }
+      .title-left {
+
+      }
+      .title-center {
+
+      }
+      .title-right {
+
+      }
+      .commondiv {
+        width: 0.68rem /* 58/100 */;
+        height: 0.58rem /* 58/100 */;
+        border-radius: 0.03rem /* 3/100 */;
+        text-align: center;
+        line-height: 0.58rem /* 0.58/100 */;
+        color: #fff;
+        font-weight: 500;
+      }
+      .home {
+        background-color: #ea0546;
+      }
+      .away {
+        background-color: #129829;
+      }
+      .homename {
+        font-size: 0.32rem /* 32/100 */;
+        color: #8fa5de;
+        line-height: 0.62rem;
+        margin-left: 0.1rem /* 10/100 */;
+        white-space: nowrap;
+        overflow: auto;
+      }
+      .awayname {
+        font-size: 0.32rem /* 32/100 */;
+        color: #8fa5de;
+        line-height: 0.62rem;
+        margin-right: 0.1rem /* 10/100 */;
+        white-space: nowrap;
+        overflow: auto;
+      }
+    }
+
+    .guess-main {
+      .pstyle {
+        color: #ffc700 ;
+      }
+      width: 7.1rem /* 710/100 */;
+      height: 5.2rem /* 520/100 */;
+      background-color: rgba(0, 0, 0, 0.5);
+      &-title {
+        height: 0.67rem /* 67/100 */;
+        padding-left: 0.1rem /* 10/100 */;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .left {
+          margin-top: 0.15rem /* 15/100 */;
+          padding-left: 0.19rem /* 19/100 */;
+          line-height: 0.67rem;
+          width: 33.3%;
+          float: left;
+          p:nth-child(1) {
+            color: #cbd2e2;
+            font-size: 0.2rem; /* 20/100 */
+          }
+          p:nth-child(2) {
+            color: #129827;
+            font-size: 0.18rem /* 18/100 */;
+          }
+        }
+        .time {
+          width: 2.5rem;
+          float: left;
+          color: #a3b7ec;
+          font-size: 0.22rem /* 22/100 */;
+          line-height: 0.67rem;
+        }
+        .more {
+          // margin-top: 0.19rem /* 19/100 */;
+          // margin-right: 0.19rem /* 0.19/100 */;
+          width: 33.3%;
+          float: right;
+          width: 1.07rem /* 107/100 */;
+          height: 0.35rem /* 35/100 */;
+          background-color: #fff;
+          background: url('~@/assets/button_03.png');
+          background-size: 100%;
+          font-size: 0.18rem /* 20/100 */;
+          color: #5e2f13;
+          text-align: center;
+          line-height: 0.35rem;
+        }
+      }
+      &-content {
+        overflow: auto;
+        box-sizing: border-box;
+        margin: 0 auto;
+        width: 6.71rem /* 671/100 */;
+        height: 4.33rem /* 433/100 */;
+        //background-color: rgba(22, 31, 74, 0.6);
+        border-radius: 0.04rem /* 4/100 */;
+        //padding: 0.28rem /* 28/100 */ 0.16rem /* 16/100 */;
+        .content-item div:first-child{
+          overflow-x: scroll;
+        }
+        .content-item {
+          height: 0.6rem /* 53/100 */;
+          background-color: rgba(22, 31, 74, 0.6);
+          div {
+            width: 25%;
+            float: left;
+            text-align: center;
+            line-height: 0.53rem;
+            font-size: 0.26rem /* 26/100 */;
+            color: #e0e0de;
+            // height: 0.22rem /* 22/100 */;
+          }
+          .pstyle{
+            color: #ffc700;
+          }
+        }
+        .content-bitem {
+          height: 1.09rem /* 109/100 */;
+
+          div {
+            width: 25%;
+            float: left;
+            text-align: center;
+            line-height: 1.09rem;
+            font-size: 0.26rem /* 26/100 */;
+            color: #e0e0de;
+          }
+        }
+      }
+    }
+  }
+  position: relative;
+  .match-bottom {
+    // position: absolute;
+    // bottom: 0;
+  }
+}

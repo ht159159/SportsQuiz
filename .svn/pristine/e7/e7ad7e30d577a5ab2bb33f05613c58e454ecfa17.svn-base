@@ -1,0 +1,32 @@
+.yijian{
+    width: 100%;
+    background: #fff;
+    overflow: auto;
+    .yijian-header{
+        width: 100%;
+        height: 1.1rem;
+        line-height: 1.2rem;
+        text-align: center;
+        background: #c12e3e;
+        h3{
+            color: #fff;
+            display: inline-block;
+            margin-left: -.6rem;
+        }
+        .img-he{
+            margin-left: .3rem;
+            float: left;
+            margin-top: .4rem;
+            width: .42rem;
+            height: .42rem;
+        }
+        .img-he:active{
+            transform: scale(.95);
+        }
+    }
+    &-text{
+        width: 100%;
+        background: #f2f2f2;
+        height: 100%;
+    }
+}

@@ -1,0 +1,61 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 微軟正黑體, sans-serif;
+  background: $light-0;
+  height: 100%;
+  overflow-x: hidden !important;
+}
+html,
+body,
+#app,
+.layout {
+  height: 100%;
+  min-height: 100%;
+  // overflow: hidden;
+}
+.layout {
+  height: 100%;
+}
+.el-button--primary {
+  background-color: #c12e3e !important;
+  border-color: #c12e3e !important;
+}
+.el-message-box {
+  width: 6rem !important;
+}
+.el-message-box__headerbtn {
+  display: none;
+}
+#app {
+  margin: 0 auto;
+  // height: 15.34rem /* 1334/100 */;
+}
+a,
+a:link,
+a:visited {
+  color: #c2c2c2;
+  text-decoration: none;
+}
+.btn {
+  width: 6.55rem;
+  height: 0.8rem;
+  background: $primary;
+  border: none;
+  font-size: 0.32rem;
+  line-height: 0.8rem;
+  border-radius: 40px;
+  color: #ffffff;
+  display: block;
+  margin: 0 auto;
+  transition: 0.3s;
+}
+.btn:active {
+  transform: scale(0.95);
+}
+.line {
+  display: inline;
+  border: 1px solid #c2c2c2;
+  margin: 0 0.25rem;
+}

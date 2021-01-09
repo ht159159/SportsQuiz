@@ -1,0 +1,145 @@
+.club-Activity-match {
+    width: 100%;
+    height: 100%;
+    padding: 1.1rem 0px 1rem;
+    &-header {
+        width: 100%;
+        height: 1.1rem;
+        line-height: 1.2rem;
+        text-align: center;
+        z-index: 1001;
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include page_header_color($theme-red);
+        &-wrap {
+            // margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            h3 {
+                @include page_header_text_color($theme-red-header-text-color);
+                display: inline-block;
+            }
+            .back-icon {
+                position: absolute;
+                left: 0.5rem;
+                margin: 0;
+            }
+        }
+    }
+
+    &-content {
+        width: 100%;
+        height: 100%;
+        padding: 0.2rem;
+        overflow: auto;
+        .match-box {
+            width: 100%;
+            background-color: #fff;
+            border-radius: 0.2rem;
+            
+            filter: drop-shadow(0px 5px 3.5px rgba(219,219,219,0.43));
+            padding: 0.2rem;
+            &-title {
+                font-size: 0.28rem;
+                position: relative;
+                margin: 0 0.2rem;
+                &::before {
+                    content: "";
+                    width: 0.1rem;
+                    height: 0.3rem;
+                    background-color: #5566f7ed;
+                    position: absolute;
+                    top: -0.03rem;
+                    left: -0.2rem;
+                }
+            }
+            &-team {
+                width: 100%;
+                height: 1.5rem;
+                background-color: #f5f4f4;
+                margin: 0.2rem 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                &-wrap {
+                    display: flex;
+                    align-items: center;
+                    margin-top: auto;
+                    .team-name {
+                        font-size: 0.32rem;
+                        color: #171717;
+                        display: flex;
+                        align-items: center;
+                    }
+                    .team-img {
+                        width: 0.4rem;
+                        height: 0.4rem;
+                        background-size: 100% 100%;
+                        background-position: center;
+                        margin: 0 0.2rem;
+                    }
+                    .vs {
+                        font-size: 0.5rem;
+                        line-height: 0.5rem;
+                        color: #171717;
+                    }
+                }
+                .gametip {
+                    margin: 0.2rem 0;
+                    color: #b5b5b5;
+                }
+            }
+            .bet-btn-wrap {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                .bet-btn {
+                    width: 30%;
+                    height: 0.7rem;
+                    background-color: #fff;
+                    color: #4659ff;
+                    border: 1px solid #4659ff;
+                    border-radius: 0.3rem;
+                    font-size: 0.32rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0 0.1rem 0.2rem 0.1rem;
+                }
+                .bet-btn-active {
+                    background-color: #4659ff;
+                    color: #fff;
+                }
+            }
+        }
+    }
+    .confirm-btn-wrap {
+        width: 100%;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.2rem;
+        position: fixed;
+        bottom: 0;
+        .confirm-btn {
+            width: 2rem;
+            height: 0.8rem;
+            text-align: center;
+            line-height: 0.8rem;
+            font-size: 0.32rem;
+            border-radius: 0.2rem;
+            @include myself_btn();
+            filter: drop-shadow(0px 7px 5px rgba(188,41,56,0.21));
+        }
+        .confirm-btn:active {
+            background-color: #c9c9c9;
+            transform: scale(0.95);
+        }
+    }
+}

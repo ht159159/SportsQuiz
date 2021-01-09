@@ -1,0 +1,317 @@
+<template>
+  <main class="searchClub">
+    <div class="searchClub-header">
+      <back class="back-icon img-he"></back>
+      <h3>{{ $t("Club") }}</h3>
+      <!--俱乐部-->
+      <div class="filter" @click="filter = !filter">
+        <span>{{ $t("Filter") }}</span
+        ><!--篩選-->
+      </div>
+    </div>
+    <!-- <transition name="pop"> -->
+      <div class="filter-wrap" :class="{ popLeftIn: filter }">
+        <div class="back-ciub-list-wrap" @click="filter = false">
+          <div class="back-ciub-list"></div>
+          <p>{{ $t("BackClubList") }}</p>
+        </div>
+        <ul class="category-wrap" v-infinite-scroll="loadCategory" infinite-scroll-disabled="categoryBusy" infinite-scroll-immediate-check="categoryImmediate">
+            <li class="category-list"  v-for="(item, i) in category"  @click="getCategoryClubs(item.MatchId)" :key="i">
+              <img v-if="item.MatchImg" :src="item.MatchImg" class="list-img">
+              <img v-else src="@/assets/instead_logo1.png" class="list-img">
+              <p>{{ item.MatchName }}</p>
+            </li>
+        </ul>
+      </div>
+    <!-- </transition> -->
+    <!-- 分頁切換 -->
+    <!-- <div id="category" class="category">
+      <div id="categoryWrap" class="category-wrap">
+        <div
+          class="category-type"
+          v-for="(type, index) in category"
+          @click="categoryType = index; getCategoryClubs(type.MatchId, index)"
+          :key="index"
+        >
+          <p :class="{ 'category-type-active': categoryType == index }">
+            {{ type.MatchName }}
+          </p>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="club-Box" v-infinite-scroll="load" infinite-scroll-disabled="busy" infinite-scroll-immediate-check="immediate" v-if="!filter">
+      <!-- <div class="search-bar">
+        <input type="text" v-model="searchVal" />
+        <div class="search-icon" @click="searchClub(searchVal)"></div>
+      </div> -->
+      <div style="font-size: .24rem;text-align:center;line-height: .48rem" v-if="isLoading">
+        {{ $t('WipeLoading') }}...  <!-- 【 加载中… 】 -->
+      </div>
+      <div class="club-list" v-for="item in clubList" v-if="isNoData == false"  @click="selectClub(item.Id)">
+        <div class="clubs">
+          <div class="clubs-box">
+            <div class="clubs-box-bg">
+              <img :src="item.ClubImg" />
+              <!-- <img src="../../assets/club/club-Logo01.png" alt="" /> -->
+            </div>
+            <div class="clubs-box-content">
+              <div class="content-box">
+                <div class="content-box-title">{{ item.ClubName }}</div>
+                <div class="content-box-statement">{{ item.SloganLabel }}</div>
+              </div>
+              <div class="clubs-btn-member" v-if="isMember == 1"></div>
+              <div class="clubs-btn" v-if="isMember == 2" @click.stop=" isOpen = !isOpen; clickClubId = item.Id;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="no-data" v-if="isNoData">
+        <p>{{ $t("NoData") }}</p>  <!-- 【 暂无数据 】 -->
+      </div>
+    </div>
+    <div class="btn-wrap">
+      <div class="changeBtn" @click="toCreatRule" v-if="isMember == 2">
+        {{ $t("CreateMyClub") }}
+      </div>
+    </div>
+
+    <!-- 是否加入俱樂部彈窗 -->
+    <transition name="fade">
+		  <model v-if="isOpen"></model>
+	  </transition>
+	  <transition name="fade">
+		<div class="fancy-box" v-if="isOpen">
+			<img src="../../assets/club/ticket-header.png" alt="">
+      <div class="fancy-box-content">
+			  <p>{{ $t('WantToJoinClub') }}?</p>
+      </div>
+			<div class="fancy-box-btn">
+				<div class="fancy-box-btn-confirm" @click="joinClub()">{{ $t('Confirm') }}</div>
+				<div class="fancy-box-btn-cancel" @click="isOpen = !isOpen">{{ $t('Cancel') }}</div>
+			</div>
+		</div>
+	</transition>
+
+    <!-- 加入後訊息彈窗 -->
+    <transition name="fade">
+		  <model v-if="isCallBack"></model>
+	  </transition>
+	  <transition name="fade">
+		<div class="fancy-box" v-if="isCallBack">
+			<img src="../../assets/club/ticket-header.png" alt="">
+      <div class="fancy-box-content">
+			  <p>{{ callBackMsg }}</p>
+      </div>
+			<div class="fancy-box-btn">
+				<div class="fancy-box-btn-confirm" @click="isCallBack = !isCallBack">{{ $t('Confirm') }}</div>
+			</div>
+		</div>
+	</transition>
+  </main>
+</template>
+
+<script>
+import back from "@/components/Botton/back.vue";
+import { apiGetAllClubs, apiJoinClub } from "@/api/Club.js";
+import model from "@/components/model";
+import { apiGetClubMatchs } from "@/api/ClubActivitys.js";
+export default {
+  components: {
+    back,
+    model,
+  },
+  data() {
+    return {
+      // 篩選
+      filter: false,
+
+      category: [],
+      categoryType: 0,
+      isOpen: false,
+      isMember: 0,
+      uname: "",
+      clickClubId: undefined,
+      isCallBack: false,
+      callBackMsg: "",
+      clubList: [],
+      searchList: [],
+      searchVal: "",
+      matchId: "",
+
+      IndexNum: 1,
+      isNoData: false,
+      isLoading:　false,
+      // 防止连点
+      isDisable: false,
+
+      noMission: false,
+
+      // v-infinite-scroll 套件
+      busy: false,
+      immediate: false,
+      totalPages: 0,
+
+      categoryBusy: false,
+      categoryImmediate: true,
+      categoryIndexNum: 1,
+      categoryTotalPages: 0
+    };
+  },
+
+  created() {
+    // 判斷是否有會員 1 = 有  2 = 無
+    this.isMember = localStorage.getItem("isMember");
+
+    // 獲取使用者名稱
+    this.uname = localStorage.getItem("uname");
+
+    // 獲取联赛列表
+    this.matchType();
+
+    // 獲取所有俱樂部列表
+    this.getCategoryClubs();
+  },
+  // mounted() {
+  //   window.addEventListener("scroll", this.handleScroll, true);
+  // },
+  methods: {
+
+    // 右移無限加載
+    // handleScroll() {
+    //   let category = document.getElementById("category");
+    //   let categoryWrap = document.getElementById("categoryWrap");
+    //   let categoryWidth = category.getBoundingClientRect().width;
+    //   let categoryWrapWidth = categoryWrap.getBoundingClientRect().width;
+    //   let scrollMove = category.scrollLeft;
+    //   let moveOffset = categoryWrapWidth - categoryWidth;
+
+    //   if (scrollMove == moveOffset) {
+    //     if (this.IndexNum >= this.totalPages) {
+    //       return;
+    //     }
+    //     this.IndexNum++;
+    //     this.matchType();
+    //   }
+    // },
+    toCreatRule() {
+      this.$router.push("/CreateClubRule");
+    },
+
+    // 獲取導覽聯賽種類
+    matchType() {
+      let data1 = {
+        index: this.categoryIndexNum,
+        count: 10,
+      };
+      apiGetClubMatchs(data1, true).then(res => {
+        this.category = res.Data.Data
+        this.categoryTotalPages = res.Data.TotalPages
+      })
+      // .then(() => {
+      //   this.getCategoryClubs(this.category[0].MatchId)
+      // });
+    },
+    // 獲取賽事種類的俱樂部清單
+    getCategoryClubs(matchId) {
+      let data = {
+        MatchId: matchId,
+        ClubName: "",
+        index: 1,
+        count: 10,
+      };
+      this.isLoading = true;
+      this.isNoData = false;
+      apiGetAllClubs(data, true).then(res => {
+        if(Math.abs(res.Code) >= 600 || res.Data.Data.length == 0) {
+          this.isNoData = true;
+          this.isLoading = false;
+        } else {
+          this.isLoading = false;
+          this.isNoData = false;
+          this.clubList = res.Data.Data;
+          this.totalPages = res.Data.TotalPages;
+        }
+        this.filter = false;
+      });
+
+    },
+
+    // 搜尋
+    // searchClub() {
+    //   let data = {
+    //     MatchId: this.matchId,
+    //     ClubName: this.searchVal,
+    //     index: 1,
+    //     count: 10,
+    //   };
+    //   apiGetAllClubs(data, true).then(res => {
+    //     this.clubList = res.Data.Data;
+    //   });
+    // },
+
+    // 申請加入俱樂部
+    joinClub() {
+      let data = {
+        ClubId: this.clickClubId,
+        UName: this.uname,
+        Type: 0 // 0 申请进入  1 退出  2 被踢
+      };
+      apiJoinClub(data, true).then(res => {
+        this.isCallBack = true;
+        this.callBackMsg = res.Message;
+        this.isOpen = false;
+      });
+    },
+
+    // 聯賽無限加載
+    loadCategory() {
+      if (this.categoryIndexNum >= this.categoryTotalPages) {
+        this.categoryBusy = true;
+        return;
+      }
+      this.categoryIndexNum++
+      let data1 = {
+        index: this.categoryIndexNum,
+        count: 10,
+      };
+      apiGetClubMatchs(data1, true).then(res => {
+        res.Data.Data.forEach(el => {
+          this.category.push(el)
+        });
+      })
+    },
+
+    // 俱樂部無限加載
+    load() {
+      if(this.IndexNum >= this.totalPages) {
+        this.busy = true;
+        return
+      }
+      this.IndexNum++;
+      let data = {
+        MatchId: this.matchId,
+        ClubName: "",
+        index: this.IndexNum,
+        count: 10,
+      };
+      apiGetAllClubs(data, true).then(res => {
+        if (res.Data.Data.length == 0) {
+          this.busy = true;
+        } else if(res.Data.Data.length > 0){
+          res.Data.Data.forEach(el => {
+            this.clubList.push(el);
+            this.busy = false;
+          })
+        }
+      });
+    },
+
+    // 查看俱樂部詳情
+    selectClub(id) {
+      localStorage.setItem("selectClub", id);
+      this.$router.push("/clubData");
+    },
+  }
+};
+</script>

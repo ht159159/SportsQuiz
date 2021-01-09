@@ -1,0 +1,161 @@
+.Cmouth {
+  .nomatchs {
+    // width: 5.01rem /* 501/100 */;
+    height: 5.42rem /* 542/100 */;
+    // background-color: red;
+    margin-top: 0.3rem /* 30/100 */;
+    background-image: url('~@/assets/noInfo.png');
+    background-position: center;
+    background-size: 65%;
+    background-repeat: no-repeat;
+    position: relative;
+    p {
+      position: absolute;
+      bottom: 0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #8b8b8b;
+    }
+  }
+  &-head {
+    position: relative;
+    height: 1.24rem /* 124/100 */;
+    background-color: #c12e3e;
+    // text-align: center;
+    line-height: 1.24rem;
+    color: #f2f2f2;
+    font-size: 0.33rem; /* 33/100 */
+    .title {
+      box-sizing: border-box;
+      margin: 0 auto;
+      color: #f2f2f2;
+      font-size: 0.33rem; /* 33/100 */
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &-main {
+    padding-top: 0.3rem /* 30/100 */;
+    .el-collapse {
+      width: 7.1rem /* 710/100 */;
+      margin: 0 auto;
+      margin-bottom: 0.1rem /* 10/100 */;
+    }
+
+    .el-collapse-item {
+      .el-collapse-item__header {
+        background-color: #e3e3e3;
+
+        border-radius: 0.15rem;
+        height: 0.7rem /* 70/100 */;
+        padding-left: 0.36rem;
+      }
+      .el-collapse-item__header.is-active {
+        border-radius: 0px;
+        border-top-right-radius: 0.15rem /* 15/100 */;
+        border-top-left-radius: 0.15rem /* 15/100 */;
+      }
+      .el-collapse-item__wrap {
+        border-bottom-right-radius: 0.15rem /* 15/100 */;
+        border-bottom-left-radius: 0.15rem /* 15/100 */;
+
+        .el-collapse-item__content {
+          padding: 0.2rem 0.36rem;
+        }
+      }
+      .item-items {
+        position: relative;
+        margin-bottom: 0.2rem /* 10/100 */;
+        border-bottom: 1px solid #e3e3e3;
+        .bgc {
+          position: absolute;
+          width: 1.43rem /* 143/100 */;
+          height: 1.41rem /* 141/100 */;
+          right: 0rem;
+          top: 0rem;
+        }
+        .bgc-CN {
+          background: url('~@/assets/challenge/record_02_03.png');
+          background-size: 100%;
+        }
+        .bgc-US {
+          background: url('~@/assets/challenge/record_02_03_US.png');
+          background-size: 100%;
+        }
+        .bgc-TW {
+          background: url('~@/assets/challenge/record_02_03_TW.png');
+          background-size: 100%;
+        }
+
+        .bgc1 {
+          position: absolute;
+          width: 1.43rem /* 143/100 */;
+          height: 1.41rem /* 141/100 */;
+          right: 0rem;
+          top: 0rem;
+        }
+        .bgc1-CN {
+          background: url('~@/assets/challenge/record_03.png');
+          background-size: 100%;
+        }
+        .bgc1-US {
+          background: url('~@/assets/challenge/record_03_US.png');
+          background-size: 100%;
+        }
+        .bgc1-TW {
+          background: url('~@/assets/challenge/record_03_TW.png');
+          background-size: 100%;
+        }
+        &-name {
+          &-home {
+            font-size: 0.24rem /* 24/100 */;
+            font-weight: 600;
+          }
+          &-vs {
+            font-weight: 600;
+            color: red;
+            font-size: 0.24rem /* 24/100 */;
+            margin: 0 0.67rem /* 67/100 */;
+          }
+          &-away {
+            font-weight: 600;
+
+            font-size: 0.24rem /* 24/100 */;
+          }
+        }
+        &-model {
+          font-size: 0.24rem /* 24/100 */;
+          font-weight: 600;
+          margin: 0.1rem /* 7/100 */ 0px;
+        }
+        &-result {
+          font-weight: 600;
+
+          font-size: 0.24rem /* 24/100 */;
+          margin: 0.1rem /* 7/100 */ 0px;
+          color: #6f6f6f;
+        }
+        &-ceng {
+          font-weight: 600;
+          margin: 0.1rem /* 7/100 */ 0px;
+          font-size: 0.24rem /* 24/100 */;
+          color: #6f6f6f;
+          .success {
+            color: #ff8900;
+          }
+          .fail {
+            color: red;
+          }
+        }
+        &-gold {
+          font-weight: 600;
+          margin: 0.1rem /* 7/100 */ 0px;
+          font-size: 0.24rem /* 24/100 */;
+          color: #6f6f6f;
+        }
+      }
+    }
+  }
+}

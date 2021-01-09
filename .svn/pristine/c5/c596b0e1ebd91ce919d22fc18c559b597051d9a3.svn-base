@@ -1,0 +1,228 @@
+.club-notice-sss {
+    width: 100%;
+    height: 100%;
+    padding: 1.1rem 0px 1rem;
+    &-header {
+        width: 100%;
+        height: 1.1rem;
+        line-height: 1.2rem;
+        text-align: center;
+        z-index: 1001;
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include page_header_color($theme-red);
+        &-wrap {
+            // margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            h3 {
+                @include page_header_text_color($theme-red-header-text-color);
+                display: inline-block;
+            }
+            .back-icon {
+                position: absolute;
+                left: 0.5rem;
+                margin: 0;
+            }
+        }
+    }
+    
+    .category-wrap {
+        width: 100%;
+        height: 0.8rem;
+        display: flex;
+        background-color: #fff;
+        filter: drop-shadow(0px 5px 6.5px rgba(147,147,147,0.29));
+        position: fixed;
+        top: 1.1rem;
+        z-index: 1001;
+        .category {
+            font-size: 0.28rem;
+            color: #8d8d8d;
+            line-height: 0.56rem;
+            .category-text {
+                padding: 0.1rem 0.3rem 0;
+                line-height: 0.56rem;
+            }
+        }
+        .category-active {
+            @include category_border_color($theme-red-category-text);
+        }
+    }
+
+    &-content {
+        width: 100%;
+        margin-top: 0.8rem;
+    }
+    .club-message-wrap {
+        width: 100%;
+    }
+    .club-message {
+        padding-top: 0.5rem;
+    }
+    .club-message-list {
+        width: 100%;
+        padding: 0.2rem;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.25rem;
+        filter: drop-shadow(0px 5px 3.5px rgba(219,219,219,0.43));
+    }
+    .club-message-list-left {
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        &-up {
+            display: flex;
+            margin: 0.1rem 0;
+            &-title {
+                font-weight: bold;
+                margin-right: 0.2rem;
+                font-size: 0.28rem;
+            }
+            &-date {
+                color: #b4b4b4;
+                font-size: 0.16rem;
+            }
+        }
+        &-down {
+            margin: 0.1rem 0;
+            width: 100%;
+            .club-message-list-detail {
+                width: 100%;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+    }
+    .club-message-list-right {
+        width: 25%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .edit {
+            width: 0.42rem;
+            height: 0.46rem;
+            background: url("~@/assets/club/comment.png") no-repeat center;
+            background-size: contain;
+        }
+        .del {
+            width: 0.42rem;
+            height: 0.46rem;
+            background: url("~@/assets/club/delete.png") no-repeat center;
+            background-size: contain;
+        }
+    }
+
+    .M-message-list {
+        padding: 0.2rem;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 0.25rem;
+        filter: drop-shadow(0px 5px 3.5px rgba(219,219,219,0.43));
+        &-up {
+            width: 100%;
+            display: flex;
+            position: relative;
+            &-right {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-left: 1rem;
+            }
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                margin-right: 0.1rem;
+            }
+        }
+        .M-message-list-wrap {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.2rem;
+        }
+        .M-message-list-title {
+            font-weight: bold;
+            margin-right: 0.2rem;
+            font-size: 0.28rem;
+        }
+        .M-message-list-date {
+            color: #b4b4b4;
+            font-size: 0.16rem;
+        }
+        .M-message-list-detail {
+            width: 6rem;
+            height: 0.23rem;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+        .open-msg {
+            height:  auto;
+            white-space: normal;;
+            text-overflow: unset; ;
+            overflow: visible;
+        }
+        &-down {
+            width: 100%;
+            padding: 0.2rem;
+            text-align: right;
+            border-top: 1px solid #eaeaea;
+            margin-top: 0.25rem;
+        }
+    }
+    .noData {
+        background: url("~@/assets/noInfo.png");
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        height: 6.2rem;
+        width: 68%;
+        margin: 0 auto;
+        position: relative;
+        p {
+          position: absolute;
+          bottom: 0.5rem;
+          left: 50%;
+          transform: translateX(-50%);
+          color: #8b8b8b;
+        }
+      }
+    .release-btn-wrap {
+        width: 100%;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.2rem;
+        position: absolute;
+        bottom: 0;
+        .release-btn {
+            width: 2rem;
+            height: 0.8rem;
+            text-align: center;
+            line-height: 0.8rem;
+            font-size: 0.32rem;
+            border-radius: 0.2rem;
+            @include myself_btn();
+            filter: drop-shadow(0px 7px 5px rgba(188,41,56,0.21));
+        }
+    }
+}

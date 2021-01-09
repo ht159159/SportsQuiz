@@ -1,0 +1,223 @@
+.bet-result {
+    width: 100%;
+    height: 100%;
+    padding: 1.1rem 0px 1rem;
+    &-header {
+        width: 100%;
+        height: 1.1rem;
+        line-height: 1.2rem;
+        text-align: center;
+        z-index: 1001;
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include page_header_color($theme-red);
+        &-wrap {
+            // margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            h3 {
+                @include page_header_text_color($theme-red-header-text-color);
+                display: inline-block;
+            }
+            .back-icon {
+                position: absolute;
+                left: 0.5rem;
+                margin: 0;
+            }
+        }
+    }
+
+    .bet-result-content {
+        padding: 0.2rem;
+        .result-box {
+            width: 100%;
+            margin-bottom: 0.2rem;
+            position: relative;
+            filter: drop-shadow(0px 7px 5px rgba(222,221,221,0.45));
+            &-title {
+                display: flex;
+                background-color: #e3e3e3;
+                border-radius: 0.3rem 0.3rem 0 0;
+                padding: 0.2rem;
+                span {
+                    font-size: 0.32rem;
+                    line-height: 0.32rem;
+                    color: #2d3858;
+                }
+                &-vs {
+                    font-size: 0.32rem;
+                    line-height: 0.32rem;
+                    color: #dc3849;
+                    margin: 0 0.2rem;
+                }
+            }
+            &-content {
+                width: 100%;
+                padding: 0.2rem;
+                color: #616161;
+                font-size: 0.24rem;
+                border-bottom: 1px solid #c6c6c6;
+                background-color: #fff;
+                &-text {
+                    width: 100%;
+                    margin-top: 0.4rem;
+                    display: flex;
+                    align-items: center;
+                    p {
+                        margin-left: 0.2rem;
+                    }
+                    .content-tips {
+                        padding: 0.1rem 0.2rem;
+                        color: #fff;
+                        background-color: #4659ff;
+                        border-radius: 0.25rem;
+                    }
+                    .content-box {
+                        display: flex;
+                    }
+                }
+            }
+            &-footer {
+                color: #616161;
+                border-radius: 0 0 0.3rem 0.3rem;
+                padding: 0.2rem;
+                background-color: #fff;
+                &-result {
+                    margin-bottom: 0.1rem;
+                    display: flex;
+                    p {
+                        margin-left: 0.2rem;
+                    }
+                }
+                &-integral {
+                    display: flex;
+                    margin-top: 0.2rem;
+                    .integral-wrap {
+                        display: flex;
+                        &:nth-of-type(2) {
+                            margin: 0 0.5rem;
+                        }
+                        &-value {
+                            color: #ff4e00;
+                            margin-left: 0.2rem;
+                        }
+                    }
+                }
+            }
+        }
+        .result-box-content-text:first-child{
+            justify-content: space-between;
+        }
+        .content-box{
+            width: 85%;
+            display: flex;
+            p{
+                width: 87%;
+            }
+        }
+        .unsettlementContentBox{
+            width: 100%;
+        }
+        .have-result {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 2.16rem;
+            height: 2.04rem;
+            background: url("~@/assets/club/have-result.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+        .no-result {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 2.16rem;
+            height: 2.04rem;
+            background: url("~@/assets/club/no-result.png") no-repeat center;
+            background-size: 100% 100%;
+            opacity: 0.75;
+        }
+        .have-result-US {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 2.16rem;
+            height: 2.04rem;
+            background: url("~@/assets/club/have-result-US.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+        .no-result-US {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 2.16rem;
+            height: 2.04rem;
+            background: url("~@/assets/club/no-result-US.png") no-repeat center;
+            background-size: 100% 100%;
+            opacity: 0.75;
+        }
+        .invalid-CN {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 2.16rem;
+            height: 2.04rem;
+            background: url("~@/assets/challenge/failIcon.png") no-repeat center;
+            background-size: 100% 100%;
+            opacity: 0.75;
+        }
+        .invalid-US {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 2.16rem;
+            height: 2.04rem;
+            background: url("~@/assets/challenge/failIcon_US.png") no-repeat center;
+            background-size: 100% 100%;
+            opacity: 0.75;
+        }
+        .invalid-TW {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 2.16rem;
+            height: 2.04rem;
+            background: url("~@/assets/challenge/failIcon.png") no-repeat center;
+            background-size: 100% 100%;
+            opacity: 0.75;
+        }
+        .orange {
+            color: #fa7c00;
+        }
+        .blue {
+            color: #566eac;
+        }
+        .red {
+            color: #ff0018;
+        }
+        .green {
+            color: #2ebb07;
+        }
+        .no-Data {
+            background: url("~@/assets/noInfo.png");
+            background-position: center;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            height: 6.2rem;
+            width: 68%;
+            margin: 0 auto;
+            position: relative;
+            p {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #8b8b8b;
+            }
+        }
+    }
+}

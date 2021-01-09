@@ -1,0 +1,178 @@
+* {
+  font-family: '微软雅黑';
+}
+.forgetpassword {
+  background: url('~@/assets/bg.png');
+  background-size: 100%;
+  // 公共icon样式
+  .comment-icon {
+    display: inline-block;
+    width: 0.29rem /* 24/100 */;
+    height: 0.29rem /* 24/100 */;
+  }
+  //公共字体样式
+  .comment-text {
+    display: inline-block;
+    font-style: normal;
+    font-size: 0.28rem /* 28/100 */;
+    margin-left: 0.22rem /* 22/100 */;
+    margin-right: 0.19rem /* 19/100 */;
+    width: 1.12rem /* 112/100 */;
+  }
+  .fp-head {
+    width: 100%;
+    height: 1.24rem /* 124/100 */;
+    // background-color: #c12e3e;
+    position: relative;
+
+    .back-icon {
+      width: 0.25rem /* 42/100 */;
+      height: 0.43rem /* 42/100 */;
+      display: inline-block;
+      background-image: url('~@/assets/icons/back.png');
+      background-size: 100%;
+      margin-left: 0.31rem /* 31/100 */;
+      margin-top: 0.5rem;
+    }
+    div {
+      box-sizing: border-box;
+      margin: 0 auto;
+      color: #f2f2f2;
+      font-size: 0.33rem; /* 33/100 */
+      position: absolute;
+      left: 50%;
+      bottom: 29%;
+      transform: translateX(-50%);
+    }
+  }
+  .fp-main {
+    box-sizing: border-box;
+    height: 3.2rem /* 320/100 */;
+    // background-color: #fff;
+    margin-top: 2.19rem /* 30/100 */;
+    &-input {
+      line-height: 3.2rem;
+      border: none;
+      box-sizing: border-box;
+      width: 71%;
+      height: 0.82rem;
+      background: rgba(255, 255, 255, 0);
+      font-size: 0.34rem;
+      padding: 0 0.2rem;
+      color: #757988;
+      line-height: 0.82rem;
+    }
+
+    &-input::placeholder {
+      padding-top: 0.03rem;
+      font-size: 0.28rem /* 22/100 */;
+      color: #cccccc;
+    }
+
+    .user,
+    .phone,
+    .code {
+      padding-top: 0.05rem;
+      position: relative;
+      box-sizing: border-box;
+      width: calc(100% - 0.4rem);
+      margin-left: 0.2rem;
+      margin-right: 0.2rem;
+
+      height: 29.583%;
+      border-bottom: 1px solid #cfcfcf;
+
+      .user-icon {
+        background: url('~@/assets/icons/account.png') no-repeat;
+        background-size: 85%;
+      }
+      .phone-icon {
+        // width: 0.18rem /* 24/100 */;
+        // height: 0.26rem /* 24/100 */;
+        background: url('~@/assets/icons/phone.png') no-repeat;
+        background-size: 71%;
+      }
+      .code-icon {
+        background: url('~@/assets/icons/captcha.png') no-repeat;
+        background-size: 100%;
+        // width: 0.29rem /* 29/100 */;
+        // height: 0.21rem /* 21/100 */;
+      }
+    }
+    //获取邀请码
+    .getcode {
+      position: absolute;
+      top: 50%;
+      right: 1.8%;
+      transform: translateY(-50%);
+      width: auto /* 158/100 */;
+      height: 0.44rem /* 44/100 */;
+      border: none;
+      border-radius: 0.22rem;
+      color: #fff;
+      background-color: #cfac6c;
+    }
+  }
+  .fp-password {
+    height: 2.23rem /* 223/100 */;
+
+    margin-top: 0.3rem; /* 30/100 */
+    &-input {
+      border: none;
+      box-sizing: border-box;
+      width: 71%;
+      height: 0.82rem;
+      background: rgba(255, 255, 255, 0);
+      font-size: 0.34rem;
+      padding: 0 0.2rem;
+      color: #757988;
+      line-height: 0.82rem;
+    }
+    &-input::placeholder {
+      color: #cccccc;
+      font-size: 0.28rem;
+      padding-top: 0.03rem;
+    }
+    .newpassword,
+    .reset {
+      padding-top: 0.05rem;
+      position: relative;
+      box-sizing: border-box;
+      width: calc(100% - 0.4rem);
+      margin-left: 0.2rem;
+      margin-right: 0.2rem;
+
+      height: 41.93%;
+      border-bottom: 1px solid #cfcfcf;
+      .newpassword-text {
+        display: inline-block;
+        font-style: normal;
+        font-size: 0.28rem /* 28/100 */;
+        margin-left: 0.22rem /* 22/100 */;
+        width: 1.12rem /* 112/100 */;
+      }
+      .newpassword-icon {
+        // width: 0.2rem /* 20/100 */;
+        // height: 0.24rem /* 24/100 */;
+        background: url('~@/assets/icons/password.png') no-repeat;
+        background-size: 85%;
+      }
+      .reset-icon {
+        // width: 0.2rem /* 20/100 */;
+        // height: 0.24rem /* 24/100 */;
+        background: url('~@/assets/icons/password.png') no-repeat;
+        background-size: 85%;
+      }
+    }
+  }
+
+  .fp-btn {
+    margin-top: 0.7rem /* 141/100 */;
+    text-align: center;
+    background-color: #dd3849;
+    margin-bottom: 0.7rem; /* 70/100 */
+  }
+  .forget-phone {
+    text-align: center;
+  }
+}

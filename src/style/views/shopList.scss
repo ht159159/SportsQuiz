@@ -1,0 +1,108 @@
+.address{
+    width: 100%;
+    height: 100%;
+    background: #f2f2f2;
+    &-header{
+        width: 100%;
+        height: 1.1rem;
+        line-height: 1.2rem;
+        text-align: center;
+        background: #c12e3e;
+        position: relative;
+        h3{
+            color: #fff;
+            display: inline-block;
+        }
+        .img-he{
+            margin-left: .3rem;
+            float: left;
+            margin-top: .4rem;
+            width: .42rem;
+            height: .42rem;
+        }
+        .img-he:active{
+            transform: scale(.95);
+        }
+    }
+    &-couent{
+        &-ul{
+            width: 100%;
+            padding-top: .29rem;
+            &-item{
+                width: calc(100% - .3rem);
+                margin: 0 auto;
+                position: relative;
+                margin-bottom: .64rem;
+                &-top{
+                    .name{
+                        line-height: .47rem;
+                        font-size: .23rem;
+                        color: #1f1f1f;
+                    }
+                    .phone{
+                        line-height: .47rem;
+                        font-size: .16rem;
+                        color: #828282;
+                        margin-left: .25rem;
+                    }
+                }
+                &-bottom{
+                    .mo{
+                        width: .62rem;
+                        height: .27rem;
+                        border-radius: .1rem;
+                        background: #f0b9bf;
+                        color: #fff;
+                        text-align: center;
+                        font-size: .2rem;
+                        float: left;
+                    }
+                    .dizhi{
+                        font-size: .2rem;
+                        color: #1f1f1f;
+                        line-height: .26rem;
+                        margin-left: .25rem;
+                        float: left;
+                        width: 4.4rem;
+                        overflow-wrap: break-word;
+                    }
+                    .bian{
+                        float: left;
+                        margin-left: .86rem;
+                        font-size: .2rem;
+                        color: #c3c3c3;
+                        text-align: center;
+                        border-left: 1px solid #c3c3c3;
+                        line-height: .48rem;
+                        width: .9rem;
+                        margin-top: -.2rem;
+                    }
+                }
+            }
+        }
+        .noMsg{
+            width: 100%;
+            img{
+                display: block;
+                width: 3.86rem;
+                height: 3.3rem;
+                margin: 0 auto;
+                margin-top: 3.4rem;
+            }
+            p{
+                width: calc(100% - .2rem);
+                margin: 0 auto;
+                height: .8rem;
+                text-align: center;
+                color: #fff;
+                line-height: .8rem;
+                color: #fff;
+                border-radius: .4rem;
+                box-shadow: 1px 3px 6px #e8cccf;
+                background: #ef485e;
+                font-size: .32rem;
+                margin-top: 3.12rem;
+            }
+        }
+    }
+}

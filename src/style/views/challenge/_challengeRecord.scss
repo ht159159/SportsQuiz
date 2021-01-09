@@ -1,0 +1,242 @@
+.Crecord {
+  .nomatchs {
+    // width: 5.01rem /* 501/100 */;
+    height: 5.42rem /* 542/100 */;
+    // background-color: red;
+    margin-top: 0.3rem /* 30/100 */;
+    background-image: url('~@/assets/noInfo.png');
+    background-position: center;
+    background-size: 65%;
+    background-repeat: no-repeat;
+    position: relative;
+    p {
+      position: absolute;
+      bottom: 0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #8b8b8b;
+    }
+  }
+  &-main {
+    margin-top: 1.24rem;
+    padding-top: 0.1rem /* 10/100 */;
+    // padding-top: 0.65rem /* 65/100 */;
+    &-time {
+      padding-left: 0.25rem /* 20/100 */;
+      margin-bottom: 0.12rem /* 12/100 */;
+      margin-top: 0.12rem;
+      line-height: 0.5rem;
+      &-icon {
+        background: url('~@/assets/timer_03.png');
+        display: inline-block;
+        width: 0.23rem;
+        height: 0.23rem;
+
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+      span {
+        color: #707070;
+        font-size: 0.23rem /* 17/100 */;
+        margin-left: 0.1rem /* 3/100 */;
+      }
+    }
+    &-items {
+      margin: 0 auto;
+      margin-bottom: 0.2rem /* 20/100 */;
+      width: 7.1rem /* 710/100 */;
+      // height: 2.54rem /* 254/100 */;
+
+      border-radius: 0.15rem;
+      &-title {
+        height: 0.69rem /* 69/100 */;
+        background-color: #e3e3e3;
+        border-top-left-radius: 0.15rem;
+        border-top-right-radius: 0.15rem;
+        line-height: 0.69rem;
+        padding-left: 0.38rem /* 38/100 */;
+      }
+      &-content {
+        &-match {
+          margin-bottom: 0.2rem /* 5/100 */;
+        }
+        position: relative;
+        padding-left: 0.38rem /* 38/100 */;
+        padding: 0.22rem 0.38rem;
+        // height: 1.85rem /* 185/100 */;
+        background-color: #fff;
+        border-bottom-left-radius: 0.15rem;
+        border-bottom-right-radius: 0.15rem;
+        .isSuccess {
+          color: #ff8900;
+        }
+        .bgc {
+          position: absolute;
+          width: 1.43rem /* 143/100 */;
+          height: 1.41rem /* 141/100 */;
+          right: 0.1rem;
+          bottom: 0.05rem;
+          p {
+            width: 1.29rem /* 129/100 */;
+            height: 0.32rem /* 32/100 */;
+            background-color: #8d8d8d;
+            text-align: center;
+            color: #fff;
+            font-size: 0.2rem /* 20/100 */;
+            line-height: 0.32rem;
+            border-radius: 0.15rem /* 11/100 */;
+            position: absolute;
+            bottom: 4%;
+            left: 6%;
+          }
+        }
+        .bgc-CN {
+          background: url('~@/assets/challenge/record_02_03.png');
+          background-size: 100%;
+        }
+        .bgc-US {
+          background: url('~@/assets/challenge/record_02_03_US.png');
+          background-size: 100%;
+        }
+        .bgc-TW {
+          background: url('~@/assets/challenge/record_02_03_TW.png');
+          background-size: 100%;
+        }
+        .bgc1 {
+          position: absolute;
+          width: 1.43rem /* 143/100 */;
+          height: 1.41rem /* 141/100 */;
+          right: 0.1rem;
+          bottom: 0.05rem;
+          background-size: 100%;
+          p {
+            width: 1.29rem /* 129/100 */;
+            height: 0.32rem /* 32/100 */;
+            background-color: #697bff;
+            text-align: center;
+            color: #fff;
+            font-size: 0.2rem /* 20/100 */;
+            line-height: 0.32rem;
+            border-radius: 0.15rem /* 11/100 */;
+            position: absolute;
+            bottom: 4%;
+            left: 6%;
+          }
+        }
+        .bgc1-CN {
+          background: url('~@/assets/challenge/record_03.png');
+          background-size: 100%;
+        }
+        .bgc1-US {
+          background: url('~@/assets/challenge/record_03_US.png');
+          background-size: 100%;
+        }
+        .bgc1-TW {
+          background: url('~@/assets/challenge/record_03_TW.png');
+          background-size: 100%;
+        }
+        .Invalidation {
+          position: absolute;
+          width: 1.43rem /* 143/100 */;
+          height: 1.41rem /* 141/100 */;
+          right: 0.1rem;
+          bottom: 0.05rem;
+          p {
+            width: 1.29rem /* 129/100 */;
+            height: 0.32rem /* 32/100 */;
+            background-color: #697bff;
+            text-align: center;
+            color: #fff;
+            font-size: 0.2rem /* 20/100 */;
+            line-height: 0.32rem;
+            border-radius: 0.15rem /* 11/100 */;
+            position: absolute;
+            bottom: 4%;
+            left: 6%;
+          }
+        }
+        .Invalidation-CN {
+          background: url('~@/assets/challenge/failIcon.png');
+          background-size: 100%;
+        }
+        .Invalidation-US {
+          background: url('~@/assets/challenge/failIcon_US.png');
+          background-size: 100%;
+        }
+        .Invalidation-TW {
+          background: url('~@/assets/challenge/failIcon.png');
+          background-size: 100%;
+        }
+        &-name {
+          &-home {
+            font-size: 0.3rem /* 24/100 */;
+            font-weight: 500;
+          }
+          &-vs {
+            font-weight: 500;
+            color: red;
+            font-size: 0.3rem /* 24/100 */;
+            margin: 0 0.12rem /* 67/100 */;
+          }
+          &-away {
+            font-size: 0.3rem /* 24/100 */;
+            font-weight: 500;
+          }
+        }
+        &-model {
+          font-size: 0.24rem /* 24/100 */;
+          font-weight: 600;
+          // margin: 0.1rem /* 7/100 */ 0px;
+          line-height: 0.3rem;
+          color: #6f6f6f;
+          margin-top: 0.2rem;
+          margin-bottom: -0.05rem;
+          line-height: 0.5rem;
+        }
+        &-result {
+          font-weight: 600;
+
+          font-size: 0.24rem /* 24/100 */;
+          margin: 0.07rem /* 7/100 */ 0px;
+          color: #6f6f6f;
+          line-height: 0.5rem;
+        }
+        &-time {
+          font-weight: 600;
+
+          font-size: 0.24rem /* 24/100 */;
+          margin: 0.07rem /* 7/100 */ 0px;
+          color: #6f6f6f;
+          line-height: 0.5rem;
+        }
+        &-ceng {
+          font-weight: 600;
+          margin: 0.07rem /* 7/100 */ 0px;
+          font-size: 0.24rem /* 24/100 */;
+          color: #6f6f6f;
+          .success {
+            color: #ff8900;
+          }
+          .fail {
+            color: red;
+          }
+        }
+        &-gold {
+          width: 4.9rem;
+          font-weight: 600;
+          margin: 0.07rem /* 7/100 */ 0px;
+          font-size: 0.24rem /* 24/100 */;
+          color: #6f6f6f;
+          border-top: 1px solid #e3e3e3;
+          padding-top: 0.2rem /* 20/100 */;
+          line-height: 0.5rem;
+          .success {
+            color: #ff8900;
+          }
+        }
+        &-match {
+        }
+      }
+    }
+  }
+}

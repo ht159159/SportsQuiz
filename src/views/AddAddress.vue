@@ -1,0 +1,309 @@
+<template>
+    <main class='add' style='overflow-x:hidden'>
+        <div class="add-header" style='position: fixed; top: 0'>
+            <back @click='goHome' class='back-icon img-he'></back>
+            <h3>{{ $t("ShippingAddress") }}</h3>
+            <span class="save" @click='addAddress'>{{ $t("Save") }}</span>
+        </div>
+        <div class='add-couent' style='margin-top: 1.1rem'>
+            <ul class='add-couent-ul'>
+                <li class='add-couent-ul-item'>
+                    <span class='zileft'>{{ $t("Receiver") }}</span>
+                    <!-- <el-input class='input' v-model="getPer" placeholder=""></el-input> -->
+                    <input style='margin-left: .4rem' class='bigInp' v-model="getPer" placeholder="" :maxlength = 'Max' />
+                </li>
+                <li class='add-couent-ul-item'>
+                    <span class='zileft'>{{ $t("Mobile") }}</span>
+                    <input class='bigInp' v-model.number="phone" placeholder="" type='number' oninput = 'oninput' />
+                </li>
+                <li class='add-couent-ul-item' style='position: relative;'>
+                    <span class='zileft'>{{ $t("Area") }}</span>
+                    <el-cascader
+                    class='citySelect'
+                   :options="cityListNew"
+                    :clearable="clear"
+                    v-model="cityCodeList"
+                    :props="{ expandTrigger: 'hover' }"
+                    :placeholder='$t("Select")' 
+                    @change="handleChange"></el-cascader>
+                </li>
+                <li class='add-couent-ul-item' style='border:0;height: 1.4rem'>
+                    <span class='zileft'>{{ $t("DetailAddress") }}</span>
+                    <el-input style='' type="textarea" :autosize="{ minRows: 2, maxRows: 2}" class='input' v-model="detailAdd" :placeholder='$t("AddressPlaceholder")'></el-input>
+                </li>
+            </ul>
+            
+            <div class="sure">
+                <span>{{ $t("DefaultAddress") }}</span>
+                <el-switch
+                    v-model="value2"
+                    @change='changes'
+                    active-color="#34c759"
+                    inactive-color="#bfbfbf">
+                </el-switch>    
+            </div>
+
+            
+        </div>
+    </main>
+</template>
+
+<script>
+    import back from "@/components/Botton/back.vue";
+    import newcityPinyin from '@/utils/cityPinyin.js';
+    import newCity from '@/utils/city.js';
+    import {
+        apiAddEditMemAddress
+    } from '@/api/User.js'
+    import {
+        mapActions,
+        mapGetters,
+        mapMutations
+    } from 'vuex'
+    import Vue from 'vue';
+    import {
+        Area,
+        Toast
+    } from 'vant';
+
+    Vue.use(Area).use(Toast);
+    export default {
+        components: {
+            back
+        },
+        data() {
+            return {
+                clear: true,
+                getPer: '',
+                phone: '',
+                address: '',
+                detailAdd: '',
+                value2: true,
+                isDefault: 0,
+                //省市区
+                cityListNew: "",
+                cityCodeList: [],
+                Max: 4,
+                lang: "",
+            }
+        },
+        watch: {
+
+        },
+        created() {
+            this.lang = JSON.parse(localStorage.getItem("lang")).tag;
+            this.lang == "en-US" ? this.cityListNew = newcityPinyin : this.cityListNew = newCity;
+        },
+        mounted() {
+            // console.log(newCityPinyin)
+            // console.log(newCity)
+            // console.log(JSON.stringify(newCity))
+
+        },
+        methods: {
+            oninput(val) {
+
+            },
+            goHome() {
+                this.$router.push('/address')
+            },
+            //组件确定键
+            handleChange() {
+
+            },
+            //将地址code转换为地区字
+            easyCity() {
+                let easyAddress = '';
+                this.cityListNew.forEach((item) => {
+                    if (item.value == this.cityCodeList[0]) {
+                        //label就是字了   cityCodeList=[13,23,55]这个形式的所以要改变
+                        easyAddress += item.label;
+                        item.children.forEach((jtem) => {
+                            if (jtem.value == this.cityCodeList[1]) {
+                                easyAddress += jtem.label
+                            }
+                            jtem.children.forEach((ktem) => {
+                                if (ktem.value == this.cityCodeList[2]) {
+                                    easyAddress += ktem.label
+                                }
+                            })
+                        })
+                    }
+                })
+                this.address = easyAddress
+            },
+
+            goBack() {
+                this.$router.go(-1);
+            },
+            changes() {
+                if (this.value2) {
+                    return 1
+                } else {
+                    return 0
+                }
+            },
+            addAddress() {
+                // 判断手机号是否合法
+                this.easyCity()
+                let isMo = 0
+                if (this.value2) {
+                    isMo = 1
+                } else {
+                    isMo = 0
+                }
+
+                let data = {
+                    AId: '',
+                    UId: '',
+                    UName: this.getPer,
+                    UPhoneNumber: this.phone,
+                    URedeemAddress: this.address + this.detailAdd,
+                    IdentityCard: '123123',
+                    CreateTime: new Date(),
+                    IsDefault: isMo,
+                }
+                if (data.UName == '' || data.UPhoneNumber == '' || data.URedeemAddress == '') {
+                    const m = this.$message({
+                        message: this.$t("CompleteAddressInformation"),
+                        type: "warning",
+                        duration: 1000
+                    });
+                    setTimeout(() => m.close(), 1200)
+                } else {
+                    apiAddEditMemAddress(data, true).then(res => {
+                        if (res.Data == 1) {
+                            const m = this.$message({
+                                message: this.$t("SavedSuccessfully"),
+                                type: "success",
+                                duration: 1000
+                            });
+                            setTimeout(() => m.close(), 1200)
+                            this.$router.replace('/address')
+                            this.$router.go(-1)
+                        } else {
+                            const m = this.$message({
+                                message: this.$t("successfullyDeleted"),
+                                type: "error",
+                                duration: 1000
+                            });
+                            setTimeout(() => m.close(), 1200)
+                        }
+                    })
+                }
+            }
+        }
+    }
+</script>
+
+<style>
+    .el-cascader {
+        width: 3rem
+    }
+    
+    .citySelect .el-input__inner {
+        cursor: pointer;
+        border: 0;
+        margin-left: .2rem;
+        width: 4rem;
+        background: rgba(0, 0, 0, 0);
+        font-size: .23rem;
+        vertical-align: middle;
+        /* position: absolute; */
+        /* top: -.06rem */
+    }
+    
+    .citySelect .el-input__inner::placeholder {
+        font-size: 0.23rem;
+        /* padding-top: 0.11rem; */
+    }
+    
+    .el-cascader-node {
+        padding: 0 .3rem 0 .2rem
+    }
+    
+    .el-input__icon {
+        position: absolute;
+        right: -6rem;
+        line-height: 0;
+        top: .05rem;
+    }
+    
+    .el-cascader-panel {
+        margin: 0 auto;
+        width: 100%
+    }
+    
+    .el-cascader-menu {
+        min-width: .6rem;
+    }
+    
+    .el-input__inner {
+        height: .78rem
+    }
+    
+    .el-textarea {
+        width: 0;
+        margin-top: 0.12rem;
+        height: 1.2rem
+    }
+    
+    .input .el-input__inner {
+        display: inline-block;
+        width: 4rem;
+        margin-left: .4rem;
+        border: 0
+    }
+    
+    .input .el-textarea__inner {
+        width: 5.6rem;
+        margin-left: .2rem;
+        border: 0;
+        font-size: .23rem;
+    }
+    
+    .van-switch__node {}
+    
+    .el-switch__core {
+        margin-left: 4.6rem;
+    }
+    
+    .el-switch__input {
+        width: .4rem;
+    }
+    .el-cascader__dropdown{
+        width: 100%;
+        overflow-x: scroll;
+    }
+    .el-cascader .el-input .el-input__inner {
+        text-overflow: clip;
+        width: 100%;
+    }
+    .el-cascader {
+        width: 85%;
+    }
+    .el-cascader-panel {
+        width: 100%;
+        overflow-x: scroll;
+    }
+    .el-cascader-menu {
+        min-width: max-content;
+    }
+    /* .el-cascader-menu:last-child{
+        min-width: .6rem;
+    } */
+    .el-cascader-node__label {
+        overflow: inherit;
+    }
+</style>
+
+<style scoped>
+    .bigInp {
+        height: .78rem;
+        margin-left: .2rem;
+        padding-left: .24rem;
+        font-size: 0.23rem;
+        color: #606266;
+        border: 0;
+    }
+</style>

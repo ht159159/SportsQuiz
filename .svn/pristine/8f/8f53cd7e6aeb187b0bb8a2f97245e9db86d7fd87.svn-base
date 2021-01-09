@@ -1,0 +1,117 @@
+.questionnaire {
+    background-color: #fff;
+    padding: 1.1rem 0px 1rem;
+        overflow-x: hidden;
+  
+    .questionnaire-header {
+      width: 100%;
+      height: 1.1rem;
+      line-height: 1.2rem;
+      text-align: center;
+      @include page_header_color($theme-red);
+      z-index: 999;
+      top: 0;
+      position: fixed;
+      h3 {
+        @include page_header_text_color($theme-red-header-text-color);
+        display: inline-block;
+      }
+      .back-icon {
+        position: absolute;
+        left: 0;
+        margin-top: 0.4rem;
+      }
+    }
+    .title-big {
+      font-size: 0.3rem;
+      color: #606266;
+      line-height: 0.82rem;
+      width: 100%;
+      background: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(#f2f2f2),
+        to(#e6e6e6)
+      );
+    }
+  }
+  .questionnaire-content {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    padding: 0.25rem;
+    .questionnaire-wrap {
+      .questionnaire-topic {
+        padding: 0.25rem 0;
+        border-bottom: 0.01rem solid #f2f2f2;
+        color: #2f8afc;
+        font-size: 0.24rem;
+        line-height: 30px;
+      }
+      .questionnaire-style {
+        color: #ea4d0f;
+      }
+      .suggestion-wrap {
+        position: relative;
+        .textarea {
+          width: 100%;
+        }
+        .text-len {
+          color: #a4a4a4;
+          position: absolute;
+          bottom: 0.1rem;
+          right: 0.1rem;
+        }
+      }
+    }
+    .submit {
+      width: 100%;
+      height: 0.8rem;
+      margin: 0.5rem 0;
+      @include myself_btn();
+      border-radius: 0.4rem;
+      box-shadow: 0.05rem 0.05rem 0.07rem 0.01rem rgba(188, 41, 56, 0.28);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.3s;
+    }
+    .submit:active {
+        background-color: #c9c9c9;
+        transform: scale(0.95);
+    }
+  }
+  .smallImg {
+    display: inline-block;
+    vertical-align: middle;
+    width: 0.5rem;
+    height: 0.4rem;
+  }
+  
+  // checkbox套件覆蓋
+  ::v-deep .el-checkbox__input.is-checked + .el-checkbox__label {
+    color: #2b2b2b !important;
+  }
+  ::v-deep .el-checkbox {
+    width: 100%;
+    padding: 0.25rem;
+    border-bottom: 0.01rem solid #f2f2f2;
+    color: #2b2b2b !important;
+  }
+  ::v-deep .el-checkbox__inner {
+    border-radius: 10px !important;
+  }
+  ::v-deep .el-checkbox__input.is-checked .el-checkbox__inner {
+    background-color: #c12e3e;
+    border-color: #c12e3e;
+  }
+  ::v-deep .el-checkbox__input.is-focus .el-checkbox__inner {
+    border-color: #dcdfe6;
+  }
+  ::v-deep .el-checkbox__inner:hover {
+    border-color: #dcdfe6;
+  }
+  ::v-deep .el-checkbox__label {
+    font-size: 0.24rem;
+  }

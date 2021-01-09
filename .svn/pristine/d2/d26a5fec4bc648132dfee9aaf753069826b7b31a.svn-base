@@ -1,0 +1,275 @@
+* {
+  box-sizing: border-box;
+}
+.main {
+  position: relative;
+  &-header {
+    display: flex;
+    align-items: center;
+    padding: 0.05rem 0rem;
+    position: fixed;
+    top: 0;
+  }
+  &-nav {
+
+    &-top {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 0.2rem;
+      @include header_bgcolor($theme-red);
+      position: fixed;
+      // top: .9rem;
+      top: 0;
+      width: 100%;
+    }
+    &-bottom {
+      // height: 1rem;
+      display: flex;
+      // justify-content: space-between;
+      padding: 0 0.2rem;
+      // box-shadow: 0px 10px 15px #929292;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      @include footer_bg();
+      z-index: 999;
+    }
+  }
+}
+
+// 最頂部 簽到及跑馬燈區域
+.header {
+  &-marquee {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    background-color: $light-1;
+    // padding: 0.165rem 0.16rem;
+    margin-right: 0.07rem;
+    // border-radius: 0.3rem;
+    &-icon {
+      float: left;
+      width: 0.3rem;
+      height: 0.27rem;
+      margin-left: 0.2rem;
+      background-image: url('~@/assets/logogg_03.png');
+      background-size: cover;
+      margin-right: 0.12rem;
+    }
+    &-text {
+      float: left;
+      color: $font-dark-1;
+      width: 3.2rem;
+    }
+  }
+}
+
+// 功能導覽列
+.nav {
+  //上方導覽列樣式
+  &-top {
+    &-item {
+      padding: 0.18rem 0;
+      width: 25%;
+      text-align: center;
+      transition: background-color 0.2s;
+      &:active {
+        background-color: rgba(#fff, 0.2);
+      }
+      &-icon {
+        margin: 0 auto 0.04rem auto;
+        width: 0.28rem;
+        height: 0.28rem;
+        background-image: url('~@/assets/logo.png');
+        background-size: cover;
+      }
+      &-icon-pw {
+        margin: 0 auto 0.04rem auto;
+        width: 0.28rem;
+        height: 0.28rem;
+        @include header_icon_pw();
+      }
+      &-icon-tz {
+        margin: 0 auto 0.04rem auto;
+        width: 0.28rem;
+        height: 0.28rem;
+        @include header_icon_tz();
+      }
+      &-icon-cj {
+        margin: 0 auto 0.04rem auto;
+        width: 0.28rem;
+        height: 0.28rem;
+        @include header_icon_cj();
+      }
+      &-icon-zx {
+        margin: 0 auto 0.04rem auto;
+        width: 0.28rem;
+        height: 0.28rem;
+        @include header_icon_zx();
+      }
+      &-text {
+        @include header_text_color($font-light-1);
+        font-size: 0.28rem;
+      }
+    }
+  }
+  //下方導覽列樣式
+  &-bottom {
+    z-index: 9999 !important;
+    &-item {
+      z-index: 9999;
+      position: relative;
+      padding: 0.1rem 0;
+      width: 25%;
+      text-align: center;
+      transition: background-color 0.2s;
+      position: relative;
+      .unread-msg {
+        width: 0.15rem;
+        height: 0.15rem;
+        background-color: #c12f3e;
+        border-radius: 0.25rem;
+        z-index: 10000;
+        position: absolute;
+        top: 0;
+        right: 0.4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &-icon {
+        margin: 0 auto 0.07rem auto;
+        width: 0.44rem;
+        height: 0.44rem;
+        // background-image: url('~@/assets/logo.png');
+        background-size: cover;
+      }
+      .nav-bottom-item-icon-dt {
+        box-sizing: border-box;
+        margin: 0 auto 0.07rem auto;
+        width: 0.44rem;
+        height: 0.41rem;
+        @include footer_icon_dt();
+      }
+      // .nav-bottom-item-icon-sc {
+      //   box-sizing: border-box;
+      //   margin: 0 auto 0.07rem auto;
+      //   width: 0.44rem;
+      //   height: 0.44rem;
+      //   @include footer_icon_sc();
+      // }
+      .nav-bottom-item-icon-ss {
+        box-sizing: border-box;
+        margin: 0 auto 0.07rem auto;
+        width: 0.44rem;
+        height: 0.44rem;
+        @include footer_icon_ss();
+      }
+      .nav-bottom-item-icon-ph {
+        box-sizing: border-box;
+        margin: 0 auto 0.07rem auto;
+        width: 0.44rem;
+        height: 0.44rem;
+        @include footer_icon_ph()
+      }
+      .nav-bottom-item-icon-wd {
+        margin: 0 auto 0.07rem auto;
+        width: 0.44rem;
+        height: 0.44rem;
+        @include footer_icon_wd();
+      }
+      &-text {
+        @include footer_text_color-default($theme-red-footer-text-color-default)
+      }
+      &-active {
+        .nav-bottom-item-icon {
+          position: relative;
+          z-index: 99;
+          // ::before就是在这个元素之前加上相应的东西
+          &::before {
+            content: '';
+            position: absolute;
+            // top: 0.05rem;
+            // right: -0.05rem;
+            // width: 0.36rem;
+            // height: 0.36rem;
+            // background-color: $primary;
+            // border-radius: 50%;
+            // opacity: 0.7;
+          }
+        }
+        .nav-bottom-item-text {
+          @include footer_text_color($theme-red-footer-text-color)
+        }
+        .nav-bottom-item-icon-dt {
+          @include footer_icon_dt_active();
+        }
+        // .nav-bottom-item-icon-sc {
+        //   @include footer_icon_sc_active();
+        // }
+      }
+      // 中間大按鈕樣式
+      &-center {
+        width: 1.25rem;
+        height: 1.25rem;
+        position: absolute;
+        top: -0.4rem;
+        left: 50%;
+        transform: translateX(-46%);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        // @include footer_icon_match();
+      }
+    }
+    transition: 0.3s;
+    &-item:active {
+      transform: scale(0.95);
+    }
+  }
+}
+// 中間高度
+.main {
+  // height: calc(100% - 3.09rem);
+}
+
+.pop {
+  width: 3.47rem /* 352/100 */;
+  height: 1.35rem /* 237/100 */;
+  // @include footer_icon_match_pop();
+  position: absolute;
+  bottom: 0.9rem;
+  left: 50%;
+  z-index: 0;
+  transform: translateX(-50%);
+  background-size: 100%;
+  .left {
+    width: 50%;
+    float: left;
+    height: 100%;
+  }
+  .right {
+    width: 50%;
+    float: right;
+    height: 100%;
+  }
+}
+
+.gomatch {
+  width: 1.25rem;
+  height: 1.5rem;
+  position: fixed; 
+  right: 0;
+  bottom: 1rem;
+  z-index: 99;
+  @include footer_icon_go_match();
+  .gomatch-text {
+    width: 54%;
+    color: #fff;
+    position: absolute;
+    bottom: 0.26rem;
+    right: 0.05rem;
+    text-align: center;
+  }
+}
+

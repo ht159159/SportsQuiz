@@ -1,0 +1,446 @@
+.recommended .content::-webkit-scrollbar {
+    display: none;
+}
+.createClub {
+    width: 100%;
+    height: 100%;
+    background: #f2f2f2;
+    position: relative;
+    &-header {
+        width: 100%;
+        height: 1.1rem;
+        line-height: 1.2rem;
+        text-align: center;
+        @include page_header_color($theme-red);
+        z-index: 1;
+
+        h3 {
+            @include page_header_text_color($theme-red-header-text-color);
+            display: inline-block;
+            margin-left: -0.5rem;
+        }
+        .img-he {
+            margin-left: 0.3rem;
+            float: left;
+            margin-top: 0.4rem;
+            width: 0.42rem;
+            height: 0.42rem;
+        }
+        .img-he:active {
+            transform: scale(0.95);
+        }
+    }
+    .category {
+        width: 100%;
+        // margin-top: 1.1rem;
+        position: fixed;
+        top: 1.1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        z-index: 1;
+        filter: drop-shadow(0px 5px 6.5px rgba(147,147,147,0.29));
+
+    }
+    .category-type {
+        width: calc(100% / 3);
+        height: 0.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        p {
+            width: 90%;
+            height: 100%;
+            text-align: center;
+            font-size: 0.3rem;
+            line-height: 0.8rem;
+            color: #8c8c8c;
+        }
+        .category-type-active {
+            @include myself_task_category_text($theme-red-category);
+            box-sizing: border-box;
+        }
+    }
+    .category-type:nth-of-type(1),
+    .category-type:nth-of-type(2) {
+        &::after {
+            content: "|";
+            position: absolute;
+            top: 0.24rem;
+            right: 0;
+            color: #d1d1d1;
+        }
+    }
+
+    .club-Box{
+        width: 100%;
+        overflow-y: scroll;
+        margin-top: 1rem;
+        // text-align: center;
+        
+        .recommended {
+            width: 100%;
+            // height: 2.6rem;
+            // background: -webkit-linear-gradient(left, #576ede, #7779ee);
+            // background: -o-linear-gradient(right, #576ede, #7779ee);
+            // background: -moz-linear-gradient(right, #576ede, #7779ee);
+            // background: linear-gradient(to right, #576ede, #7779ee);
+            background: url('~@/assets/club/recommended-bg.png');
+            background-size: 100% 100%;
+            padding: 0.22rem 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            overflow: auto;
+            .title {
+                height: 0.4rem;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                color: #fff;
+                margin-bottom: 0.2rem;
+                margin-left: 0.2rem;
+
+                .title_list {
+                    width: 0.1rem;
+                    height: 65%;
+                    background-color: #fff;
+                    border-radius: 0.1rem;
+                    margin: 0 0.1rem 0 0;
+                }
+                p {
+                    height: 100%;
+                    line-height: 0.4rem;
+                    font-size: 0.3rem;
+                }
+            }
+            .content {
+                width: 100%;
+                height: 1.54rem;
+                overflow-x: auto;
+                overflow-y: hidden;
+                display: flex;
+                position: relative;
+
+                .recommended-club {
+                    width: 3.34rem;
+                    height: 100%;
+                    margin: 0 0.09rem;
+                    padding: 0.05rem;
+                    box-sizing: border-box;
+                    position: relative;
+                    background-color: #6774e6;
+                    filter: drop-shadow(0px 3px 3.5px rgba(36,49,159,0.67));
+                    flex: none;
+                    &-img{
+                        width: 100%;
+                    }
+                }
+                .recommended-club:active {
+                    background-color: #c9c9c9;
+                    transform: scale(0.95);
+                }
+                .recommended-club:first-child{
+                    margin-left: 0.36rem;
+                }
+            }
+        }
+
+        .popularClubs{
+            width: 100%;
+            padding: 0.22rem;
+            box-sizing: border-box;
+
+            .title {
+                height: 0.4rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: #000;
+                margin-bottom: 0.2rem;
+
+                .title-wrap {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    .title-list {
+                        width: 0.1rem;
+                        height: 65%;
+                        background-color: #6774e6;
+                        border-radius: 0.1rem;
+                        margin: 0 0.1rem;
+                    }
+    
+                    p {
+                        height: 100%;
+                        line-height: 0.4rem;
+                        font-size: 0.3rem;
+                    }
+
+                }
+                .go-search-wrap {
+                    display: flex;
+                    align-items: center;
+                    p {
+                        color: #898989;
+                    }
+                    .go-search {
+                        width: 0.28rem;
+                        height: 0.28rem;
+                        background: url('~@/assets/club/go_search.png') no-repeat center;
+                        background-size: 100% 100%;
+                        margin: 0 0.1rem;
+                    }
+                }
+            }
+
+            .clubs{
+                width: 100%;
+                border-radius: 0.2rem;
+                filter: drop-shadow(0px 0.1rem 0.07rem rgba(219,219,219,0.43));
+                background-color: #fff;
+                padding: 0.1rem 0.3rem 0.1rem 0;
+                box-sizing: border-box;
+                position: relative;
+                margin-bottom: 0.36rem;
+
+                img{
+                    width: 0.7rem;
+                }
+
+                &-box{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    &-bg{
+                        width: 1.04rem;
+                        height: 1.04rem;
+                        border-radius: 10px;
+                        filter: drop-shadow(0px 0.08rem 0.1rem rgba(162,162,162,0.39));
+                        background: #fff;
+                        position: relative;
+                        left: -0.1rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        img{
+                            width: 38px;
+                        }
+                    }
+
+                    &-content{
+                        display: flex;
+                        width: 85%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        color: #575757;
+                        padding-left: 15px;
+                        box-sizing: border-box;
+
+                        .content-box{
+                            div{
+                                line-height: initial;
+                            }
+
+                            &-title{
+                                font-size: 0.32rem;
+                            }
+                            &-statement{
+                                font-size: 0.24rem;
+                                color: #898989;
+                            }
+                        }
+
+                        .clubs-btn-member {
+                            width: 0.32rem;
+                            height: 0.32rem;
+                            position: absolute;
+                            top: calc((100% - 0.32rem) / 2);
+                            right: 0.3rem;
+                            color: #fff;
+                            background-image: url('~@/assets/club/joinClub-icon2.png');
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                        }
+                        .clubs-btn{
+                            width: 0.32rem;
+                            height: 0.32rem;
+                            position: absolute;
+                            top: calc((100% - 0.32rem) / 2);
+                            right: 0.3rem;
+                            color: #fff;
+                            background-image: url('~@/assets/club/joinClub-icon.png');
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                            z-index: 1001;
+                        }
+                    }
+                }
+            }
+            .clubs:active {
+                background-color: #c9c9c9;
+                transform: scale(0.95);
+            }
+            .clubs-box:last-child .clubs-box-content{
+                border-bottom: none;
+            }
+            .more{
+                margin-top: 10px;
+            }
+        }
+    }
+
+    .noMissionBg {
+        text-align: center;
+        position: relative;
+        margin: 0 auto;
+        p {
+        position: absolute;
+        bottom: 0.2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #8b8b8b;
+        }
+    }
+    .noMission{
+        width: 65%;
+        margin-top: 1rem;
+    }
+    .recommendedNoMissionBg{
+        text-align: center;
+        position: relative;
+        margin: 0 auto;
+        display: flex;
+    }
+    .recommendedNoMission{
+        width: 65%;
+    }
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity 0.5s;
+    }
+
+    .fade-enter,
+    .fade-leave-to {
+        opacity: 0;
+    }
+
+    .fade-leave,
+    .fade-enter-to {
+        opacity: 1;
+    }
+
+    // .changeBtn {
+    //     color: #fff;
+    //     background: -webkit-gradient(linear, left top, right top, from(#e73a51), to(#dc3849));
+    //     background: linear-gradient(to right, #e73a51, #dc3849);
+    //     border: none;
+    // }
+    .changeBtnHasMember {
+        display: block;
+        border: 0;
+        width: 6.82rem;
+        height: 0.8rem;
+        border-radius: 0.6rem;
+        margin: 0 auto;
+        outline: none;
+        box-shadow: 3px 6px 9px #8b8b8b;
+        background:#EBEBEB;
+        color:#999;
+    }
+    .changeBtn {
+        display: block;
+        border: 0;
+        width: 6.82rem;
+        height: 0.8rem;
+        border-radius: 0.6rem;
+        @include myself_btn();
+        margin: 0 auto;
+        outline: none;
+        box-shadow: 3px 6px 9px #dfa9ae;
+    }
+    .changeBtn:active {
+        background-color: #c9c9c9;
+        transform: scale(0.95);
+    }
+    .fancy-box {
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        width: 95%;
+        height: auto;
+        background-size: contain;
+        position: fixed;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        border-radius: 0.2rem;
+        img {
+            width: 100%;
+        }
+        &-content {
+            width: 100%;
+            height: 3rem;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            p {
+                font-size: 0.32rem;
+                line-height: 0.32rem;
+            }
+        }
+        &-btn {
+            width: 100%;
+            // height: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+            padding-bottom: 0.2rem;
+            border-radius: 0 0 0.2rem 0.2rem;
+            p {
+                font-size: 0.28rem;
+                color: #dc3849;
+                margin-top: 0.25rem;
+            }
+            &-confirm {
+                width: 85%;
+                font-size: 0.4rem;
+                line-height: 0.4rem;
+                color: #ffffff;
+                padding: 0.3rem;
+                text-align: center;
+                border-radius: 0.5rem;
+                @include myself_btn();
+                margin: 0.2rem;
+            }
+            &-cancel {
+                width: 85%;
+                font-size:  0.4rem;
+                line-height: 0.4rem;
+                color: #ffffff;
+                padding: 0.3rem;
+                text-align: center;
+                border-radius: 0.5rem;
+                background-image: linear-gradient(-29deg, #acacac 4%, #c5c5c5 100%);
+            }
+            &-cancel:active  {
+                background-color: #c9c9c9;
+                transform: scale(0.95);
+            }
+        }
+    }
+}

@@ -1,0 +1,114 @@
+.club-match-result {
+    width: 100%;
+    height: 100%;
+    padding: 1.1rem 0 0;
+    &-header {
+        width: 100%;
+        height: 1.1rem;
+        line-height: 1.2rem;
+        text-align: center;
+        z-index: 1001;
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include page_header_color($theme-red);
+        &-wrap {
+            // margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            h3 {
+                @include page_header_text_color($theme-red-header-text-color);
+                display: inline-block;
+            }
+            .back-icon {
+                position: absolute;
+                left: 0.5rem;
+                margin: 0;
+            }
+        }
+    }
+
+    .match {
+        height: 100%;
+        padding: 0.2rem;
+        &-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: auto;
+            .block {
+                width: 100%;
+                background-color: #fff;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0.1rem;
+                position: relative;
+                margin-top: 0.2rem;
+                // filter: drop-shadow(0px 5px 3.5px rgba(219,219,219,0.43));
+                flex-shrink: 0;
+                transition: 0.3s;
+                .date {
+                    color: #a1a1a1;
+                    font-size: 0.28rem;
+                    margin: 0.1rem 0;
+                }
+                .abridge-content {
+                    width: 50%;
+                    overflow:hidden;
+                    white-space: nowrap; // 死不換行
+                    text-overflow: ellipsis; // 縮短 ...
+                    margin: 0.1rem 0;
+                }
+                .match-btn-wrap {
+                    position: absolute;
+                    bottom: 0.1rem;
+                    right: 0.1rem;
+                    display: flex;
+                    align-items: center;
+                    .have-result {
+                        padding: 0.2rem 0.4rem;
+                        font-size: 0.28rem;
+                        background-color: #36bb12;
+                        color: #fff;
+                        border-radius: 0.3rem;
+                    }
+                    .no-result {
+                        padding: 0.2rem 0.4rem;
+                        font-size: 0.28rem;
+                        background-color: #6a7cfc;
+                        color: #fff;
+                        border-radius: 0.3rem;
+                    }
+                }
+                img {
+                    width: 100%;
+                }
+            }
+            .block:active {
+                background-color: #c9c9c9;
+                transform: scale(0.95);
+            }
+        }
+    }
+    .no-data {
+        background: url("~@/assets/noInfo.png");
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        height: 6.2rem;
+        width: 68%;
+        margin: 0 auto;
+        position: relative;
+        p {
+          position: absolute;
+          bottom: 0.5rem;
+          left: 50%;
+          transform: translateX(-50%);
+          color: #8b8b8b;
+        }
+    }
+}

@@ -1,0 +1,334 @@
+.rankboardList {
+  background-color: #f2f2f2;
+  .rankboard-list-head {
+    width: 100%;
+    height: 1.3rem;
+    @include page_header_color($theme-red);
+    background-size: 100%;
+    padding: 0 0 0 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-wrap-1 {
+      width: 100%;
+      position: relative;
+      .back-icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-left: 0;
+        margin-top: 0;
+      }
+      p {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        line-height: 0.44rem;
+        font-size: 0.44rem;
+        @include page_header_text_color($theme-red-header-text-color);
+      }
+    }
+    &-wrap-2 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .myrank {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .head-text {
+        font-size: 0.2rem;
+        color: #ffc700;
+        font-weight: 700;
+        margin-top: 0.05rem;
+      }
+    }
+  }
+  .details-main {
+    height: calc(100% - 1.3rem - 0.26rem - 0.3rem);
+    padding: 0.26rem 0.2rem 0.2rem 0.2rem;
+  }
+  .my-self-rank {
+    width: 100%;
+    height: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3f3f40;
+    .my-img {
+      width: 0.53rem;
+      height: 0.53rem;
+      margin-right: 0.05rem;
+      border-radius: 0.5rem;
+    }
+  }
+  .top-three {
+    width: 100%;
+    height: 3.15rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    box-sizing: border-box;
+    background: url("~@/assets/rankboard/top_three_bg.png") no-repeat center;
+    background-size: 95% 100%;
+    border-radius: 0.1rem;
+    margin-top: 0.3rem;
+  }
+  .rankingimg {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0.14rem 0;
+  }
+  .ranking {
+    width: calc(100% / 3);
+    margin-bottom: 0.2rem;
+    background-size: 45%;
+    background-repeat: no-repeat;
+    background-position: center 0.45rem /* 45/100 */;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    .champ-img {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
+  .champ {
+    background-size: 70%;
+    background-position: center 0.3rem;
+  }
+  .trophy {
+    width: 45%;
+    position: absolute;
+    top: -0.75rem;
+    left: calc((100% - 45%) / 2);
+  }
+  .champ-trophy {
+    width: 60%;
+    left: calc((100% - 60%) / 2);
+  }
+  .purple-text {
+    color: #2c0a69;
+  }
+  .yellow-text {
+    color: #ffe942;
+  }
+  .orange-text {
+    color: #ff7300;
+  }
+  .gold-text {
+    color: #f4a600;
+  }
+  .rankname {
+    color: #fff;
+    margin: 0.1rem 0;
+  }
+  .other-rankins {
+    width: 100%;
+    height: calc(100% - 3.15rem - 0.5rem);
+    margin: 0.2rem 0;
+    background-color: #fcfcfc;
+    border-radius: 0.1rem;
+    .rank-item {
+      width: 100%;
+      height: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      p:nth-child(1) {
+        width: 20%;
+      }
+      p:nth-child(2) {
+        width: 10%;
+      }
+      p:nth-child(3) {
+        width: 30%;
+      }
+      p:nth-child(4) {
+        width: 20%;
+      }
+      p:nth-child(5) {
+        width: 20%;
+      }
+    }
+  }
+  .other-rankins-wrap {
+    height: calc(100% - 0.76rem);
+    overflow: auto;
+    li {
+      width: 100%;
+      height: 0.75rem;
+      background-color: #fcfcfc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      div:nth-child(1) {
+        width: 20%;
+      }
+      div:nth-child(2) {
+        width: 10%;
+      }
+      div:nth-child(3) {
+        width: 30%;
+      }
+      div:nth-child(4) {
+        width: 20%;
+        overflow-x: auto;
+      }
+      .detail-wrap {
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .detail-check {
+        color: #5170ff;
+        padding: 0.05rem 0.13rem;
+        border: 1px solid #5170ff;
+        border-radius: 0.3rem;
+        transition: 0.3s;
+      }
+      .detail-check:active {
+        background-color: #c9c9c9;
+        transform: scale(0.95);
+      }
+      img {
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 0.5rem;
+      }
+      .other-rankings-NickName {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+    }
+  }
+  .other-rankins-wrap {
+    li:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+  }
+  .noDataRank {
+    background: url("~@/assets/noInfo.png");
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 6.2rem;
+    width: 68%;
+    margin: 0 auto;
+    position: relative;
+    p {
+      position: absolute;
+      bottom: 0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #8b8b8b;
+    }
+  }
+  // 瞄一眼彈窗
+  .fanybox-wrap {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1001;
+  }
+  .peek {
+    width: 6.2rem;
+    height: 7.8rem;
+    position: fixed;
+    top: calc((100% - 7.8rem) / 2);
+    left: calc((100% - 6.2rem) / 2);
+    z-index: 1002;
+    padding: 0.25rem;
+    border-radius: 0.15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url("~@/assets/rankboard/peek_bg.png") no-repeat center;
+    background-size: cover;
+    .user-info {
+      position: absolute;
+      top: -0.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 1.28rem;
+        height: 1.28rem;
+        border-radius: 32px;
+        background-color: #f2f2f2;
+        filter: drop-shadow(0px 17px 12px rgba(41,60,230,0.3));
+        margin-bottom: 0.2rem;
+      }
+      .user-name {
+        font-size: 0.36rem;
+        line-height: 0.36rem;
+        color: #374bf6;
+      }
+    }
+
+    .user-info-content {
+      width: 100%;
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      .user-info-box {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0.2rem;
+        p {
+          font-size: 0.32rem;
+          line-height: 0.32rem;
+        }
+      }
+      .user-info-box:nth-of-type(even ) {
+        background-color: #f4f4f4;
+      }
+    }
+    .peek-btn {
+      width: 0.74rem;
+      height: 0.74rem;
+      background: url("~@/assets/rankboard/peek_close_btn.png") no-repeat center;
+      background-size: cover;
+      position: absolute;
+      bottom: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+ 
+  
+  .fanybox-enter-active {
+    transition: 0.3s;
+    transform: scale(1);
+  }
+
+  .fanybox-enter {
+      transform: scale(0);
+  }
+
+  .fanybox-leave-active {
+      transition: 0.3s;
+      transform: scale(0);
+  }
+  .fanybox-leave {
+      transform: scale(1);
+  }
+}

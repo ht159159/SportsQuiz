@@ -1,0 +1,94 @@
+// common
+
+@import './variable';
+@import './function';
+@import './text';
+@import './basic';
+@import './mixin';
+@import './views/register';
+
+// views
+
+@import './views/login'; // 登入頁
+@import './views/forgetpassword'; //忘记密码
+@import './views/home'; // 首頁
+@import './views/gameSport'; // 賽事
+@import './views/personalCenter/changePassword'; //个人中心-修改密码
+@import './views/personalCenter/myself'; //个人中心-我的
+@import './views/personalCenter/myMessage'; //个人中心-系统信息
+@import './views/personalCenter/selfMsg'; //个人中心-个人信息
+@import './views/personalCenter/history'; //个人中心-历史记录
+@import './views/personalCenter/exchange'; //个人中心-兑换记录
+@import './views/personalCenter/gameRes'; //个人中心-比赛结果
+@import './views/personalCenter/yijian'; //个人中心-意见反馈
+
+@import './views/information'; // 资讯
+@import './views/guize'; // 资讯
+@import './views/detail'; // 资讯详情
+@import './views/shop'; // 商城
+@import './views//lottery.scss'; //抽奖
+@import './views/task.scss'; //任务
+@import './views/address.scss'; //收货地址
+@import './views/shopList.scss'; //收货地址
+@import './views/editAdd.scss'; //编辑收货地址
+@import './views/add.scss'; //添加收货地址
+@import './views/address.scss'; //收货地址
+@import './views/editAdd.scss'; //编辑收货地址
+@import './views/add.scss'; //添加收货地址
+
+@import './views/rank'; //排行榜
+@import './views/rankborad';
+@import './views/invitationcode'; //邀请码
+@import './views/ranklist'; //ranklist
+@import './views/rankboardlist';
+@import './views/ranklistdetails';
+@import './views/rankmatch';
+@import './views/rankticket';
+@import './views/rankchoose';
+@import './views//match';
+@import './views/matchmore';
+@import './views/challenge/challengeHome';
+@import './views/challenge/challengeMatch';
+@import './views/challenge/challengeMouth';
+@import './views/challenge/challengeRecord';
+@import './views/games';
+@import './views/vip';
+@import './views/_recharge.scss'; // 资讯
+
+@import './views/personalCenter/medal'; //个人中心-我的勳章
+@import './views/personalCenter/questionnaire'; //个人中心-問卷
+// component
+@import './components/modal'; // 彈窗
+@import './components/_main'; // 首頁header nav
+@import './components//back'; //后退按钮
+@import './components/input'; // 輸入框
+@import './components/botton'; // 按鈕(?
+@import './components/betmodel';
+@import './components/_colorchoice'; //色系選擇
+@import './components/_flowAd'; //廣告
+
+@import './views/club/createClub'; //創建我的俱樂部
+@import './views/club/createClubRule'; //創建俱樂部條件
+@import './views/club/createClubSet'; //創建俱樂部設定
+@import './views/club/clubAdPutIn'; //廣告投放
+@import './views/club/createTeamBonus'; //俱樂部團隊紅利
+@import './views/club/_clubData'; // 俱樂部詳細資料
+@import './views/club/_memberManagement'; // 成員管理
+@import './views/club/_myAuthority'; // 我的權限
+@import './views/club/_myClub'; // 我的俱樂部
+@import './views/club/_clubActivityMatch'; // 俱樂部活動-賽事與投注
+@import './views/club/_searchClub'; // 搜尋俱樂部
+@import './views/club/_clubNotice'; // 俱樂部公告
+@import './views/club/_clubActivitiesRelease'; // 俱樂部活動發布頁
+@import './views/club/_clubActivityMatchResult'; // 賽果列表 
+@import './components/_activityMatchResultDetail'; // 賽果詳細資料
+@import './views/club/_clubActiveBet'; // 俱樂部投注 
+@import './views/club/_initiateActivities'; // 發起活動
+@import './views/club/_initiatorBetResult'; // 發起人賽果
+@import './views/club/_betResult'; // 投注賽果
+@import './views/club/_memberDynamic'; // 成員動態  
+@import './views/club/_clubActivities'; // 俱樂部活動頁
+@import './views/club/_notice.scss'; // 俱樂部公告
+
+@import './views/_privacy.scss'; // 隱私權頁面
+

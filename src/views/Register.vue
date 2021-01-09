@@ -1,0 +1,280 @@
+<template>
+  <div class="register">
+    <i class="back-icon" @click="gojump"> </i>
+    <input-Comp
+      v-model="account"
+      class="register-input"
+      :placeholder="$t('Placehoder_Accout')"
+      clear
+      account
+      @update:value="getAccount"
+    />
+    <!-- <input-Comp
+      v-model="password"
+      class="register-input"
+      :placeholder="'密码'"
+      password
+      @update:value="GetPassword"
+    />
+    <input-Comp
+      v-model="confirmPassword"
+      class="register-input"
+      :placeholder="'再次输入密码'"
+      password
+      @update:value="getConfirmPassword"
+    /> -->
+    <div class="inputComponent">
+      <img
+        class="inputComponent-icon"
+        src="~@/assets/icons/password.png"
+        alt=""
+      />
+
+      <input
+        :type="ifPassword"
+        v-model="confirmPassword"
+        :placeholder="$t('Placeholder_Password')"
+        class="inputComponent-input"
+        @keyup.enter="login"
+      />
+
+      <a
+        href="#"
+        @click.prevent="togglePassword = !togglePassword"
+        class="inputComponent-suffix inputComponent-password"
+      >
+        <img
+          :src="
+            togglePassword
+              ? require('@/assets/icons/hide.png')
+              : require('@/assets/icons/hide.png')
+          "
+          alt
+        />
+      </a>
+      <a href=""><img src="" alt=""/></a>
+    </div>
+    <div class="inputComponent">
+      <img
+        class="inputComponent-icon"
+        src="~@/assets/icons/password.png"
+        alt=""
+      />
+
+      <input
+        :type="ifPassword"
+        v-model="password"
+        :placeholder="$t('Placeholder_Password')"
+        class="inputComponent-input"
+        @keyup.enter="login"
+      />
+
+      <a
+        href="#"
+        @click.prevent="togglePassword = !togglePassword"
+        class="inputComponent-suffix inputComponent-password"
+      >
+        <img
+          :src="
+            togglePassword
+              ? require('@/assets/icons/hide.png')
+              : require('@/assets/icons/hide.png')
+          "
+          alt
+        />
+      </a>
+      <a href=""><img src="" alt=""/></a>
+    </div>
+    <input-Comp
+      v-model="phone"
+      class="register-input"
+      :placeholder="$t('LoginCell')"
+      clear
+      phone
+      @update:value="getPhone"
+    />
+    <input-Comp
+      v-model="imgCode"
+      class="register-input"
+      :placeholder="$t('Placeholder_Validation')"
+      captcha
+      @update:value="getImgCode"
+    />
+
+    <div class="code">
+      <img :src="url" alt="" @click="recode" />
+    </div>
+    <div class="inputComponent">
+      <img
+        class="inputComponent-icon"
+        src="~@/assets/icons/password.png"
+        alt=""
+      />
+
+      <input
+        type="text"
+        v-model="InvitationCode"
+        :placeholder="$t('InvitationCode')"
+        class="inputComponent-input"
+        disabled="disabled"
+      />
+
+      <a href=""><img src="" alt=""/></a>
+    </div>
+    <div class="privacy-wrap">
+      <input type="checkbox" v-model="isCheck">
+      <!-- 請同意隱私權政策！ -->
+      <p @click="$router.push('/privacy')">{{ $t('PrivacyPolicy') }}</p>
+    </div>
+    <div class="register-btn btn" @click.prevent="sendRegister">
+      {{ $t("Register") }}
+    </div>
+  </div>
+</template>
+
+<script>
+import inputComp from "@/components/Index/Input.vue";
+import { apiRegister, apiGetCaptchCode } from "@/api/User.js";
+export default {
+  components: {
+    inputComp
+  },
+  created() {
+    this.getParams();
+  },
+  computed: {
+    ifPassword() {
+      return this.togglePassword ? "password" : "text";
+    }
+  },
+  data() {
+    return {
+      togglePassword: true,
+      account: "",
+      password: "",
+      imgCode: "",
+      phone: "",
+      confirmPassword: "",
+      showcode: true,
+      InvitationCode: "",
+      url: process.env.VUE_APP_API_BASE_URL + "/User/GetCaptchCode",
+      GetCaptchCodeIndex: 0,
+      isCheck: true,
+    };
+  },
+  methods: {
+    getParams() {
+      let params = this.$route.query.InviterId;
+      this.InvitationCode = params;
+    },
+    gojump() {
+      this.$router.push("/");
+    },
+    //验证码
+    recode() {
+      this.url = process.env.VUE_APP_API_BASE_URL + "/User/GetCaptchCode?"+this.GetCaptchCodeIndex;
+      this.GetCaptchCodeIndex++;
+      new Date().getTime();
+    },
+    sendRegister() {
+      let data = {
+        Name: this.account,
+        Password: this.password,
+        ConfirmPassword: this.confirmPassword,
+        PhoneNumber: this.phone,
+        ImgCode: this.imgCode,
+        InvitationCode: this.InvitationCode
+      };
+
+      if (this.account == "") {
+        const m = this.$message({
+          message: this.$t("AccountEmpty"),
+          duration: 1000,
+          type: "error",
+          center: true
+        });
+        setTimeout(() => m.close(), 1200);
+        return;
+      };
+      if (this.password == "") {
+        const m = this.$message({
+          message: this.$t("PasswordBlank"),
+          duration: 1000,
+          type: "error",
+          center: true
+        });
+        setTimeout(() => m.close(), 1200);
+        return;
+      };
+      if (this.phone == "") {
+        const m = this.$message({
+          message: this.$t("PhoneBlank"),
+          duration: 1000,
+          type: "error",
+          center: true
+        });
+        setTimeout(() => m.close(), 1200);
+        return;
+      };
+      if (this.imgCode == "") {
+        const m = this.$message({
+          message: this.$t("VerificationCodeEmpty"),
+          duration: 1000,
+          type: "error",
+          center: true
+        });
+        setTimeout(() => m.close(), 1200);
+        return;
+      };
+      if (!this.isCheck) {
+        const m = this.$message({
+          message: this.$t("AgreePrivacy"),
+          duration: 1000,
+          type: "error",
+          center: true
+        });
+        setTimeout(() => m.close(), 1200);
+        return;
+      }
+      apiRegister(data).then(res => {
+        if (res.AccessToken) {
+          const m = this.$message({
+            message: this.$t('RegisteredSuccessfully'),
+            duration: 3000,
+            center: true,
+            type: "success"
+          });
+          setTimeout(() => m.close(), 1200);
+          setTimeout(() => {
+            this.$router.push("/Login");
+          }, 3000);
+        } else if (Math.abs(res.Code) >= 600) {
+          const m = this.$message({
+            message: res.Message,
+            duration: 3000,
+            center: true,
+            type: "error"
+          });
+          setTimeout(() => m.close(), 1200);
+        }
+      });
+    },
+
+    getAccount(res) {
+      this.account = res;
+    },
+    GetPassword(res) {
+      this.password = res;
+    },
+    getConfirmPassword(res) {
+      this.confirmPassword = res;
+    },
+    getPhone(res) {
+      this.phone = res;
+    },
+    getImgCode(res) {
+      this.imgCode = res;
+    }
+  }
+};
+</script>

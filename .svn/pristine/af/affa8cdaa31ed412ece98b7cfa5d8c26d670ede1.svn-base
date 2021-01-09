@@ -1,0 +1,258 @@
+<template>
+  <div class="main-nav-bottom">
+    <div
+      class="nav-bottom-item"
+      :class="{ 'nav-bottom-item-active': url == '/home' }"
+      @click="goHome(0)"
+    >
+      <div class="nav-bottom-item-icon-dt nav-bottom-item-icon"></div>
+      <div class="nav-bottom-item-text">{{ $t("Home") }}</div>
+      <!-- 大厅 -->
+    </div>
+    <!-- <div
+      class="nav-bottom-item"
+      :class="{ 'nav-bottom-item-active': url == '/shop' }"
+      @click.prevent="goShop"
+    >
+      <div class="nav-bottom-item-icon-sc nav-bottom-item-icon"></div>
+      <div class="nav-bottom-item-text">{{ $t("Mall") }}</div> -->
+      <!-- 商城 -->
+    <!-- </div> -->
+
+    <div
+      class="nav-bottom-item"
+      :class="{ 'nav-bottom-item-active': url == '/gameSport' }"
+      @click="$router.push('/gameSport')"
+    >
+      <div class="nav-bottom-item-icon-ss nav-bottom-item-icon"></div>
+      <div class="nav-bottom-item-text">{{ $t("SportGame") }}</div>
+      <!-- 賽事 -->
+    </div>
+
+    <div
+      class="nav-bottom-item"
+      :class="{ 'nav-bottom-item-active': num == 2 }"
+      @click="goClub()"
+    >
+      <div
+        ref="goMacth"
+        class="nav-bottom-item-center"
+        :style="{ backgroundImage: 'url(' + matchUrl + ')' }"
+      ></div>
+    </div>
+    <!-- <div
+      class="nav-bottom-item"
+      :class="{ 'nav-bottom-item-active': url == '/kefu' }"
+      @click="changeNum(3)"
+    >
+      <div class="nav-bottom-item-icon-kf nav-bottom-item-icon"></div>
+      <div class="nav-bottom-item-text">客服</div>
+    </div> -->
+
+    <div
+      class="nav-bottom-item"
+      :class="{ 'nav-bottom-item-active': url == '/paihon' }"
+      @click="goRankBoard()"
+    >
+      <div class="nav-bottom-item-icon-ph nav-bottom-item-icon"></div>
+      <div class="nav-bottom-item-text">{{ $t("Ranking") }}</div>
+      <!-- 排行 -->
+    </div>
+    <router-link to="/myself" tag="div" class="nav-bottom-item">
+      <div class="nav-bottom-item-icon-wd nav-bottom-item-icon"></div>
+      <div class="nav-bottom-item-text">{{ $t("My") }}</div>
+      <!-- 我的 -->
+    </router-link>
+    <div
+      class="pop"
+      v-if="show"
+      :style="{ backgroundImage: 'url(' + matchPopUrl + ')' }"
+    >
+      <div class="left" @click="gorank"></div>
+      <div class="right" @click="goTz"></div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Self from "@/self.js";
+import { apiGetUnreadMessageCount } from "@/api/Message.js";
+import { apiGetMemClubs } from "@/api/Club.js";
+export default {
+  name: "MainNavBottom",
+  props: {
+    clear: {
+      type: Boolean,
+      default: false
+    }
+  },
+  created() {
+    this.getUrl();
+    var vm = this;
+    Self.$on("sss", function(val) {
+      vm.show = val; // 接收传过来的值
+    });
+
+    this.lang = JSON.parse(localStorage.getItem("lang")).tag;
+    this.theme = localStorage.getItem("theme");
+  },
+  data() {
+    return {
+      num: "",
+      url: "",
+      show: false,
+      msgCount: 0,
+      countNum: true,
+
+      lang: "",
+      theme: "",
+      themeType: ["red", "blue", "black", "yellow"],
+
+      matchUrl: require("@/assets/index/footer/club_icon_CN.png"),
+      // matchPopUrl: require("@/assets/index/footer/match_pop.png"),
+
+      CNMatchPicUrl: {
+        red: require("@/assets/index/footer/club_icon_CN.png"),
+        blue: require("@/assets/theme-blue/index/footer/club_icon_CN.png"),
+        black: require("@/assets/theme-black/index/footer/club_icon_CN.png"),
+        yellow: require("@/assets/theme-yellow/index/footer/club_icon_CN.png")
+      },
+      TWMatchPicUrl: {
+        red: require("@/assets/index/footer/club_icon_TW.png"),
+        blue: require("@/assets/theme-blue/index/footer/club_icon_TW.png"),
+        black: require("@/assets/theme-black/index/footer/club_icon_TW.png"),
+        yellow: require("@/assets/theme-yellow/index/footer/club_icon_TW.png")
+      },
+      // CNMatchPopPicUrl: {
+      //   red: require("@/assets/index/footer/match_pop.png"),
+      //   blue: require("@/assets/theme-blue/index/footer/match_pop.png"),
+      //   black: require("@/assets/theme-black/index/footer/match_pop.png"),
+      //   yellow: require("@/assets/theme-yellow/index/footer/match_pop.png")
+      // },
+      EnMatchPicUrl: {
+        red: require("@/assets/index/footer/club_icon_EN.png"),
+        blue: require("@/assets/theme-blue/index/footer/club_icon_EN.png"),
+        black: require("@/assets/theme-black/index/footer/club_icon_EN.png"),
+        yellow: require("@/assets/theme-yellow/index/footer/club_icon_EN.png")
+      }
+      // EnMatchPopPicUrl: {
+      //   red: require("@/assets/index/footer/match_pop1.png"),
+      //   blue: require("@/assets/theme-blue/index/footer/match_pop1.png"),
+      //   black: require("@/assets/theme-black/index/footer/match_pop1.png"),
+      //   yellow: require("@/assets/theme-yellow/index/footer/match_pop1.png")
+      // },
+    };
+  },
+  methods: {
+    getUrl() {
+      this.url = this.$route.path;
+    },
+    // getCount() {
+    //   let data = {}
+    //   apiGetUnreadMessageCount(data, true).then(res => {
+    //     this.msgCount = res.UnreadMessageCount;
+    //     if(this.msgCount > 0) {
+    //       this.countNum = true;
+    //     }
+    //   })
+    // },
+    chuan() {
+      Self.$emit("sss", this.show);
+    },
+
+    goHome() {
+      this.num = 0;
+      this.$router.push("/");
+    },
+    goClub() {
+      let token = localStorage.getItem("token");
+      if (!token) {
+        this.$router.push("myself");
+        return;
+      }
+      // this.num = -1;
+      // this.show = !this.show;
+      apiGetMemClubs("", true).then(res => {
+        if (res.Data == null) {
+          // 無會員
+          localStorage.setItem("isMember", 2);
+          this.$router.push("/CreateClub");
+        } else {
+          // 有會員
+          localStorage.setItem("isMember", 1);
+          localStorage.setItem("ClubId", res.Data.ClubId);
+          // 判斷是否為管理階級
+          if (res.Data.Name == "会长") {
+            localStorage.setItem("isManagement", 1);
+          } else if (res.Data.Name == "副会长") {
+            localStorage.setItem("isManagement", 2);
+          } else if (res.Data.Name == "会员") {
+            localStorage.setItem("isManagement", 3);
+          }
+          this.$router.push("/myClub");
+        }
+      });
+    },
+    goRankBoard() {
+      this.$router.push("/rankboard");
+    },
+    changeNum(id) {
+      this.show = false;
+      this.num = id;
+      this.$message({
+        message: this.$t("NotYetOpen"),
+        type: "warning",
+        center: true,
+        duration: 1200
+      });
+    },
+    change(id) {
+      this.show = false;
+      this.num = 1;
+    },
+    goShop() {
+      this.show = false;
+      this.num = 1;
+      this.$router.push("/shop");
+    },
+    gorank() {
+      this.show = false;
+      this.$router.push("/rank");
+    },
+    goTz() {
+      this.show = false;
+      this.$router.push("/challengehome");
+    },
+
+    changePic() {
+      if (this.lang == "zh-CN") {
+        for (let i of this.themeType) {
+          if (i == this.theme) {
+            this.matchUrl = this.CNMatchPicUrl[i];
+            // this.matchPopUrl = this.CNMatchPopPicUrl[i];
+          }
+        }
+      }
+      if (this.lang == "zh-TW") {
+        for (let i of this.themeType) {
+          if (i == this.theme) {
+            this.matchUrl = this.TWMatchPicUrl[i];
+            // this.matchPopUrl = this.CNMatchPopPicUrl[i];
+          }
+        }
+      }
+      if (this.lang == "en-US") {
+        for (let i of this.themeType) {
+          if (i == this.theme) {
+            this.matchUrl = this.EnMatchPicUrl[i];
+            // this.matchPopUrl = this.EnMatchPopPicUrl[i];
+          }
+        }
+      }
+    }
+  },
+  mounted() {
+    this.changePic();
+  }
+};
+</script>
