@@ -1,0 +1,60 @@
+{
+  "name": "Guess竞猜",
+  "short_name": "Guess竞猜",
+  "description": "SkyLine Mobile",
+  "version": "1.0",
+  "manifest_version": 2,
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "transparent",
+  "theme_color": "transparent",
+
+  "icons": [
+        {
+      "src": "/resources/icons/Icon-App-72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/resources/icons/Icon-App-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/resources/icons/Icon-App-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/resources/icons/Icon-App-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/resources/icons/Icon-App-152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "resources/icons/Icon-App-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "resources/icons/Icon-App-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "resources/icons/Icon-App-384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "resources/icons/Icon-App-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
